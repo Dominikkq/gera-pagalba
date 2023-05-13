@@ -1,0 +1,29 @@
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.button.selected {
+  border-color: #333;
+  background-color: #333;
+  color: #fff;
+}

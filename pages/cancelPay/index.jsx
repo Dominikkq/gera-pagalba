@@ -1,0 +1,16 @@
+import React, { useEffect } from "react";
+
+const Contact = () => {
+  useEffect(() => {
+    localStorage.setItem("successPay_success", false);
+    if (localStorage.getItem("successPay_url")) {
+      window.location.href = localStorage.getItem("successPay_url");
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
+
+  return <div></div>;
+};
+
+export default Contact;

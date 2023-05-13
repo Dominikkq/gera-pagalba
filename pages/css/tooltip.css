@@ -1,0 +1,29 @@
+.centras {
+  position: relative;
+}
+.centeras .text {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
+}
+.centras .text-tooltip {
+  position: absolute;
+  display: none;
+  left: 0px;
+  right: 0px;
+  min-width: fit-content;
+  opacity: 0;
+  transition: opacity 1s ease;
+  bottom: 150%;
+  padding: 10px;
+  border-radius: 5px;
+  background: #754fe5;
+  color: white;
+  box-shadow: 0px 0px 12px rgba(2, 2, 111, 0.4);
+}
+.centras .text:hover + .text-tooltip {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
