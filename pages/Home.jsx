@@ -9,7 +9,7 @@ import FilterCategoryItem from "../components/categories/filterCategoryItem";
 const Index = () => {
   return (
     <>
-      <Meta title="PickyBets - Testing" />
+      <Meta title="GeraPagalba" />
       <Hero_5 />
 
       <Feature_collections />

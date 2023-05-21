@@ -26,7 +26,7 @@ import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import 'react-tooltip/dist/react-tooltip.css'
+import "react-tooltip/dist/react-tooltip.css";
 
 const cors = require("cors");
 function MyApp({ Component, pageProps }) {
@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Meta title="Home 1 || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="GeraPagalba" />
 
       <Provider store={store}>
         <ThemeProvider enableSystem={true} attribute="class">
