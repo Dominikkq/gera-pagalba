@@ -17,7 +17,9 @@ const Feature_collections_carousel = () => {
     try {
       const axios = require("axios");
 
-      const response = await axios.get(`www.regreto.com:5000/doctors/`);
+      const response = await axios.get(
+        `https://www.regreto.com:5000/doctors/doctors/`
+      );
       console.log(response.data.doctors);
       setDoctors(response.data.doctors);
     } catch (error) {

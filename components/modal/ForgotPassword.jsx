@@ -34,9 +34,12 @@ const ForgotPasswordModal = () => {
     }
 
     try {
-      const response = await axios.post("www.regreto.com:5000/forgotPassword", {
-        email,
-      });
+      const response = await axios.post(
+        "https://www.regreto.com:5000/doctors/forgotPassword",
+        {
+          email,
+        }
+      );
       if (response.status === 200) {
         // Success, handle accordingly (e.g., show success message)
         setSuccess(response.data.message);
