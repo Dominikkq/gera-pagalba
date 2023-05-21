@@ -43,7 +43,7 @@ const ConfirmAppointmentModal = ({ stripePromise }) => {
       );
       console.log(confirmAppointmentModalData);
       const response = await axios.post(
-        "http://178.16.33.113:5000/create-checkout-session",
+        "www.regreto.com:5000/create-checkout-session",
         {
           userId: confirmAppointmentModalData.user,
           doctorId: confirmAppointmentModalData.doctorId,

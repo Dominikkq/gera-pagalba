@@ -49,7 +49,7 @@ const Create = () => {
     if (await checkIfInputsEntered()) {
       try {
         const response = await axios.post(
-          "http://178.16.33.113:5000/resetPassword/" + pid,
+          "www.regreto.com:5000/resetPassword/" + pid,
           {
             password: document.getElementById("new_password").value,
           }

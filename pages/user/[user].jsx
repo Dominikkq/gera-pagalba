@@ -49,7 +49,7 @@ const User = () => {
       dispatch(reasonModalShow(appointmentId));
     } else {
       const response = await axios.delete(
-        `http://178.16.33.113:5000/appointmentsCancel/${CurrentUser.userId}/${appointmentId}`,
+        `www.regreto.com:5000/appointmentsCancel/${CurrentUser.userId}/${appointmentId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -186,7 +186,7 @@ const User = () => {
   const [rating, setRating] = useState(0);
   const handleStarClick = async (index, doctorId, appointmentId) => {
     await axios.post(
-      `http://178.16.33.113:5000/rateDoctor`,
+      `www.regreto.com:5000/rateDoctor`,
       {
         doctorId: doctorId,
         userId: CurrentUser.userId,
@@ -259,14 +259,11 @@ const User = () => {
   async function GetUserData() {
     const userId = window.location.href.split("/").pop();
     try {
-      const response = await axios.get(
-        `http://178.16.33.113:5000/user/${userId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const response = await axios.get(`www.regreto.com:5000/user/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       setUser(response.data);
       if (response.data.doctor) {
         const date = new Date();
@@ -295,7 +292,7 @@ const User = () => {
   }
   async function GetCurrentUserData() {
     if (localStorage.getItem("token")) {
-      const response = await axios.get("http://178.16.33.113:5000/user", {
+      const response = await axios.get("www.regreto.com:5000/user", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
@@ -311,7 +308,7 @@ const User = () => {
   async function GetUserAppointments() {
     try {
       const response = await axios.get(
-        `http://178.16.33.113:5000/appointmentsMade`,
+        `www.regreto.com:5000/appointmentsMade`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -333,7 +330,7 @@ const User = () => {
   async function GetAppointments(userId) {
     try {
       const response = await axios.get(
-        `http://178.16.33.113:5000/appointments/${userId}`,
+        `www.regreto.com:5000/appointments/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -12,15 +12,12 @@ const FilterCategoryItem = () => {
   const axios = require("axios");
   async function GetDoctors(sortBy) {
     try {
-      const response = await axios.get(
-        `http://178.16.33.113:5000/sortedDoctors/`,
-        {
-          params: {
-            sortBy,
-            order: "desc",
-          },
-        }
-      );
+      const response = await axios.get(`www.regreto.com:5000/sortedDoctors/`, {
+        params: {
+          sortBy,
+          order: "desc",
+        },
+      });
       console.log(response.data);
       setDoctors(response.data.doctors);
     } catch (error) {

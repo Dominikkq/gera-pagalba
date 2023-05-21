@@ -46,7 +46,7 @@ const Confirm_checkout = (props) => {
       }
 
       const response = await axios.put(
-        "http://178.16.33.113:5000/edit",
+        "www.regreto.com:5000/edit",
         requestBody,
         {
           headers: {
