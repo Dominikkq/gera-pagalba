@@ -50,7 +50,7 @@ const Create = () => {
         console.log("Registering");
         const axios = require("axios");
         const response = await axios.post(
-          "https://www.regreto.com:5000/doctors/register",
+          "https://www.regreto.com:5000/register",
           {
             name: document.getElementById("vardas").value,
             lastname: document.getElementById("create_sideOne").value,

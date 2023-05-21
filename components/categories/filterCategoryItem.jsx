@@ -13,7 +13,7 @@ const FilterCategoryItem = () => {
   async function GetDoctors(sortBy) {
     try {
       const response = await axios.get(
-        `https://www.regreto.com:5000/doctors/sortedDoctors/`,
+        `https://www.regreto.com:5000/sortedDoctors/`,
         {
           params: {
             sortBy,

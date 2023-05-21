@@ -38,7 +38,7 @@ const Create = () => {
       const axios = require("axios");
       try {
         const response = await axios.post(
-          "https://www.regreto.com:5000/doctors/login",
+          "https://www.regreto.com:5000/login",
           {
             email: document.getElementById("emailas").value,
             password: document.getElementById("password").value,

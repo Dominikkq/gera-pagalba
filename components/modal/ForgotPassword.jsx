@@ -35,7 +35,7 @@ const ForgotPasswordModal = () => {
 
     try {
       const response = await axios.post(
-        "https://www.regreto.com:5000/doctors/forgotPassword",
+        "https://www.regreto.com:5000/forgotPassword",
         {
           email,
         }
