@@ -3,7 +3,7 @@ export async function GetUserData() {
   if (localStorage.getItem("token")) {
     try {
       const response = await axios
-        .get("http://localhost:5000/user", {
+        .get("http://178.16.33.113:5000/user", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

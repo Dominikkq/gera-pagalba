@@ -17,7 +17,7 @@ const Feature_collections_carousel = () => {
     try {
       const axios = require("axios");
 
-      const response = await axios.get(`http://localhost:5000/doctors/`);
+      const response = await axios.get(`http://178.16.33.113:5000/doctors/`);
       console.log(response.data.doctors);
       setDoctors(response.data.doctors);
     } catch (error) {

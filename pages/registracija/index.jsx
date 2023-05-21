@@ -49,13 +49,16 @@ const Create = () => {
       try {
         console.log("Registering");
         const axios = require("axios");
-        const response = await axios.post("http://localhost:5000/register", {
-          name: document.getElementById("vardas").value,
-          lastname: document.getElementById("create_sideOne").value,
-          email: document.getElementById("create_sideTwo").value,
-          password: document.getElementById("slaptazodis").value,
-          doctor: true,
-        });
+        const response = await axios.post(
+          "http://178.16.33.113:5000/register",
+          {
+            name: document.getElementById("vardas").value,
+            lastname: document.getElementById("create_sideOne").value,
+            email: document.getElementById("create_sideTwo").value,
+            password: document.getElementById("slaptazodis").value,
+            doctor: true,
+          }
+        );
         console.log(response);
       } catch (error) {
         console.log(error);

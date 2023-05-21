@@ -20,7 +20,7 @@ const CancelReasonModal = () => {
 
   const CancelAppointmentForDoctor = async () => {
     const response = await axios.delete(
-      `http://localhost:5000/appointmentsCancelforDoctor/${appointmentId}/
+      `http://178.16.33.113:5000/appointmentsCancelforDoctor/${appointmentId}/
         ${document.getElementById("doctor_cancel_reason").value}
       `,
       {

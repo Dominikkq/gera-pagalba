@@ -35,7 +35,7 @@ const ForgotPasswordModal = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/forgotPassword",
+        "http://178.16.33.113:5000/forgotPassword",
         { email }
       );
       if (response.status === 200) {

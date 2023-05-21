@@ -37,7 +37,7 @@ const Create = () => {
     if (await checkIfInputsEntered()) {
       const axios = require("axios");
       try {
-        const response = await axios.post("http://localhost:5000/login", {
+        const response = await axios.post("http://178.16.33.113:5000/login", {
           email: document.getElementById("emailas").value,
           password: document.getElementById("password").value,
         });
