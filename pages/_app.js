@@ -22,13 +22,13 @@ import "./css/testimonials.css";
 import "./css/body.css";
 import "./css/Loading.css";
 import "./css/settings.css";
-import FullCalendar from "@fullcalendar/react";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
-import dayGridPlugin from "@fullcalendar/daygrid";
+const FullCalendar = require("@fullcalendar/react").default;
+const timeGridPlugin = require("@fullcalendar/timegrid").default;
+const interactionPlugin = require("@fullcalendar/interaction").default;
+const dayGridPlugin = require("@fullcalendar/daygrid").default;
+
 import "react-tooltip/dist/react-tooltip.css";
 
-const cors = require("cors");
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 

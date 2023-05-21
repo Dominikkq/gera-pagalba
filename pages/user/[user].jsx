@@ -607,9 +607,11 @@ const User = () => {
             </div>
             {User.doctor && AppointmentEvents.length > 0 && (
               <div className="calendar">
+                {console.log(User.weekendHours)}
                 <FullCalendar
                   ref={calendarRef}
                   contentHeight="auto"
+                  slotMinHeight={500}
                   longPressDelay={1}
                   slotMinTime={formatHour(User.workdayHours.from)}
                   slotMaxTime={formatHour(User.workdayHours.to)}

@@ -5,7 +5,7 @@ import Image from "next/image";
 const Tarms = () => {
   return (
     <div>
-      <Meta title="Tarms || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="GeraPagalba" />
       <div className="pt-[5.5rem] lg:pt-24">
         {/* <!-- TOS --> */}
         <section className="dark:bg-jacarta-800 relative py-16 md:py-24">

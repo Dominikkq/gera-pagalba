@@ -144,6 +144,7 @@ const BidsModal = () => {
                               margin: "auto",
                             }}
                             src={image}
+                            layout="fill"
                             alt="Uploaded image"
                           />
                         )}
