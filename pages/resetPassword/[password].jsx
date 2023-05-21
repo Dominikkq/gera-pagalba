@@ -3,25 +3,20 @@ import "tippy.js/dist/tippy.css"; // optional
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import Meta from "../../components/Meta";
+const axios = require("axios");
 import Image from "next/image";
-import { setCurrentUser } from "../../redux/createVariables";
-import { forgotPasswordModalShow } from "../../redux/counterSlice";
 
 const Create = () => {
-  const [loginError, setLoginError] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
+  const {
+    query: { password: pid },
+  } = router;
   const dispatch = useDispatch();
 
   async function checkIfInputsEntered() {
-    const password = document.getElementById("password").value;
-    const email = document.getElementById("emailas").value;
-
-    if (!email) {
-      document.getElementById("email_text").style.color = "#C1423F";
-      return false;
-    } else {
-      document.getElementById("email_text").style.color = "";
-    }
+    const password = document.getElementById("new_password").value;
+    const password2 = document.getElementById("new_password2").value;
 
     if (!password) {
       document.getElementById("password_text").style.color = "#C1423F";
@@ -30,47 +25,49 @@ const Create = () => {
       document.getElementById("password_text").style.color = "";
     }
 
+    if (!password2) {
+      document.getElementById("password2_text").style.color = "#C1423F";
+      return false;
+    } else {
+      document.getElementById("password2_text").style.color = "";
+    }
+
+    if (password != password2) {
+      document.getElementById("password2_text").style.color = "#C1423F";
+      document.getElementById("password_text").style.color = "#C1423F";
+      setError("Slapžtažodžiai nesutampa");
+      return false;
+    } else {
+      document.getElementById("password2_text").style.color = "";
+      document.getElementById("password_text").style.color = "";
+    }
+
     return true;
   }
-  useEffect(() => {}, [loginError]);
+  useEffect(() => {}, [error]);
   async function login() {
     if (await checkIfInputsEntered()) {
-      const axios = require("axios");
       try {
-        const response = await axios.post("http://localhost:5000/login", {
-          email: document.getElementById("emailas").value,
-          password: document.getElementById("password").value,
-        });
-
-        if (response.data.token) {
-          localStorage.setItem("token", response.data.token);
-          dispatch(
-            setCurrentUser({
-              UserEmail: document.getElementById("emailas").value,
-              UserToken: response.data.token,
-              UserFullName: response.data.name + " " + response.data.lastname,
-            })
-          );
-
-          var url = localStorage.getItem("redirect_prisijungimas");
-          if (localStorage.getItem("redirect_prisijungimas")) {
-            localStorage.setItem("redirect_prisijungimas", "");
-            router.push(url);
-          } else {
-            router.push("/");
+        const response = await axios.post(
+          "http://localhost:5000/resetPassword/" + pid,
+          {
+            password: document.getElementById("new_password").value,
           }
-        } else {
-          console.log(response);
+        );
+
+        if (response.data.message == "Slaptažodis pakeistas sėkmingai") {
+          router.push("/prisijungimas");
         }
       } catch (error) {
-        setLoginError(error.response.data.error);
+        console.log(error);
+        setError(error.response.data.error);
       }
     }
   }
 
   return (
     <div>
-      <Meta title="Prisijungimas || GeraPagalba" />
+      <Meta title="Slaptažodžio Keitimas || GeraPagalba" />
       {/* <!-- Create --> */}
       <section className="relative py-24" style={{ height: "100vh" }}>
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
@@ -83,7 +80,7 @@ const Create = () => {
         </picture>
         <div className="container">
           <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium ">
-            Prisijungimas
+            Naujas Slaptažodis
           </h1>
           <div className="mx-auto max-w-[48.125rem]">
             {/* <!-- Description --> */}
@@ -91,51 +88,46 @@ const Create = () => {
               <label
                 htmlFor="item-description"
                 className="font-display text-jacarta-700 mb-2 block "
-                id="email_text"
+                id="password_text"
               >
-                El. Paštas<label className="text-red">*</label>
+                Naujas Slaptažodis<label className="text-red">*</label>
               </label>
 
               <input
-                type="url"
-                id="emailas"
+                id="new_password"
                 className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
-                placeholder="vardenis.pavardenis@gmail.com"
+                type="password"
+                required
+                placeholder="*********"
               />
             </div>
             <div className="mb-6">
               <label
                 htmlFor="item-description"
                 className="font-display text-jacarta-700 mb-2 block"
-                id="password_text"
+                id="password2_text"
               >
-                Slaptažodis<label className="text-red">*</label>
+                Pakartokite naują slaptažodį
+                <label className="text-red">*</label>
               </label>
 
               <input
                 type="password"
-                id="password"
+                id="new_password2"
                 className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
                 placeholder="*********"
                 required
               />
             </div>
-            <div className="flex justify-end">
-              <a
-                onClick={() => dispatch(forgotPasswordModalShow())}
-                className="text-sm text-jacarta-700 hover:text-jacarta-900"
-              >
-                Pamiršote slaptažodį?
-              </a>
-            </div>
-            {loginError && <p style={{ color: "#EF4444" }}>{loginError}</p>}
+
+            {error && <p style={{ color: "#EF4444" }}>{error}</p>}
             <br></br>
             {/* <!-- Submit --> */}
             <button
               onClick={login}
               className="bg-brand hover:brand rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
             >
-              Prisijungti
+              Keisti slaptažodį
             </button>
           </div>
         </div>

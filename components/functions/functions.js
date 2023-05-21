@@ -20,5 +20,5 @@ export async function GetUserData() {
 }
 export async function Logout() {
   localStorage.setItem("token", "");
-  location.reload();
+  window.location.href = "/";
 }

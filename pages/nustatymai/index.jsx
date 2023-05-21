@@ -6,6 +6,7 @@ import Meta from "../../components/Meta";
 import { GetUserData } from "../../components/functions/functions";
 import { Confirm_checkout } from "../../components/metamask/Metamask";
 import blank from "../../components/assets/icons/blank.png";
+
 const Create = () => {
   const [User, setUser] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -27,6 +28,8 @@ const Create = () => {
       setLanguageOptions(response.languageOptions);
       setUser(response);
       setPrices(response.rates);
+    } else {
+      router.push("/");
     }
   }
 
@@ -62,6 +65,7 @@ const Create = () => {
       addItemLanguages(option);
     }
   };
+
   const options = [
     "Depresija",
     "LGBTQ+ klausimai",
@@ -84,6 +88,7 @@ const Create = () => {
     "Laikymasis sveikos gyvensenos",
     "Tėvystės klausimai",
   ];
+
   const handlePriceChange = (event, duration) => {
     const value = event.target.value;
     setPrices({ ...prices, [duration]: value });
@@ -104,6 +109,7 @@ const Create = () => {
       prevArray ? [...prevArray, item] : [item]
     );
   };
+
   const LanguageOptions = ["Anglų", "Rusų", "Lietuvių"];
 
   const isOptionSelected = (option) => {
@@ -122,69 +128,28 @@ const Create = () => {
     return (
       <>
         <div className="col-span-1 sm:col-span-2">
-          <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
-            {image ? (
-              <img
-                className="w-32 h-32 object-cover rounded-lg mx-auto hover:opacity-50 transition duration-200"
-                src={image}
-                alt="Uploaded image"
-                style={{ marginLeft: "inherit" }}
-              />
-            ) : (
-              <>
-                <img
-                  className="w-32 h-32 object-cover rounded-lg mx-auto cursor-pointer hover:opacity-50 transition duration-200"
-                  src={blank.src}
-                  alt="Upload image"
-                  style={{ marginLeft: "inherit" }}
-                  onClick={() => document.getElementById("profile-pic").click()}
-                />
-                <input
-                  id="profile-pic"
-                  className="hidden"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                />
-              </>
-            )}
-          </div>
-        </div>
-        <div className="col-span-1 sm:col-span-2">
-          <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+          <span className="font-medium text-gray-700 text-sm mb-1 block">
             Vardas
           </span>
-          <div
-            className="bg-white rounded-md dark:bg-gray-800"
-            style={{
-              boxShadow:
-                "5px 5px 20px rgba(174, 174, 192, 0.4), -5px -5px 20px rgba(255, 255, 255, 0.9)",
-            }}
-          >
+          <div className="bg-white rounded-md shadow-sm">
             <input
               style={{ maxWidth: "300px" }}
-              className="w-full min-w-0 py-2 px-3 bg-transparent border-none rounded-md shadow-none focus:outline-none focus:ring-0 focus:border-0"
+              className="w-full min-w-0 py-2 px-3 bg-transparent border-none rounded-md focus:outline-none"
               placeholder={User.name}
               id="new_name"
             />
           </div>
         </div>
         <div className="col-span-1 sm:col-span-2">
-          <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
-            Vardas
+          <span className="font-medium text-gray-700 text-sm mb-1 block">
+            Pavardė
           </span>
-          <div
-            className="bg-white rounded-md dark:bg-gray-800"
-            style={{
-              boxShadow:
-                "5px 5px 20px rgba(174, 174, 192, 0.4), -5px -5px 20px rgba(255, 255, 255, 0.9)",
-            }}
-          >
+          <div className="bg-white  rounded-md shadow-sm">
             <input
               style={{ maxWidth: "300px" }}
-              className="w-full min-w-0 py-2 px-3 bg-transparent border-none rounded-md shadow-none focus:outline-none focus:ring-0 focus:border-0"
-              placeholder={User.name}
-              id="new_name"
+              className="w-full min-w-0 py-2 px-3 bg-transparent border-none rounded-md focus:outline-none"
+              placeholder={User.lastname}
+              id="new_lastname"
             />
           </div>
         </div>
@@ -196,7 +161,26 @@ const Create = () => {
     return (
       <>
         <div className="col-span-1 sm:col-span-2">
-          <span className="font-display text-jacarta-700 text-sm font-semibold mb-2 block">
+          {["15", "30", "45", "60"].map((time, index) => (
+            <div key={time} className="col-span-1">
+              <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                {index === 0
+                  ? `${time} min kaina (eur) = 0 neaktyvus`
+                  : `min kaina (eur)`}
+              </span>
+              <div>
+                <input
+                  type="number"
+                  min="0"
+                  className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder={prices && prices[parseInt(time)]}
+                  id={`price_${time}`}
+                  onChange={(event) => handlePriceChange(event, parseInt(time))}
+                />
+              </div>
+            </div>
+          ))}
+          <span className="font-medium text-gray-700 text-sm mb-1 block">
             Darbo valandos
           </span>
           <div className="flex items-center">
@@ -204,7 +188,7 @@ const Create = () => {
               type="number"
               min="0"
               max="23"
-              className="w-16 py-1 px-3 bg-white border-solid rounded-md shadow-none focus:outline-none focus:ring-0 focus:border-0"
+              className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               defaultValue="9"
               id="workdays_from"
             />
@@ -213,34 +197,45 @@ const Create = () => {
               type="number"
               min="0"
               max="23"
-              className="w-16 py-1 px-3 bg-white border-solid rounded-md shadow-none focus:outline-none focus:ring-0 focus:border-0"
+              className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               defaultValue="17"
               id="workdays_to"
             />
           </div>
         </div>
-        <div className="col-span-1 sm:col-span-2">
-          <label className="font-display text-jacarta-700 text-sm font-semibold">
+        <div
+          className="col-span-1 sm:col-span-2"
+          style={{ paddingTop: "1rem" }}
+        >
+          <label
+            className="font-medium text-gray-700 text-sm"
+            htmlFor="weekends_checkbox"
+          >
             <input
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-jacarta-700 mr-2"
+              className="form-checkbox h-5 w-5 text-gray-700 mr-2"
               id="weekends_checkbox"
-              onClick={toggleWeekendHours}
+              checked={weekendHoursVisible}
+              onChange={toggleWeekendHours}
             />
             Savaitgaliai
           </label>
         </div>
         {weekendHoursVisible && (
-          <div className="col-span-1 sm:col-span-2">
-            <span className="font-display text-jacarta-700 text-sm font-semibold mb-2 block">
+          <div
+            className="col-span-1 sm:col-span-2"
+            style={{ paddingTop: "1rem" }}
+          >
+            <span className="font-medium text-gray-700 text-sm mb-1 block">
               Savaitgalio darbo valandos
             </span>
+
             <div className="flex items-center">
               <input
                 type="number"
                 min="0"
                 max="23"
-                className="w-16 py-1 px-3 bg-white border-solid rounded-md shadow-none focus:outline-none focus:ring-0 focus:border-0"
+                className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                 defaultValue="9"
                 id="weekends_from"
               />
@@ -249,13 +244,60 @@ const Create = () => {
                 type="number"
                 min="0"
                 max="23"
-                className="w-16 py-1 px-3 bg-white border-solid rounded-md shadow-none focus:outline-none focus:ring-0 focus:border-0"
+                className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                 defaultValue="17"
                 id="weekends_to"
               />
             </div>
           </div>
         )}
+        <div className="mt-6">
+          <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+            Kalbos
+          </span>
+          <div className="mb-2 flex flex-wrap">
+            {LanguageOptions.map((option) => (
+              <label
+                key={option}
+                className={`checkbox-label mr-4 ${
+                  isLanguageSelected(option) ? "selected" : ""
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-5 w-5 text-jacarta-700"
+                  checked={isOptionSelected(option)}
+                  onChange={(event) => handleLanguageSelect(event, option)}
+                />
+                <span className="ml-2 text-sm">{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+            Galiu padėti su
+          </span>
+          <div className="mb-2 flex flex-wrap">
+            {options.map((option) => (
+              <label
+                key={option}
+                className={`checkbox-label mr-4 ${
+                  isOptionSelected(option) ? "selected" : ""
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-5 w-5 text-jacarta-700"
+                  checked={isOptionSelected(option)}
+                  onChange={(event) => handleOptionSelect(event, option)}
+                />
+                <span className="ml-2 text-sm">{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
       </>
     );
   };
@@ -263,19 +305,13 @@ const Create = () => {
   const PaymentInformation = () => {
     return (
       <>
-        <div className="col-span-1 sm:col-span-2">
-          <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
-            Banko adresas
+        <div className="col-span-1 sm:col-span-2" style={{ width: "20rem" }}>
+          <span className="font-medium text-gray-700 text-sm mb-1 block">
+            Banko sąskaita
           </span>
-          <div
-            className="bg-white rounded-md dark:bg-gray-800"
-            style={{
-              boxShadow:
-                "5px 5px 20px rgba(174, 174, 192, 0.4), -5px -5px 20px rgba(255, 255, 255, 0.9)",
-            }}
-          >
+          <div className="bg-white  rounded-md shadow-sm">
             <input
-              className="w-full min-w-0 py-2 px-3 bg-transparent border-none rounded-md shadow-none focus:outline-none focus:ring-0 focus:border-0"
+              className="w-full min-w-0 py-2 px-3 bg-transparent border-none rounded-md focus:outline-none"
               placeholder="Banko adresas"
               id="bank_address"
             />
@@ -290,7 +326,7 @@ const Create = () => {
       <section className="relative py-24">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex flex-col items-center pb-8">
-            <h1 className="font-display text-jacarta-700  text-4xl font-medium dark:text-white">
+            <h1 className="font-display text-jacarta-700 text-4xl font-medium dark:text-white">
               Nustatymai
             </h1>
           </div>
@@ -300,6 +336,7 @@ const Create = () => {
             <div className="sidebar pr-8">
               <ul className="settings-list" style={{ width: "10rem" }}>
                 <li
+                  style={{ cursor: "pointer" }}
                   className={`settings-list-item ${
                     activeTab === "personal" ? "active" : ""
                   }`}
@@ -308,6 +345,7 @@ const Create = () => {
                   Asmeninė Informacija
                 </li>
                 <li
+                  style={{ cursor: "pointer" }}
                   className={`settings-list-item ${
                     activeTab === "work" ? "active" : ""
                   }`}
@@ -316,6 +354,7 @@ const Create = () => {
                   Darbo Informacija
                 </li>
                 <li
+                  style={{ cursor: "pointer" }}
                   className={`settings-list-item ${
                     activeTab === "payment" ? "active" : ""
                   }`}

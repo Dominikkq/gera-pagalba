@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "tippy.js/dist/tippy.css"; // optional
-
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 import Meta from "../../components/Meta";
 
@@ -73,14 +73,15 @@ const Create = () => {
   }
   return (
     <div>
-      <Meta title="Create || Xhibiter | NFT Marketplace Next.js Template" />
+      <Meta title="Registracija || GeraPagalba" />
       {/* <!-- Create --> */}
-      <section className="relative py-24">
+      <section className="relative py-24" style={{ height: "100vh" }}>
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
-          <img
+          <Image
             src="/images/gradient_light.jpg"
             alt="gradient"
             className="h-full w-full"
+            layout="fill"
           />
         </picture>
         <div className="container">
@@ -88,103 +89,104 @@ const Create = () => {
             Registracija
           </h1>
           <div className="mx-auto max-w-[48.125rem]">
-            {/* <!-- Name --> */}
-
+            {/* Name */}
             <div className="mb-6">
               <label
-                htmlFor="item-name"
+                htmlFor="vardas"
                 className="font-display text-jacarta-700 mb-2 block dark:text-white"
-                id="name_text"
               >
                 Vardas <label className="text-red">*</label>
               </label>
               <input
                 type="text"
-                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
+                className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
                 placeholder="Vardenis"
                 id="vardas"
                 required
               />
             </div>
 
-            {/* <!-- External Link --> */}
+            {/* Surname */}
             <div className="mb-6">
               <label
-                htmlFor="item-external-link"
+                htmlFor="create_sideOne"
                 className="font-display text-jacarta-700 mb-2 block dark:text-white"
-                id="sideone_text"
               >
                 Pavarde<label className="text-red">*</label>
               </label>
-
               <input
-                type="url"
+                type="text"
                 id="create_sideOne"
-                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
+                className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
                 placeholder="Pavardenis"
+                required
               />
             </div>
 
-            {/* <!-- Description --> */}
+            {/* Email */}
             <div className="mb-6">
               <label
-                htmlFor="item-description"
+                htmlFor="create_sideTwo"
                 className="font-display text-jacarta-700 mb-2 block dark:text-white"
-                id="sidetwo_text"
               >
                 El. Paštas<label className="text-red">*</label>
               </label>
-
               <input
-                type="url"
+                type="email"
                 id="create_sideTwo"
-                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
+                className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
                 placeholder="vardenis.pavardenis@gmail.com"
+                required
               />
             </div>
+
+            {/* Password */}
             <div className="mb-6">
               <label
-                htmlFor="item-description"
+                htmlFor="slaptazodis"
                 className="font-display text-jacarta-700 mb-2 block dark:text-white"
-                id="sidetwo_text"
               >
                 Slaptažodis<label className="text-red">*</label>
               </label>
-
               <input
-                type="url"
+                type="password"
                 id="slaptazodis"
-                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
+                className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
                 placeholder="*********"
+                required
               />
             </div>
+
             <div className="mt-4 flex items-center space-x-2">
               <input
                 type="checkbox"
                 id="buyNowTerms"
                 className="checked:bg-accent dark:bg-jacarta-600 text-accent border-jacarta-200 focus:ring-accent/20 dark:border-jacarta-500 h-5 w-5 self-start rounded focus:ring-offset-0"
+                required
               />
               <label
                 htmlFor="buyNowTerms"
                 className="dark:text-jacarta-200 text-sm"
               >
-                Sutinku su duomenų valdymo politika
+                Sutinku su duomenų
                 <Link href="/tarms">
-                  <a className="text-accent"> Terms of Service</a>
+                  <a className="text-accent"> valdymo politika</a>
                 </Link>
               </label>
             </div>
             <br></br>
-            {/* <!-- Submit --> */}
+
+            {/* Submit */}
             <button
               onClick={Create}
-              className="bg-accent-lighter cursor-default rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+              className="bg-brand hover:brand rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
             >
               Registruotis
             </button>
           </div>
         </div>
       </section>
+
       {/* <!-- end create --> */}
     </div>
   );

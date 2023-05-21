@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import blank from "../../components/assets/icons/blank.png";
-import { getIcon } from "../functions/functions";
-const Collection_category = ({ bgWhite = false }) => {
+import Image from "next/image";
+const Collection_category = () => {
   useEffect(() => {}, []);
 
   const [collectionCategoryData, setCollectionCategoryData] = useState([]);
@@ -20,7 +20,13 @@ const Collection_category = ({ bgWhite = false }) => {
             savo laiką. Dėkoju jums!
             <div className="arrow"></div>
           </blockquote>
-          <img src={blank.src} alt="sq-sample3" />
+          <Image
+            width={74}
+            quality={100}
+            height={74}
+            src={blank.src}
+            alt="sq-sample3"
+          />
         </figure>
         <figure className="snip1157 hover">
           <blockquote>
@@ -30,7 +36,13 @@ const Collection_category = ({ bgWhite = false }) => {
             kai to labiausiai reikia.
             <div className="arrow"></div>
           </blockquote>
-          <img src={blank.src} alt="sq-sample27" />
+          <Image
+            width={74}
+            quality={100}
+            height={74}
+            src={blank.src}
+            alt="sq-sample27"
+          />
         </figure>
         <figure className="snip1157">
           <blockquote>
@@ -41,7 +53,13 @@ const Collection_category = ({ bgWhite = false }) => {
             paslaugą kitiems.
             <div className="arrow"></div>
           </blockquote>
-          <img src={blank.src} alt="sq-sample17" />
+          <Image
+            width={74}
+            quality={100}
+            height={74}
+            src={blank.src}
+            alt="sq-sample17"
+          />
         </figure>
         {/* <!-- end today's drops / sellers / buyers --> */}
       </div>

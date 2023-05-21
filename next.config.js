@@ -3,8 +3,17 @@ const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
 };
+const withTM = require("next-transpile-modules")([
+  "@fullcalendar/common",
+  "@babel/preset-react",
+  "@fullcalendar/common",
+  "@fullcalendar/daygrid",
+  "@fullcalendar/interaction",
+  "@fullcalendar/react",
+  "@fullcalendar/timegrid",
+]);
 
-module.exports = {
+module.exports = withTM({
   future: {
     webpack5: true, // by default, if you customize webpack config, they switch back to version 4.
     // Looks like backward compatibility approach.
@@ -19,4 +28,4 @@ module.exports = {
 
     return config;
   },
-};
+});

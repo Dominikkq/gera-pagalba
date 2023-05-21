@@ -19,7 +19,7 @@
 }
 /* Calander Table */
 .calendar {
-  width: 75% !important;
+  width: 95% !important;
 }
 @media screen and (max-width: 1024px) {
   .calendar {
@@ -30,7 +30,7 @@
   border-radius: 15px;
   box-shadow: 7px 7px 15px rgba(60, 64, 67, 0.3),
     -7px -7px 15px rgba(255, 255, 255, 0.5);
-  margin: 20px;
+
   border-color: red !important;
 }
 .fc-theme-standard .fc-scrollgrid {

@@ -1,15 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { reasonModalHide } from "../../redux/counterSlice";
-
+import axios from "axios";
 const CancelReasonModal = () => {
   const walletModal = useSelector((state) => state.counter.reasonModal);
+  const appointmentId = useSelector(
+    (state) => state.counter.reasonAppointmentID
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {}, []);
   const closeModal = (e) => {
     if (e.target === e.currentTarget) {
       dispatch(reasonModalHide());
+    }
+  };
+
+  //TODO: CANCEL DOCTOR APPOINEMTN WITH REASON
+
+  const CancelAppointmentForDoctor = async () => {
+    const response = await axios.delete(
+      `http://localhost:5000/appointmentsCancelforDoctor/${appointmentId}/
+        ${document.getElementById("doctor_cancel_reason").value}
+      `,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    );
+    if (response.data.message === "Appointment cancelled successfully") {
+      location.reload();
     }
   };
   return (
@@ -25,7 +44,7 @@ const CancelReasonModal = () => {
               <h5
                 className="modal-title"
                 id="walletModalLabel"
-                style={{ marginRight: "25px", width: "30rem" }}
+                style={{ marginRight: "25px", MaxWidth: "30rem" }}
               >
                 Atšaukimo Priežastis
               </h5>
@@ -50,17 +69,20 @@ const CancelReasonModal = () => {
             <input
               style={{ margin: "0.5rem" }}
               type="url"
-              id="email"
+              id="doctor_cancel_reason"
               className="border-jacarta-100 hover:ring-accent/10 focus:ring-accent rounded-lg py-3 px-3 hover:ring-2"
               placeholder="Priežastis"
             />
             <button
               type="button"
-              style={{ width: "10rem", margin: "0.6rem" }}
-              className="bg-accent shadow-accent-volume hover:bg-accent-dark rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+              style={{
+                width: "10rem",
+                margin: "auto",
+                marginBottom: "1rem",
+              }}
+              className="px-6 py-2 bg-red2 hover:bg-red-600 text-white rounded-lg shadow-md transition-colors duration-300 ease-in-out focus:outline-none"
               onClick={() => {
-                console.log("Appointment Confirmed");
-                AppointmentPayment();
+                CancelAppointmentForDoctor();
               }}
             >
               Atšaukti

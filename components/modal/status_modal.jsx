@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { statusModalhide } from "../../redux/counterSlice";
 
@@ -7,21 +7,25 @@ const Status_modal = () => {
 
   const dispatch = useDispatch();
   const [userId, setUserId] = useState("");
+  const modalRef = useRef();
+
   useEffect(() => {
     setUserId(localStorage.getItem("successPay_userId"));
-    localStorage.setItem("successPay_time", "");
-    localStorage.setItem("successPay_note", "");
-    localStorage.setItem("successPay_url", "");
-    localStorage.setItem("successPay_doctorName", "");
-    localStorage.setItem("successPay_userId", "");
-    localStorage.setItem("successPay_success", false);
   }, []);
+
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      dispatch(statusModalhide());
+    }
+  };
 
   return (
     <div>
       {/* <!-- Wallet Modal --> */}
       <div
         className={walletModal ? "block modal fade show " : "modal fade hidden"}
+        onClick={closeModal}
+        ref={modalRef}
       >
         <div className="modal-dialog max-w-lg ">
           <div className="modal-content">
@@ -62,7 +66,10 @@ const Status_modal = () => {
 
             <div className="modal-footer">
               <div className="flex items-center justify-center space-x-4">
-                <div className="flex flex-col">
+                <div
+                  className="flex flex-col"
+                  onClick={() => localStorage.setItem}
+                >
                   <a
                     href={"/user/" + userId}
                     className="font-display text-brand2 underline mb-3 block text-base font-semibold dark:text-white"

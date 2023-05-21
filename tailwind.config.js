@@ -21,12 +21,13 @@ module.exports = {
       padding: "1rem",
     },
     colors: {
+      brandGreen: "#00E573",
       payout: "#53EC8B",
       textbox: "#363A5D",
       transparent: "transparent",
       current: "currentColor",
       white: "#ffffff",
-      accent: "#8358FF",
+      accent: "#6cb960",
       "accent-dark": "#7444FF",
       "accent-light": "#9E7CFF",
       "accent-lighter": "#B9A0FF",
@@ -67,6 +68,8 @@ module.exports = {
       xs: ["0.75rem", { lineHeight: "normal" }],
       "2xs": ["0.8125rem", { lineHeight: "normal" }],
       sm: ["0.875rem", { lineHeight: "normal" }],
+      "sm-md": ".9375rem", // This is a custom size between 'sm' and 'md'
+
       base: ["1rem", { lineHeight: "normal" }],
       lg: ["1.25rem", { lineHeight: "normal" }],
       xl: ["1.5rem", { lineHeight: "normal" }],

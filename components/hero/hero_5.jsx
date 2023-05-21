@@ -1,25 +1,25 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-import { useState } from "react";
 import heroImage from "../assets/icons/main.png";
-import Data from "../Data.json";
+import Image from "next/image";
 const Hero_5 = () => {
   return (
     <>
       {/* <!-- Hero --> */}
       <section className="relative py-20 md:pt-32">
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
-          <img
+          <Image
             style={{ width: "100%" }}
             src="/images/gradient.jpg"
             alt="gradient"
-            className="h-full"
+            layout="fill"
           />
         </picture>
         <picture className="pointer-events-none absolute inset-0 -z-10 hidden dark:block">
-          <img
+          <Image
             src="/images/gradient_dark.jpg"
+            layout="fill"
             alt="gradient dark"
             className="h-full"
           />
@@ -63,8 +63,8 @@ const Hero_5 = () => {
               </p>
               <div className="flex space-x-5">
                 <Link href="/registracija">
-                  <a className="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark">
-                    Prisijunk
+                  <a className="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white transition-all hover:bg-brand">
+                    Prisijūnk
                   </a>
                 </Link>
               </div>
@@ -72,9 +72,12 @@ const Hero_5 = () => {
 
             {/* <!-- Hero images --> */}
             <div className="relative col-span-6 xl:col-span-6 xl:col-start-7">
-              <img
+              <Image
                 src={heroImage.src}
                 alt="item 1"
+                width={800}
+                height={700}
+                quality={100}
                 className="object-cover w-full h-auto"
               />
             </div>

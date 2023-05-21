@@ -37,6 +37,7 @@ const initialState = {
   reasonModal: false,
   busyModal: false,
   busyModalData: {},
+  forgotPasswordModal: false,
 };
 
 export const counterSlice = createSlice({
@@ -91,8 +92,9 @@ export const counterSlice = createSlice({
       state.statusDone = false;
       state.statusFailed = false;
     },
-    reasonModalShow: (state) => {
+    reasonModalShow: (state, action) => {
       state.reasonModal = true;
+      state.reasonAppointmentID = action.payload;
     },
     reasonModalHide: (state) => {
       state.reasonModal = false;
@@ -115,6 +117,13 @@ export const counterSlice = createSlice({
     },
     buyModalHide: (state) => {
       state.buyModal = false;
+    },
+    forgotPasswordModalShow: (state) => {
+      console.log("wwdwdwwdwd");
+      state.forgotPasswordModal = true;
+    },
+    forgotPasswordModalHide: (state) => {
+      state.forgotPasswordModal = false;
     },
     showConfirmAppointmentModal: (state, action) => {
       state.confirmAppointmentModalData = [];
@@ -260,6 +269,8 @@ export const {
   reasonModalHide,
   busyModalHide,
   busyModalShow,
+  forgotPasswordModalShow,
+  forgotPasswordModalHide,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

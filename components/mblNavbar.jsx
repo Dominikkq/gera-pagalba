@@ -3,11 +3,10 @@ import Link from "next/link";
 import { closeMblMenu } from "../redux/counterSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import UserId from "./userId";
-import { Metamask_comp_text, Metamask_comp_icon } from "./metamask/Metamask";
+import Image from "next/image";
 import { GetUserData } from "./functions/functions";
 import { Logout } from "./functions/functions";
-const MblNavbar = ({ theme }) => {
+const MblNavbar = ({ User, navItemValue, navText }) => {
   const { mblMenu } = useSelector((state) => state.counter);
   const { UserFullName, UserEmail, UserToken } = useSelector(
     (state) => state.create
@@ -15,10 +14,6 @@ const MblNavbar = ({ theme }) => {
   const dispatch = useDispatch();
   const [profileShow, setProfileShow] = useState(false);
   const router = useRouter();
-  const [navItemValue, setNavItemValue] = useState(1);
-  const [navText, setnavText] = useState("");
-
-  const [User, setUser] = useState([]);
 
   const handleItemDropdown = (e) => {
     const target = e.target.closest("li");
@@ -31,17 +26,6 @@ const MblNavbar = ({ theme }) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await GetUserData();
-      if (response) {
-        setUser(response);
-      }
-    };
-
-    fetchData()
-      // make sure to catch any error
-      .catch(console.error);
-
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1024) {
         dispatch(closeMblMenu());
@@ -129,19 +113,7 @@ const MblNavbar = ({ theme }) => {
     if (router.asPath.includes("pagrindinis")) {
       localStorage.setItem("navItemValue", 99);
     }
-    const value = localStorage.getItem("navItemValue");
-    setNavItemValue(value);
-
-    if (router.asPath == "/") {
-      setnavText("home");
-    } else if (router.asPath == "/terapeutams") {
-      setnavText("terapeutams");
-    } else if (router.asPath == "/prisijungimas") {
-      setnavText("prisijungimas");
-    } else if (router.asPath == "/registracija") {
-      setnavText("registracija");
-    }
-  }, [dispatch, navItemValue, router]);
+  }, [dispatch, navItemValue, router, User]);
 
   const handleLinkClick = (e) => {
     e.preventDefault();
@@ -167,17 +139,20 @@ const MblNavbar = ({ theme }) => {
 
         <Link href="/">
           <a>
-            <img
+            <Image
               src="/images/logo.png"
+              width={200}
+              height={28}
+              quality={100}
               className="max-h-7 dark:hidden"
-              alt="Xhibiter | NFT Marketplace"
+              alt="Logo || GeraPagalba"
             />
           </a>
         </Link>
 
         {/* <!-- Mobile Menu Close --> */}
         <button
-          className="js-mobile-close border-jacarta-100 hover:bg-accent focus:bg-accent group dark:hover:bg-accent ml-2 flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-colors hover:border-transparent focus:border-transparent dark:border-transparent dark:bg-white/[.15]"
+          className="js-mobile-close border-jacarta-100 hover:bg-accent focus:bg-accent group dark:hover:bg-accent ml-2 flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-colors hover:border-transparent focus:border-transparent dark:border-transparent"
           onClick={() => dispatch(closeMblMenu())}
         >
           <svg
@@ -307,43 +282,25 @@ const MblNavbar = ({ theme }) => {
 
       {/* <!-- Actions --> */}
       <div className="ml-8 hidden lg:flex xl:ml-12">
+        {console.log(User.name)}
         {User.name && (
           <div className="js-nav-dropdown group-dropdown relative">
-            {router.asPath === "/home/home_3" ? (
-              <button
-                className="dropdown-toggle border-jacarta-100 focus:bg-accent group hover:bg-accent ml-2 flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-colors hover:border-transparent focus:border-transparent border-transparent bg-white/[.15]"
-                onMouseEnter={() => setProfileShow(true)}
-                onMouseLeave={() => setProfileShow(false)}
+            <button
+              className="dropdown-toggle border-jacarta-100 focus:bg-accent group hover:bg-accent ml-2 flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-colors hover:border-transparent focus:border-transparent border-transparent "
+              onMouseEnter={() => setProfileShow(true)}
+              onMouseLeave={() => setProfileShow(false)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                className=" h-4 w-4 transition-colors group-hover:fill-white group-focus:fill-white fill-brand2"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  className=" h-4 w-4 transition-colors group-hover:fill-white group-focus:fill-white fill-white"
-                >
-                  <path fill="none" d="M0 0h24v24H0z"></path>
-                  <path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
-                </svg>
-              </button>
-            ) : (
-              <button
-                className="dropdown-toggle border-jacarta-100 hover:bg-accent focus:bg-accent group dark:hover:bg-accent ml-2 flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-colors hover:border-transparent focus:border-transparent dark:border-transparent dark:bg-white/[.15]"
-                onMouseEnter={() => setProfileShow(true)}
-                onMouseLeave={() => setProfileShow(false)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  className="fill-jacarta-700 h-4 w-4 transition-colors group-hover:fill-white group-focus:fill-white dark:fill-white"
-                >
-                  <path fill="none" d="M0 0h24v24H0z"></path>
-                  <path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
-                </svg>
-              </button>
-            )}
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
+              </svg>
+            </button>
 
             <div
               className={
@@ -354,12 +311,6 @@ const MblNavbar = ({ theme }) => {
               onMouseEnter={() => setProfileShow(true)}
               onMouseLeave={() => setProfileShow(false)}
             >
-              <UserId
-                classes="js-copy-clipboard font-display text-jacarta-700 my-4 flex select-none items-center whitespace-nowrap px-5 leading-none dark:text-white"
-                userId={User.name}
-                shortId={true}
-              />
-
               <Link href={`/user/${User.userId}`} passHref>
                 <a
                   className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"

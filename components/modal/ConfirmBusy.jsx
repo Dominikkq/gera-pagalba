@@ -44,68 +44,36 @@ const ConfirmBusyModal = ({}) => {
         onClick={closeModal}
         className={busyModal ? "block modal fade show " : "modal fade hidden"}
       >
-        <div className="modal-dialog max-w-2xl">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5
-                style={{ marginRight: "15px" }}
-                className="modal-title"
-                id="confirmAppointmentLabel"
-              >
-                Užimtumo Patvirtinimas
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                onClick={() => dispatch(busyModalHide())}
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            {/* <!-- Body --> */}
-            <div className="modal-body p-6">
-              <div className="flex flex-col">
-                <label className="font-display text-jacarta-700 mb-3 block text-base font-semibold dark:text-white">
-                  Data
-                </label>
-                <input
-                  type="text"
-                  value={date ? date : ""}
-                  readOnly
-                  className="dark:bg-jacarta-700 px-4 dark:border-jacarta-600 focus:ring-accent border-jacarta-100 dark:placeholder-jacarta-300 h-12 w-full border focus:ring-inset dark:text-white"
-                />
-                <label className="font-display text-jacarta-700 mb-3 mt-4 block text-base font-semibold dark:text-white">
-                  Laikas
-                </label>
-                <input
-                  type="text"
-                  value={timeRange ? timeRange : ""}
-                  readOnly
-                  className="dark:bg-jacarta-700 px-4 dark:border-jacarta-600 focus:ring-accent border-jacarta-100 dark:placeholder-jacarta-300 h-12 w-full rounded-r-lg border focus:ring-inset dark:text-white"
-                />
-              </div>
-              <br></br>
-              <p className="text-red2">
-                Šis laikas bus pažymėtas kaip užimtas.
+        <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-xs">
+          <div className="flex items-center justify-between">
+            <h5 className="text-lg font-semibold">Užimtumo Patvirtinimas</h5>
+            <button
+              type="button"
+              className="ml-8 focus:outline-none"
+              onClick={() => dispatch(busyModalHide())}
+            >
+              <span className="text-gray-500">&times;</span>
+            </button>
+          </div>
+          <div className="mt-6">
+            <div className="mb-4">
+              <label className="block text-gray-500 text-sm mb-1">Data</label>
+              <p className="text-lg">
+                {date ? (timeRange ? date + " " + timeRange : "") : ""}
               </p>
             </div>
-            {/* <!-- end body --> */}
-
-            <div className="modal-footer">
-              <div className="flex items-center justify-center space-x-4">
-                <button
-                  type="button"
-                  className="bg-red2  hover:bg-accent-dark rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
-                  onClick={() => {
-                    console.log("Appointment Confirmed");
-                    Busy();
-                  }}
-                >
-                  Patvirtinti
-                </button>
-              </div>
-            </div>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              className="px-6 py-2 bg-red2 hover:bg-red-600 text-white rounded-lg shadow-md transition-colors duration-300 ease-in-out focus:outline-none"
+              onClick={() => {
+                console.log("Appointment Confirmed");
+                Busy();
+              }}
+            >
+              Patvirtinti
+            </button>
           </div>
         </div>
       </div>

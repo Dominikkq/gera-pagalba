@@ -6,7 +6,8 @@ const Contact = () => {
     if (localStorage.getItem("successPay_url")) {
       window.location.href = localStorage.getItem("successPay_url");
     } else {
-      window.location.href = "/";
+      console.log(localStorage.getItem("successPay_url"));
+      //window.location.href = "/";
     }
   }, []);
 

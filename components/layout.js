@@ -1,12 +1,11 @@
 import Navbar from "./navbar";
-import Footer from "./footer";
 import Status_modal from "./modal/status_modal";
 import ConfirmAppointmentModal from "./modal/ConfirmAppointmentModal";
 import CreateModal from "./modal/CreateModal";
-import ValidationModal from "./modal/validation_modal";
 import CancelReasonModal from "./modal/CancelReason";
 import BusyModal from "./modal/ConfirmBusy";
 import { loadStripe } from "@stripe/stripe-js";
+import ForgotPasswordModal from "./modal/ForgotPassword";
 
 export default function Layout({ children }) {
   const stripePromise = loadStripe(
@@ -21,9 +20,8 @@ export default function Layout({ children }) {
       <ConfirmAppointmentModal stripePromise={stripePromise} />
       <BusyModal />
       <CreateModal />
-      <ValidationModal />
       <main>{children}</main>
-      <Footer />
+      <ForgotPasswordModal />
     </>
   );
 }

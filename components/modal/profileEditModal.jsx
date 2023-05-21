@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bidsModalHide } from "../../redux/counterSlice";
 import { Confirm_checkout } from "../metamask/Metamask";
-import Data from "../Data.json";
+
 import { GetUserData } from "../functions/functions";
-import user_data from "../../data/user_data";
+import Image from "next/image";
 
 const BidsModal = () => {
   const { profileEditModal } = useSelector((state) => state.counter);
@@ -137,7 +137,7 @@ const BidsModal = () => {
                     <div className="flex">
                       <div className="mr-4">
                         {image && (
-                          <img
+                          <Image
                             style={{
                               width: "124px",
                               borderRadius: "50%",

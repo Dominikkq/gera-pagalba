@@ -3,7 +3,7 @@ import Collection_category from "../components/collectrions/collection_category"
 import { Feature_collections, HeadLine } from "../components/component";
 import Meta from "../components/Meta";
 import Hero_5 from "../components/hero/hero_5";
-import Process from "../components/blog/process";
+
 import FilterCategoryItem from "../components/categories/filterCategoryItem";
 
 const Index = () => {
@@ -11,7 +11,7 @@ const Index = () => {
     <>
       <Meta title="PickyBets - Testing" />
       <Hero_5 />
-      <Process />
+
       <Feature_collections />
       <Collection_category bgWhite={true} />
       <div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "tippy.js/dist/tippy.css"; // optional
-
+import Image from "next/image";
 const Create = () => {
   const [image, setImage] = useState(null);
   const [therapistDetails, setTherapistDetails] = useState({
@@ -46,10 +46,11 @@ const Create = () => {
     <div>
       <section className="relative py-24" style={{ height: "100vh" }}>
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
-          <img
+          <Image
             src="/images/gradient_light.jpg"
             alt="gradient"
             className="h-full w-full"
+            layout="fill"
           />
         </picture>
         <div className="container">

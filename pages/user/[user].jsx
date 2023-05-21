@@ -1,18 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import "tippy.js/dist/tippy.css";
+import { useDispatch } from "react-redux";
+import { formatISO } from "date-fns";
+import axios from "axios";
 import Meta from "../../components/Meta";
-import blank from "../../components/assets/icons/blank.png";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import ltLocale from "@fullcalendar/core/locales/lt";
-import { formatISO } from "date-fns";
-import axios from "axios";
+import "tippy.js/dist/tippy.css";
 import "@fontsource/montserrat";
-import { useSelector, useDispatch } from "react-redux";
+import { isWeekend, addDays } from "date-fns";
+import { Tooltip } from "react-tooltip";
+
+import Image from "next/image";
+import blank from "../../components/assets/icons/blank.png";
+
 import {
   showConfirmAppointmentModal,
   statusModalShow,
@@ -22,9 +26,9 @@ import {
 
 const User = () => {
   const router = useRouter();
-  const pid = router.query.user;
-  const [User, setUser] = useState([]);
-  const [CurrentUser, setCurrentUser] = useState([]);
+  const {
+    query: { user: pid },
+  } = router;
   const dispatch = useDispatch();
   const calendarRef = useRef(null);
   const [CalendarSlotDuration, setCalendarSlotDuration] = useState("00:30:00");
@@ -32,115 +36,17 @@ const User = () => {
   const [UserAppointments, setUserAppointments] = useState([]);
   const [selectedButton, setSelectedButton] = useState(null);
   const [ShowProfile, setShowProfile] = useState(false);
-  const [AppointmentStatus, setAppointmentStatus] = useState("");
   const [AppointmentDate, setAppointmentDate] = useState("");
   const [bgEvents, setBgEvents] = useState([]);
   const [AppointmentAccurate, setAppointmentAccurate] = useState({});
   const [Appointment, setAppointment] = useState("");
   const [DoctorAppointments, setDoctorAppointments] = useState("");
+  const [CurrentUser, setCurrentUser] = useState([]);
+  const [User, setUser] = useState([]);
 
-  async function GetUserData() {
-    const userId = window.location.href.split("/").pop();
-    try {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/user/${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        setUser(response.data);
-        if (response.data.doctor) {
-          setShowProfile(true);
-          GetAppointments(response.data.userId);
-        } else {
-          if (response.data.userId == pid) {
-            GetUserAppointments(response.data.userId);
-          }
-        }
-      } catch (error) {
-        if (error.response && error.response.data.error === "Unauthorized") {
-          console.error("Unauthorized access: Please login again");
-          localStorage.setItem("token", "");
-          location.reload();
-        } else {
-          console.error(error.message);
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  async function GetCurrentUserData() {
-    if (localStorage.getItem("token")) {
-      const response = await axios.get("http://localhost:5000/user", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      setCurrentUser(response.data);
-      setShowProfile(true);
-      if (!response.data.doctor) {
-        GetUserAppointments(response.data.userId);
-      }
-    }
-  }
-  async function GetUserAppointments() {
-    try {
-      const response = await axios.get(
-        `http://localhost:5000/appointmentsMade`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      setUserAppointments(response.data.appointmentsMade);
-    } catch (error) {
-      if (error.response && error.response.data.error === "Invalid Token") {
-        console.error("Unauthorized access: Please login again");
-        localStorage.setItem("token", "");
-        location.reload();
-      } else {
-        console.error(error.message);
-      }
-    }
-  }
-  async function GetAppointments(userId) {
-    try {
-      const response = await axios.get(
-        `http://localhost:5000/appointments/${userId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-
-      const appointments = response.data.appointments.map((appt) => ({
-        title: "wdwddw",
-        start: appt.start,
-        end: appt.end,
-        backgroundColor: "lightcoral",
-      }));
-
-      const array = [...response.data.appointments, ...response.data.busy];
-
-      const arrayWithColors = array.map((event) => ({
-        ...event,
-        backgroundColor: "#F08080",
-        borderColor: "#F08080",
-      }));
-
-      setAppointmentEvents(arrayWithColors);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function CancelAppointment(appointmentId) {
+  const CancelAppointment = async (appointmentId) => {
     if (CurrentUser.userId == pid) {
-      dispatch(reasonModalShow());
+      dispatch(reasonModalShow(appointmentId));
     } else {
       const response = await axios.delete(
         `http://localhost:5000/appointmentsCancel/${CurrentUser.userId}/${appointmentId}`,
@@ -149,35 +55,9 @@ const User = () => {
         }
       );
     }
-  }
-
-  {
-    /* CALENDAR  */
-  }
-  function renderEventContent(eventInfo) {
-    return (
-      <div>
-        <div className="fc-time">{eventInfo.timeText}</div>
-      </div>
-    );
-  }
-  const updateBgEvents = () => {
-    const now = new Date();
-    const MINUTES_IN_FUTURE = 15;
-    const allowedStartTime = new Date(
-      now.getTime() + MINUTES_IN_FUTURE * 60000
-    );
-    setBgEvents([
-      {
-        start: "1900-01-01T00:00:00",
-        end: formatISO(allowedStartTime),
-        display: "background",
-        backgroundColor: "#c8c8c8",
-        allDay: false,
-      },
-    ]);
   };
-  function handleDateSelect(info) {
+
+  const handleDateSelect = (info) => {
     const start = info.start.toLocaleString([], {
       month: "2-digit",
       day: "2-digit",
@@ -209,7 +89,7 @@ const User = () => {
             user: CurrentUser.userId,
             doctor: User.name + " " + User.lastname,
             doctorId: User.userId,
-            notes: "Notas2",
+
             start: info.startStr,
             end: info.endStr,
           })
@@ -246,7 +126,7 @@ const User = () => {
       localStorage.setItem("redirect_prisijungimas", window.location.href);
       window.location.href = "/prisijungimas";
     }
-  }
+  };
 
   const handleTimeClick = (interval) => {
     const hours = Math.floor(interval / 60);
@@ -258,6 +138,7 @@ const User = () => {
     setCalendarSlotDuration(formattedTime);
     setSelectedButton(interval);
   };
+
   const handleSelectAllow = (info) => {
     const { start, end } = info;
 
@@ -283,7 +164,22 @@ const User = () => {
 
     return true;
   };
-
+  const updateBgEvents = () => {
+    const now = new Date();
+    const MINUTES_IN_FUTURE = 15;
+    const allowedStartTime = new Date(
+      now.getTime() + MINUTES_IN_FUTURE * 60000
+    );
+    setBgEvents([
+      {
+        start: "1900-01-01T00:00:00",
+        end: formatISO(allowedStartTime),
+        display: "background",
+        backgroundColor: "#c8c8c8",
+        allDay: false,
+      },
+    ]);
+  };
   {
     /* RATINGS */
   }
@@ -305,9 +201,11 @@ const User = () => {
     setRating(index);
     setStars(index);
   };
+
   const handleStarHover = (index) => {
     setRating(index);
   };
+
   const handleStarLeave = () => {
     setRating(0);
   };
@@ -317,53 +215,170 @@ const User = () => {
     return `${hourString}:00:00`;
   }
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (calendarRef && calendarRef.current) {
-        const calendarApi = calendarRef.current.getApi();
-        calendarApi.render();
-        console.log("RENDER");
-      }
-    }, 500); // Adjust delay as needed
+  const [currentDate, setCurrentDate] = useState(new Date());
 
-    // Clean up function
-    return () => clearTimeout(timer);
-  }, []);
   useEffect(() => {
-    GetUserData();
-    updateBgEvents();
-    if (localStorage.getItem("token")) {
-      GetCurrentUserData();
+    async function fetchData() {
+      await GetUserData();
+      if (localStorage.getItem("token")) {
+        await GetCurrentUserData();
+      }
     }
-    GetUserData();
+    fetchData();
   }, []);
+
   useEffect(() => {
-    if (localStorage.getItem("successPay_success") == "true") {
+    if (localStorage.getItem("successPay_success") === "true") {
+      localStorage.setItem("successPay_success", false);
       dispatch(statusModalShow());
     }
   });
+
+  useEffect(() => {
+    const updateBgEvents = () => {
+      const now = new Date();
+      const MINUTES_IN_FUTURE = 15;
+      const allowedStartTime = new Date(
+        now.getTime() + MINUTES_IN_FUTURE * 60000
+      );
+      setBgEvents([
+        {
+          start: "1900-01-01T00:00:00",
+          end: formatISO(allowedStartTime),
+          display: "background",
+          backgroundColor: "#c8c8c8",
+          allDay: false,
+        },
+      ]);
+    };
+
+    updateBgEvents();
+  }, []);
+  const [shouldSkipWeekend, setShouldSkipWeekend] = useState(false);
+
+  async function GetUserData() {
+    const userId = window.location.href.split("/").pop();
+    try {
+      const response = await axios.get(`http://localhost:5000/user/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setUser(response.data);
+      if (response.data.doctor) {
+        const date = new Date();
+        setCurrentDate(date);
+        setShouldSkipWeekend(
+          isWeekend(date) &&
+            response.data.weekendHours.from === 0 &&
+            response.data.weekendHours.to === 0
+        );
+        setShowProfile(true);
+        await GetAppointments(response.data.userId);
+      } else {
+        if (response.data.userId == pid) {
+          GetUserAppointments(response.data.userId);
+        }
+      }
+    } catch (error) {
+      if (error.response && error.response.data.error === "Unauthorized") {
+        console.error("Unauthorized access: Please login again");
+        localStorage.setItem("token", "");
+        location.reload();
+      } else {
+        console.error(error.message);
+      }
+    }
+  }
+  async function GetCurrentUserData() {
+    if (localStorage.getItem("token")) {
+      const response = await axios.get("http://localhost:5000/user", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+
+      setCurrentUser(response.data);
+
+      setShowProfile(true);
+      if (!response.data.doctor) {
+        GetUserAppointments(response.data.userId);
+      }
+    }
+  }
+
+  async function GetUserAppointments() {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/appointmentsMade`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setUserAppointments(response.data.appointmentsMade);
+    } catch (error) {
+      if (error.response && error.response.data.error === "Invalid Token") {
+        console.error("Unauthorized access: Please login again");
+        localStorage.setItem("token", "");
+        location.reload();
+      } else {
+        console.error(error.message);
+      }
+    }
+  }
+
+  async function GetAppointments(userId) {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/appointments/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      const array = [...response.data.appointments, ...response.data.busy];
+
+      const arrayWithColors = array.map((event) => ({
+        ...event,
+        backgroundColor: "#F08080",
+        borderColor: "#F08080",
+      }));
+
+      setAppointmentEvents(arrayWithColors);
+      setDoctorAppointments(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  function renderEventContent(eventInfo) {
+    return (
+      <div>
+        <div className="fc-time">{eventInfo.timeText}</div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Meta title="GeraPagalba" />
-      {/* <!-- Profile --> */}
       <div className="">
-        {/* <!-- Banner --> */}
         <div className="relative h-[18.75rem]">
-          <img
+          <Image
             style={{ width: "100%" }}
             src="/images/gradient.jpg"
             alt="gradient"
-            className="h-full"
+            layout="fill"
           />
         </div>
-        {/* <!-- end banner --> */}
+
         {ShowProfile && (
-          <section className=" relative pb-12 pt-28">
-            {/* <!-- Avatar --> */}
+          <section className="relative pb-12 pt-28">
             <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
               <figure className="relative h-40 w-40 dark:border-jacarta-600 rounded-xl border-[5px] border-white">
                 <Image
-                  src={User.profilePhoto ? User.profilePhoto : blank}
+                  src={User.profilePhoto || blank}
                   layout="fill"
                   objectFit="contain"
                   className="dark:border-jacarta-600 rounded-xl border-[5px] border-white"
@@ -390,14 +405,12 @@ const User = () => {
 
             <div className="text-center">
               <h2 className="font-display text-jacarta-700 mb-2 text-4xl font-medium dark:text-white">
-                {User.name + " " + User.lastname}
+                {User.name} {User.lastname}
               </h2>
-              {User.job ? (
+              {User.job && (
                 <div className="dark:bg-jacarta-700 dark:border-jacarta-600 border-jacarta-100 mb-8 inline-flex items-center justify-center rounded-full border bg-white py-1.5 px-4">
                   <span>{User.job}</span>
                 </div>
-              ) : (
-                ""
               )}
               <p className="dark:text-jacarta-300 mx-auto mb-2 max-w-xl text-lg">
                 {User.description}
@@ -420,7 +433,6 @@ const User = () => {
             </div>
           </section>
         )}
-        {/* <!-- end profile --> */}
 
         {CurrentUser.userId && CurrentUser.userId === User.userId && (
           <div className="appointment_date_table">
@@ -441,7 +453,7 @@ const User = () => {
             </h5>
             <table>
               <thead>
-                {UserAppointments.length === 0 ||
+                {UserAppointments.length === 0 &&
                 DoctorAppointments.appointments?.length === 0 ? (
                   <tr>
                     <th colSpan="5" style={{ textAlign: "center" }}>
@@ -466,79 +478,36 @@ const User = () => {
                     <tr key={appointment.appointmentId}>
                       <td>{new Date(appointment.start).toLocaleString()}</td>
                       <td>{appointment.doctorFullName}</td>
-                      <td>{appointment.notes}</td>
+                      <td>
+                        <a
+                          className="custom-tooltip"
+                          data-tooltip-content={appointment.notes}
+                        >
+                          {appointment.notes.length > 20
+                            ? appointment.notes.substring(0, 20) + "..."
+                            : appointment.notes}
+                        </a>
+
+                        <Tooltip
+                          className="high-tooltip"
+                          anchorSelect=".custom-tooltip"
+                        />
+                      </td>
                       <td>
                         {new Date(appointment.end) < new Date() ? (
                           <a style={{ fontWeight: "500" }}>Baigta</a>
                         ) : (
                           <a
-                            style={{ color: "#039F52", fontWeight: "500" }}
+                            style={{
+                              color: "#039F52",
+                              fontWeight: "500",
+                            }}
                             href={appointment.appointmentUrl}
                           >
                             Jungtis
                           </a>
                         )}
                       </td>
-                      {new Date(appointment.end) < new Date() ? (
-                        <td>
-                          {appointment.rating > 0 ? (
-                            <div className="rating-container">
-                              {[1, 2, 3, 4, 5].map((index) => (
-                                <span
-                                  key={index}
-                                  className={`star ${
-                                    index <= appointment.rating
-                                      ? "selected"
-                                      : ""
-                                  }`}
-                                >
-                                  &#9733;
-                                </span>
-                              ))}
-                            </div>
-                          ) : (
-                            <div className="rating-container">
-                              {[1, 2, 3, 4, 5].map((index) => (
-                                <span
-                                  key={index}
-                                  className={`star ${
-                                    index <= rating ? "selected" : ""
-                                  } ${
-                                    appointment.rating > 0 || rating > 0
-                                      ? "no-hover"
-                                      : ""
-                                  }`}
-                                  onClick={() =>
-                                    handleStarClick(
-                                      index,
-                                      appointment.doctorId,
-                                      appointment.appointmentId
-                                    )
-                                  }
-                                  onMouseEnter={() => handleStarHover(index)}
-                                  onMouseLeave={handleStarLeave}
-                                >
-                                  &#9733;
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </td>
-                      ) : (
-                        <td>
-                          {new Date(appointment.end) < new Date() ? (
-                            <a
-                              onClick={() =>
-                                CancelAppointment(appointment.appointmentId)
-                              }
-                            >
-                              Atšaukti
-                            </a>
-                          ) : (
-                            ""
-                          )}
-                        </td>
-                      )}
                     </tr>
                   ))}
 
@@ -546,13 +515,30 @@ const User = () => {
                   DoctorAppointments.appointments.map((appointment) => (
                     <tr key={appointment.appointmentId}>
                       <td>{new Date(appointment.start).toLocaleString()}</td>
-                      <td>{appointment.notes}</td>
+                      <td>
+                        <a
+                          className="custom-tooltip"
+                          data-tooltip-content={appointment.notes}
+                        >
+                          {appointment.notes.length > 20
+                            ? appointment.notes.substring(0, 20) + "..."
+                            : appointment.notes}
+                        </a>
+
+                        <Tooltip
+                          className="high-tooltip"
+                          anchorSelect=".custom-tooltip"
+                        />
+                      </td>
                       <td>
                         {new Date(appointment.end) < new Date() ? (
                           <a style={{ fontWeight: "500" }}>Baigta</a>
                         ) : (
                           <a
-                            style={{ color: "#039F52", fontWeight: "500" }}
+                            style={{
+                              color: "#039F52",
+                              fontWeight: "500",
+                            }}
                             href={appointment.appointmentUrl}
                           >
                             Jungtis
@@ -561,13 +547,17 @@ const User = () => {
                       </td>
 
                       <td>
-                        <a
-                          onClick={() =>
-                            CancelAppointment(appointment.appointmentId)
-                          }
-                        >
-                          Atšaukti
-                        </a>
+                        {new Date(appointment.end) < new Date() ? (
+                          <a style={{ fontWeight: "500" }}>Baigta</a>
+                        ) : (
+                          <a
+                            onClick={() =>
+                              CancelAppointment(appointment.appointmentId)
+                            }
+                          >
+                            Atšaukti
+                          </a>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -575,7 +565,8 @@ const User = () => {
             </table>
           </div>
         )}
-        {User.doctor ? (
+
+        {User.doctor && (
           <div className="calendar" style={{ margin: "auto" }}>
             <div className="button-group">
               <h5
@@ -597,7 +588,6 @@ const User = () => {
                     .filter((time) => User.rates[time] > 0)
                     .map((time) => {
                       const rate = User.rates[time];
-                      // If the rate is zero, skip to the next minute
                       if (rate === 0 && time !== "30") {
                         return null;
                       }
@@ -615,58 +605,63 @@ const User = () => {
                     })}
               </div>
             </div>
-
-            <FullCalendar
-              contentHeight="auto"
-              slotMinHeight={500}
-              longPressDelay={1}
-              slotMinTime={formatHour(User.workdayHours.from)}
-              slotMaxTime={formatHour(User.workdayHours.to)}
-              eventLongPressDelay={1}
-              selectLongPressDelay={1}
-              plugins={[timeGridPlugin, interactionPlugin, dayGridPlugin]}
-              eventBackgroundColor={CurrentUser.doctor ? "#F08080" : "#00E573"}
-              eventBorderColor={CurrentUser.doctor ? "#F08080" : "#00E573"}
-              select={(info) => {
-                updateBgEvents();
-                handleDateSelect(info);
-              }}
-              selectable={true}
-              initialView="timeGridWeek"
-              events={[...AppointmentEvents, ...bgEvents]}
-              slotDuration={`${CalendarSlotDuration}`}
-              slotLabelContent={(arg) => {
-                const time = arg.date.toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                });
-                return <div style={{ fontSize: "1.1rem" }}>{time}</div>;
-              }}
-              slotLabelInterval={{ minutes: 15 }}
-              allDaySlot={false}
-              headerToolbar={{
-                start: "prev,next today",
-                center: "title",
-                end: "timeGridWeek,timeGridDay",
-              }}
-              selectMirror={true}
-              locales={[ltLocale]}
-              locale="lt"
-              weekends={User.weekendHours.from}
-              ref={calendarRef}
-              eventContent={renderEventContent}
-              selectAllow={(info) => {
-                return handleSelectAllow(info);
-              }}
-              selectOverlap={(event) => {
-                // Do not allow selection if the overlapping event is a background event
-                return event.display !== "background";
-              }}
-            />
+            {User.doctor && AppointmentEvents.length > 0 && (
+              <div className="calendar">
+                {console.log(User.weekendHours)}
+                <FullCalendar
+                  ref={calendarRef}
+                  contentHeight="auto"
+                  slotMinHeight={500}
+                  longPressDelay={1}
+                  slotMinTime={formatHour(User.workdayHours.from)}
+                  slotMaxTime={formatHour(User.workdayHours.to)}
+                  eventLongPressDelay={1}
+                  selectLongPressDelay={1}
+                  plugins={[timeGridPlugin, interactionPlugin, dayGridPlugin]}
+                  eventBackgroundColor={
+                    CurrentUser.doctor ? "#F08080" : "#00E573"
+                  }
+                  eventBorderColor={CurrentUser.doctor ? "#F08080" : "#00E573"}
+                  select={(info) => {
+                    updateBgEvents();
+                    handleDateSelect(info);
+                  }}
+                  selectable={true}
+                  initialView="timeGridWeek"
+                  events={[...AppointmentEvents, ...bgEvents]}
+                  slotDuration={`${CalendarSlotDuration}`}
+                  slotLabelContent={(arg) => {
+                    const time = arg.date.toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    });
+                    return time;
+                  }}
+                  slotLabelInterval={{ minutes: 15 }}
+                  allDaySlot={false}
+                  headerToolbar={{
+                    start: "prev,next today",
+                    center: "title",
+                    end: "timeGridWeek,timeGridDay",
+                  }}
+                  selectMirror={true}
+                  locales={[ltLocale]}
+                  locale="lt"
+                  weekends={User.weekendHours.from !== 0} // Ensure the calendar shows weekends only if user works on weekends
+                  initialDate={
+                    shouldSkipWeekend ? addDays(currentDate, 2) : currentDate
+                  } // Skip to next week if current day is a weekend and user doesn't work on weekends
+                  eventContent={(eventInfo) => {
+                    return eventInfo.timeText;
+                  }}
+                  selectAllow={(info) => handleSelectAllow(info)}
+                  selectOverlap={(event) => event.display !== "background"}
+                />
+              </div>
+            )}
           </div>
-        ) : (
-          ""
         )}
+        <div style={{ height: "5rem" }}></div>
       </div>
     </>
   );

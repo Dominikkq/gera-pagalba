@@ -1,9 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { trendingCategoryData } from "../../data/categories_data";
 import { HeadLine } from "../component";
 import Trending_categories_items from "./trending_categories_items";
-
 const Tranding_category = () => {
   return (
     <section className="py-24">

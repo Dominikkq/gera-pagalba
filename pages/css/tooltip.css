@@ -27,3 +27,13 @@
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+.custom-tooltip {
+  height: 5rem;
+  max-width: 2rem !important;
+}
+.high-tooltip {
+  max-width: 250px; /* This controls how wide it gets - adjust as needed */
+  width: 250px;
+  height: auto; /* This will make the height automatically adjust to content */
+  word-wrap: break-word; /* This will break words properly if there are no spaces */
+}

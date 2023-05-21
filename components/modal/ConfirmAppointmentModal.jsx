@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { closeConfirmAppointmentModal } from "../../redux/counterSlice";
 
@@ -8,6 +8,7 @@ const ConfirmAppointmentModal = ({ stripePromise }) => {
   const { confirmAppointmentModalValue, confirmAppointmentModalData } =
     useSelector((state) => state.counter);
   const dispatch = useDispatch();
+  const [notes, setNotes] = useState("");
 
   const [date, timeRange] = confirmAppointmentModalData.date
     ? confirmAppointmentModalData.date.split(", ")
@@ -40,6 +41,7 @@ const ConfirmAppointmentModal = ({ stripePromise }) => {
         "successPay_doctorId",
         confirmAppointmentModalData.doctorId
       );
+      console.log(confirmAppointmentModalData);
       const response = await axios.post(
         "http://localhost:5000/create-checkout-session",
         {
@@ -47,7 +49,7 @@ const ConfirmAppointmentModal = ({ stripePromise }) => {
           doctorId: confirmAppointmentModalData.doctorId,
           start: confirmAppointmentModalData.start,
           end: confirmAppointmentModalData.end,
-          notes: confirmAppointmentModalData.notes,
+          notes: notes,
         }
       );
 
@@ -69,55 +71,68 @@ const ConfirmAppointmentModal = ({ stripePromise }) => {
             : "modal fade hidden"
         }
       >
-        <div className="modal-dialog max-w-2xl">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5
-                style={{ marginRight: "15px" }}
-                className="modal-title"
-                id="confirmAppointmentLabel"
-              >
-                Registracijos Patvirtinimas
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                onClick={() => dispatch(closeConfirmAppointmentModal())}
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            {/* <!-- Body --> */}
-            <div className="modal-body p-6">
-              <div className="flex flex-col">
-                <label className="font-display text-jacarta-700 mb-3 block text-base font-semibold dark:text-white">
-                  Data
-                </label>
-                <input
-                  type="text"
-                  value={date ? date : ""}
-                  readOnly
-                  className="dark:bg-jacarta-700 px-4 dark:border-jacarta-600 focus:ring-accent border-jacarta-100 dark:placeholder-jacarta-300 h-12 w-full border focus:ring-inset dark:text-white"
-                />
-                <label className="font-display text-jacarta-700 mb-3 mt-4 block text-base font-semibold dark:text-white">
-                  Laikas
-                </label>
-                <input
-                  type="text"
-                  value={timeRange ? timeRange : ""}
-                  readOnly
-                  className="dark:bg-jacarta-700 px-4 dark:border-jacarta-600 focus:ring-accent border-jacarta-100 dark:placeholder-jacarta-300 h-12 w-full rounded-r-lg border focus:ring-inset dark:text-white"
-                />
-              </div>
-            </div>
-            {/* <!-- end body --> */}
-
-            <div className="modal-footer">
-              <div className="flex items-center justify-center space-x-4">
+        <div
+          onClick={closeModal}
+          className={
+            confirmAppointmentModalValue
+              ? "block modal fixed inset-0 flex items-center justify-center transition-opacity duration-300 ease-in-out"
+              : "modal hidden"
+          }
+        >
+          <div
+            onClick={closeModal}
+            className={
+              confirmAppointmentModalValue
+                ? "block modal fixed inset-0 flex items-center justify-center transition-opacity duration-300 ease-in-out"
+                : "modal hidden"
+            }
+          >
+            <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+              <div className="flex items-center justify-between">
+                <h5 className="text-lg font-semibold">
+                  Registracijos Patvirtinimas
+                </h5>
                 <button
                   type="button"
-                  className="bg-brand  hover:bg-accent-dark rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+                  className="ml-8 focus:outline-none"
+                  onClick={() => dispatch(closeConfirmAppointmentModal())}
+                >
+                  <span className="text-gray-500">&times;</span>
+                </button>
+              </div>
+              <div className="mt-6">
+                <div className="mb-4">
+                  <label className="block text-gray-500 text-sm mb-1">
+                    Data
+                  </label>
+                  <p className="text-lg">
+                    {date ? (timeRange ? date + " " + timeRange : "") : ""}
+                  </p>
+                </div>
+                <div>
+                  <label className="block text-gray-500 text-sm mb-1">
+                    Kaina
+                  </label>
+                  <p className="text-lg">
+                    {timeRange ? timeRange : "Nenurodyta"}
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <label className="block text-gray-500 text-sm mb-1">
+                    Pastabos gydytojui
+                  </label>
+                  <textarea
+                    id="notes_enter"
+                    className="resize-none border border-gray-300 rounded-md p-2 w-full h-24 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    placeholder="Įveskite pastabas..."
+                    onChange={(e) => setNotes(e.target.value)}
+                  ></textarea>
+                </div>
+              </div>
+              <div className="mt-8 flex justify-center">
+                <button
+                  type="button"
+                  className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition-colors duration-300 ease-in-out focus:outline-none"
                   onClick={() => {
                     console.log("Appointment Confirmed");
                     AppointmentPayment();

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import blank from "../../components/assets/icons/blank.png";
 import star2 from "../../components/assets/icons/star2.png";
 const CategoryItem = (props) => {
   function getColorClass(option) {
@@ -49,7 +48,9 @@ const CategoryItem = (props) => {
           <article key={userId}>
             <div className="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 rounded-2xl border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg">
               <Link href={doctorLink}>
-                <img
+                <Image
+                  height={424}
+                  width={424}
                   style={{
                     marginBottom: "10px",
                     borderRadius: "0.625rem",
@@ -79,7 +80,13 @@ const CategoryItem = (props) => {
                   >
                     {averageRating}
                   </p>
-                  <img src={star2.src} style={{ width: "20px" }} />
+                  <Image
+                    width={22}
+                    height={22}
+                    alt="rating"
+                    src={star2.src}
+                    style={{ width: "20px" }}
+                  />
                 </div>
               </div>
               {Object.entries(rates)

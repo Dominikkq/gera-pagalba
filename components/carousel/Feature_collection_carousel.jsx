@@ -102,7 +102,9 @@ const Feature_collections_carousel = () => {
               <article>
                 <div className="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 rounded-2xl border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg">
                   <Link href={doctorLink}>
-                    <img
+                    <Image
+                      width={424}
+                      height={424}
                       style={{
                         marginBottom: "10px",
                         borderRadius: "0.625rem",
@@ -134,7 +136,12 @@ const Feature_collections_carousel = () => {
                       >
                         {averageRating}
                       </p>
-                      <img src={star2.src} style={{ width: "20px" }} />
+                      <Image
+                        width={22}
+                        height={22}
+                        src={star2.src}
+                        style={{ width: "20px" }}
+                      />
                     </div>
                   </div>
                   {Object.entries(rates)

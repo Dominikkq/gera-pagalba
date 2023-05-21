@@ -9,6 +9,7 @@ import {
   updateRenkingData,
   updateRenkingDataByPostdate,
 } from "../../redux/counterSlice";
+import Image from "next/image";
 import globe from "../../components/assets/icons/globe.png";
 import categories from "../../components/assets/icons/categories.png";
 import star from "../../components/assets/icons/star.png";
@@ -270,11 +271,11 @@ const Recently_added_dropdown = ({
     return (
       <div className="my-1 mr-2.5 relative">
         <button
-          className="group dropdown-toggle blockchainDropdown dark:border-jacarta-600 dark:bg-jacarta-700 group dark:hover:bg-accent hover:bg-accent border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white dark:text-white"
+          className="group dropdown-toggle blockchainDropdown  border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-brand "
           onClick={handleBlockChainDropdown}
         >
-          <img src={globe.src} style={{ paddingRight: "3px" }} />
-          <span>Kalbos</span>
+          <Image src={globe.src} width={16} height={16} />
+          <span style={{ paddingLeft: "5px" }}>Kalbos</span>
         </button>
 
         <div
@@ -292,10 +293,10 @@ const Recently_added_dropdown = ({
               return (
                 <li key={id} onClick={() => toggleSortActive(id)}>
                   <button
-                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
                     onClick={() => {
                       handleLanguageSort(text);
                     }}
+                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
                   >
                     <span>{text}</span>
                     {isSelected && (
@@ -322,12 +323,12 @@ const Recently_added_dropdown = ({
     return (
       <div className="my-1 mr-2.5 relative">
         <button
-          className="group dropdown-toggle category-dropdown dark:border-jacarta-600 dark:bg-jacarta-700 dark:hover:bg-accent hover:bg-accent border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white dark:text-white"
+          className="group dropdown-toggle category-dropdown  border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-brand "
           onClick={handleCategoryDropdown}
         >
-          <img src={categories.src} style={{ paddingRight: "3px" }} />
+          <Image width={16} height={16} src={categories.src} />
 
-          <span>Žymekliai</span>
+          <span style={{ paddingLeft: "5px" }}>Žymekliai</span>
         </button>
 
         <div
@@ -433,12 +434,12 @@ const Recently_added_dropdown = ({
     return (
       <div className="my-1 mr-2.5 relative">
         <button
-          className="group dropdown-toggle dropdown-sale dark:border-jacarta-600 dark:bg-jacarta-700 group dark:hover:bg-accent hover:bg-accent border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white dark:text-white"
+          className="group dropdown-toggle dropdown-sale  border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-brand "
           onClick={handleSaleDropdown}
         >
-          <img src={star.src} style={{ paddingRight: "3px" }} />
+          <Image width={16} height={16} src={star.src} />
 
-          <span>Vertinimas</span>
+          <span style={{ paddingLeft: "5px" }}>Vertinimas</span>
         </button>
 
         <div
@@ -451,16 +452,17 @@ const Recently_added_dropdown = ({
         >
           <ul className="flex flex-col flex-wrap">
             {data.map(({ id, text }) => {
+              const isSelected = sortActive.includes(id);
               return (
-                <li key={id}>
+                <li key={id} onClick={() => toggleSortActive(id)}>
                   <button
-                    className="dropdown-item font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white"
-                    onClick={() => handleRatingsSort(text)}
+                    onClick={() => {
+                      handleRatingsSort(text);
+                    }}
+                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
                   >
-                    <span className="text-jacarta-700 dark:text-white">
-                      {text}
-                    </span>
-                    {sortActive === id && (
+                    <span>{text}</span>
+                    {isSelected && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -484,13 +486,13 @@ const Recently_added_dropdown = ({
               onClick={() => {
                 setDropdownSale(false);
               }}
-              className="text-accent shadow-white-volume hover:bg-accent-dark hover:shadow-accent-volume flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all hover:text-white"
+              className="text-accent flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all "
             >
               Atšaukti
             </button>
             <button
               type="button"
-              className="bg-accent shadow-accent-volume hover:bg-accent-dark flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
+              className="bg-accent flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
             >
               Pritaikyti
             </button>
@@ -502,12 +504,12 @@ const Recently_added_dropdown = ({
     return (
       <div className="my-1 mr-2.5 relative">
         <button
-          className="group dropdown-toggle dropdown-sale2 dark:border-jacarta-600 dark:bg-jacarta-700 group dark:hover:bg-accent hover:bg-accent border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white dark:text-white"
+          className="group dropdown-toggle dropdown-sale2  border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-brand "
           onClick={handleSale2Dropdown}
         >
-          <img src={clock.src} style={{ paddingRight: "3px" }} />
+          <Image width={16} height={16} src={clock.src} />
 
-          <span>Trukmė</span>
+          <span style={{ paddingLeft: "5px" }}>Trukmė</span>
         </button>
 
         <div
@@ -520,16 +522,18 @@ const Recently_added_dropdown = ({
         >
           <ul className="flex flex-col flex-wrap">
             {data.map(({ id, text }) => {
+              const isSelected = sortActive.includes(id);
+
               return (
-                <li key={id}>
+                <li key={id} onClick={() => toggleSortActive(id)}>
                   <button
-                    className="dropdown-item font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white"
-                    onClick={() => handleLengthSort(text)}
+                    onClick={() => {
+                      handleLengthSort(text);
+                    }}
+                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
                   >
-                    <span className="text-jacarta-700 dark:text-white">
-                      {text}
-                    </span>
-                    {sortActive === id && (
+                    <span>{text}</span>
+                    {isSelected && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -553,13 +557,13 @@ const Recently_added_dropdown = ({
               onClick={() => {
                 setDropdownSale(false);
               }}
-              className="text-accent shadow-white-volume hover:bg-accent-dark hover:shadow-accent-volume flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all hover:text-white"
+              className="text-accent flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all "
             >
               Atšaukti
             </button>
             <button
               type="button"
-              className="bg-accent shadow-accent-volume hover:bg-accent-dark flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
+              className="bg-accent flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
             >
               Pritaikyti
             </button>
@@ -605,7 +609,7 @@ const Recently_added_dropdown = ({
               <div className="dark:border-jacarta-600 border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
                 <button
                   type="button"
-                  className="text-accent shadow-white-volume hover:bg-accent-dark hover:shadow-accent-volume flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all hover:text-white"
+                  className="text-accent flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all "
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   Atšaukti
@@ -613,7 +617,7 @@ const Recently_added_dropdown = ({
                 <button
                   type="button"
                   onClick={handlePriceSort}
-                  className="bg-accent shadow-accent-volume hover:bg-accent-dark flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
+                  className="bg-accent flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
                 >
                   Pritaikyti
                 </button>
@@ -622,7 +626,7 @@ const Recently_added_dropdown = ({
           }
         >
           <button
-            className="group dropdown-toggle dark:border-jacarta-600 dark:bg-jacarta-700 group dark:hover:bg-accent hover:bg-accent border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white dark:text-white"
+            className="group dropdown-toggle  border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-brand "
             id="priceRangeFilter"
             data-bs-toggle="dropdown"
             data-bs-auto-close="outside"
@@ -631,9 +635,9 @@ const Recently_added_dropdown = ({
               setIsDropdownOpen(true);
             }}
           >
-            <img src={price.src} style={{ paddingRight: "2px" }} />
+            <Image width={16} height={16} src={price.src} />
 
-            <span>Kaina</span>
+            <span style={{ paddingLeft: "5px" }}>Kaina</span>
           </button>
         </Tippy>
       </div>
