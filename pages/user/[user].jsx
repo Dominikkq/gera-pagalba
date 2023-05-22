@@ -49,7 +49,7 @@ const User = () => {
       dispatch(reasonModalShow(appointmentId));
     } else {
       const response = await axios.delete(
-        `https://www.regreto.com:3000/appointmentsCancel/${CurrentUser.userId}/${appointmentId}`,
+        `https://regreto.com:3000/appointmentsCancel/${CurrentUser.userId}/${appointmentId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -186,7 +186,7 @@ const User = () => {
   const [rating, setRating] = useState(0);
   const handleStarClick = async (index, doctorId, appointmentId) => {
     await axios.post(
-      `https://www.regreto.com:3000/rateDoctor`,
+      `https://regreto.com:3000/rateDoctor`,
       {
         doctorId: doctorId,
         userId: CurrentUser.userId,
@@ -260,7 +260,7 @@ const User = () => {
     const userId = window.location.href.split("/").pop();
     try {
       const response = await axios.get(
-        `https://www.regreto.com:3000/user/${userId}`,
+        `https://regreto.com:3000/user/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -295,7 +295,7 @@ const User = () => {
   }
   async function GetCurrentUserData() {
     if (localStorage.getItem("token")) {
-      const response = await axios.get("https://www.regreto.com:3000/user", {
+      const response = await axios.get("https://regreto.com:3000/user", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
@@ -311,7 +311,7 @@ const User = () => {
   async function GetUserAppointments() {
     try {
       const response = await axios.get(
-        `https://www.regreto.com:3000/appointmentsMade`,
+        `https://regreto.com:3000/appointmentsMade`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -333,7 +333,7 @@ const User = () => {
   async function GetAppointments(userId) {
     try {
       const response = await axios.get(
-        `https://www.regreto.com:3000/appointments/${userId}`,
+        `https://regreto.com:3000/appointments/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -37,13 +37,10 @@ const Create = () => {
     if (await checkIfInputsEntered()) {
       const axios = require("axios");
       try {
-        const response = await axios.post(
-          "https://www.regreto.com:3000/login",
-          {
-            email: document.getElementById("emailas").value,
-            password: document.getElementById("password").value,
-          }
-        );
+        const response = await axios.post("https://regreto.com:3000/login", {
+          email: document.getElementById("emailas").value,
+          password: document.getElementById("password").value,
+        });
 
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
