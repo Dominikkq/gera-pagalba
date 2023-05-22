@@ -384,7 +384,7 @@ const Recently_added_dropdown = ({
             viewBox="0 0 24 24"
             width="24"
             height="24"
-            className="fill-jacarta-700 dark:fill-jacarta-100 mr-1 h-4 w-4 transition-colors group-hover:fill-white"
+            className="fill-jacarta-700  mr-1 h-4 w-4 transition-colors group-hover:fill-white"
           >
             <path fill="none" d="M0 0h24v24H0z"></path>
             <path d="M14 10v4h-4v-4h4zm2 0h5v4h-5v-4zm-2 11h-4v-5h4v5zm2 0v-5h5v4a1 1 0 0 1-1 1h-4zM14 3v5h-4V3h4zm2 0h4a1 1 0 0 1 1 1v4h-5V3zm-8 7v4H3v-4h5zm0 11H4a1 1 0 0 1-1-1v-4h5v5zM8 3v5H3V4a1 1 0 0 1 1-1h4z"></path>
@@ -593,14 +593,14 @@ const Recently_added_dropdown = ({
                   placeholder="Nuo"
                   value={currencyValFrom}
                   onChange={handleCurrencyValFrom}
-                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4  dark:bg-white/[.15]  dark:placeholder-white"
+                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4   "
                 />
                 <input
                   type="number"
                   placeholder="Iki"
                   value={currencyValTo}
                   onChange={handleCurrencyValTo}
-                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4  dark:bg-white/[.15]  dark:placeholder-white"
+                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4   "
                 />
               </div>
 

@@ -44,7 +44,7 @@ const Trending_categories_items = () => {
                     className={
                       filterVal === id
                         ? " group bg-accent border-jacarta-100 font-display flex h-9 items-center rounded-lg border px-4 text-sm font-semibold transition-colors border-transparent text-white  capitalize"
-                        : " dark:bg-jacarta-900  group hover:bg-accent border-jacarta-100 font-display text-jacarta-500 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white  dark:hover:border-transparent dark:hover:text-white capitalize"
+                        : "   group hover:bg-accent border-jacarta-100 font-display text-jacarta-500 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white   capitalize"
                     }
                     onClick={() => {
                       handleFilter(text);
@@ -68,14 +68,14 @@ const Trending_categories_items = () => {
                       className={
                         filterVal === id
                           ? " group bg-accent border-jacarta-100 font-display flex h-9 items-center rounded-lg border px-4 text-sm font-semibold transition-colors border-transparent text-white  capitalize"
-                          : " dark:bg-jacarta-900  group hover:bg-accent border-jacarta-100 font-display text-jacarta-500 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white  dark:hover:border-transparent dark:hover:text-white capitalize"
+                          : "   group hover:bg-accent border-jacarta-100 font-display text-jacarta-500 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white   capitalize"
                       }
                     >
                       <svg
                         className={
                           filterVal === id
                             ? "icon mr-1 h-4 w-4 transition-colors fill-white"
-                            : "icon fill-jacarta-700 dark:fill-jacarta-100 mr-1 h-4 w-4 transition-colors group-hover:fill-white"
+                            : "icon fill-jacarta-700  mr-1 h-4 w-4 transition-colors group-hover:fill-white"
                         }
                       >
                         <use xlinkHref={`/icons.svg#icon-${svg}`}></use>
