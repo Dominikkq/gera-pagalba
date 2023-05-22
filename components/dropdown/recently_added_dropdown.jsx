@@ -250,7 +250,7 @@ const Recently_added_dropdown = ({
               </div>
             }
           >
-            <div className="dark:bg-jacarta-700 dropdown-toggle border-jacarta-100 dark:border-jacarta-600 inline-flex w-48 items-center justify-between rounded-lg border bg-white py-2 px-3 text-sm dark:text-white">
+            <div className="dropdown-toggle border-jacarta-100 inline-flex w-48 items-center justify-between rounded-lg border bg-white py-2 px-3 text-sm">
               <span className="font-display">Top įvertinti</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
