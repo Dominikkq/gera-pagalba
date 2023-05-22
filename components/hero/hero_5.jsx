@@ -8,20 +8,12 @@ const Hero_5 = () => {
     <>
       {/* <!-- Hero --> */}
       <section className="relative py-20 md:pt-32">
-        <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+        <picture className="pointer-events-none absolute inset-0 -z-10 ">
           <Image
             style={{ width: "100%" }}
             src="/images/gradient.jpg"
             alt="gradient"
             layout="fill"
-          />
-        </picture>
-        <picture className="pointer-events-none absolute inset-0 -z-10 hidden dark:block">
-          <Image
-            src="/images/gradient_dark.jpg"
-            layout="fill"
-            alt="gradient dark"
-            className="h-full"
           />
         </picture>
 
