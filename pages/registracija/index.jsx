@@ -13,33 +13,33 @@ const Create = () => {
 
   async function CheckIfInputsEntered() {
     var Name = document.getElementById("vardas").value;
-    var SideOne = document.getElementById("create_sideOne").value;
-    var SideTwo = document.getElementById("create_sideTwo").value;
+    var SideOne = document.getElementById("pavarde").value;
+    var SideTwo = document.getElementById("emailas").value;
     var slaptazodis = document.getElementById("slaptazodis").value;
 
     if (!Name) {
-      document.getElementById("name_text").style.color = "#C1423F";
+      document.getElementById("vardas_text").style.color = "#C1423F";
       return false;
     } else {
-      document.getElementById("name_text").style.color = "#fff";
+      document.getElementById("vardas_text").style.color = "";
     }
     if (!SideOne) {
-      document.getElementById("sideone_text").style.color = "#C1423F";
+      document.getElementById("pavarde_text").style.color = "#C1423F";
       return false;
     } else {
-      document.getElementById("sideone_text").style.color = "#fff";
+      document.getElementById("pavarde_text").style.color = "";
     }
     if (!SideTwo) {
-      document.getElementById("sidetwo_text").style.color = "#C1423F";
+      document.getElementById("email_text").style.color = "#C1423F";
       return false;
     } else {
-      document.getElementById("sidetwo_text").style.color = "#fff";
+      document.getElementById("email_text").style.color = "";
     }
     if (!slaptazodis) {
-      document.getElementById("slaptazodis").style.color = "#C1423F";
+      document.getElementById("password_text").style.color = "#C1423F";
       return false;
     } else {
-      document.getElementById("slaptazodis").style.color = "#fff";
+      document.getElementById("password_text").style.color = "";
     }
 
     return true;
@@ -53,8 +53,8 @@ const Create = () => {
           "https://www.regreto.com:3000/register",
           {
             name: document.getElementById("vardas").value,
-            lastname: document.getElementById("create_sideOne").value,
-            email: document.getElementById("create_sideTwo").value,
+            lastname: document.getElementById("pavarde").value,
+            email: document.getElementById("emailas").value,
             password: document.getElementById("slaptazodis").value,
             doctor: true,
           }
@@ -67,8 +67,8 @@ const Create = () => {
       dispatch(
         setCreateValues({
           name: document.getElementById("vardas").value,
-          sideOne: document.getElementById("create_sideOne").value,
-          sideTwo: document.getElementById("create_sideTwo").value,
+          sideOne: document.getElementById("pavarde").value,
+          sideTwo: document.getElementById("emailas").value,
         })
       );
       dispatch(createModalShow());
@@ -95,6 +95,7 @@ const Create = () => {
             {/* Name */}
             <div className="mb-6">
               <label
+                id="vardas_text"
                 htmlFor="vardas"
                 className="font-display text-jacarta-700 mb-2 block "
               >
@@ -112,6 +113,7 @@ const Create = () => {
             {/* Surname */}
             <div className="mb-6">
               <label
+                id="pavarde_text"
                 htmlFor="create_sideOne"
                 className="font-display text-jacarta-700 mb-2 block "
               >
@@ -119,7 +121,7 @@ const Create = () => {
               </label>
               <input
                 type="text"
-                id="create_sideOne"
+                id="pavarde"
                 className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
                 placeholder="Pavardenis"
                 required
@@ -129,6 +131,7 @@ const Create = () => {
             {/* Email */}
             <div className="mb-6">
               <label
+                id="email_text"
                 htmlFor="create_sideTwo"
                 className="font-display text-jacarta-700 mb-2 block "
               >
@@ -136,7 +139,7 @@ const Create = () => {
               </label>
               <input
                 type="email"
-                id="create_sideTwo"
+                id="emailas"
                 className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
                 placeholder="vardenis.pavardenis@gmail.com"
                 required
@@ -147,6 +150,7 @@ const Create = () => {
             <div className="mb-6">
               <label
                 htmlFor="slaptazodis"
+                id="password_text"
                 className="font-display text-jacarta-700 mb-2 block "
               >
                 Slaptažodis<label className="text-red">*</label>
