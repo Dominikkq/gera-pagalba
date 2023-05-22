@@ -166,7 +166,7 @@ const Create = () => {
               <span className="font-display text-jacarta-700 text-sm font-semibold ">
                 {index === 0
                   ? `${time} min kaina (eur) = 0 neaktyvus`
-                  : `min kaina (eur)`}
+                  : `${time} min kaina (eur)`}
               </span>
               <div>
                 <input
