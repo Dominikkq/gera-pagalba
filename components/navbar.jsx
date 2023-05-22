@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+
 import Link from "next/link";
 import MblNavbar from "./mblNavbar";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,7 +12,6 @@ import login from "../components/assets/icons/login.png";
 import register from "../components/assets/icons/register.png";
 import Image from "next/image";
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
   const [scroll, setScroll] = useState(false);
   const [home3, setHome3] = useState(false);
 
@@ -27,13 +26,6 @@ const Navbar = () => {
     }
   };
 
-  const handleTheme = () => {
-    if (theme == "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  };
   const [navItemValue, setNavItemValue] = useState(1);
   const [navText, setnavText] = useState("");
   const router = useRouter();
@@ -119,7 +111,6 @@ const Navbar = () => {
             navItemValue={navItemValue}
             navText={navText}
             User={User}
-            theme={handleTheme}
           />
 
           {/* <!-- Mobile Menu Actions --> */}
