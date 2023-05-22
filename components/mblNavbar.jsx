@@ -4,7 +4,7 @@ import { closeMblMenu } from "../redux/counterSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { GetUserData } from "./functions/functions";
+
 import { Logout } from "./functions/functions";
 const MblNavbar = ({ User, navItemValue, navText }) => {
   const { mblMenu } = useSelector((state) => state.counter);
