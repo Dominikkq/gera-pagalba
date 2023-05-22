@@ -190,7 +190,7 @@ const Recently_added_dropdown = ({
             className="tooltip-container"
             content={
               <div
-                className="dropdown-menu dark:bg-jacarta-800 z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show text-jacarta-500"
+                className="dropdown-menu  z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show text-jacarta-500"
                 aria-labelledby="categoriesSort"
               >
                 <span className="font-display text-jacarta-300 block px-5 py-2 text-sm font-semibold">
@@ -201,7 +201,7 @@ const Recently_added_dropdown = ({
                   return (
                     <button
                       key={id}
-                      className="dropdown-item font-display text-jacarta-700 dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white"
+                      className="dropdown-item font-display text-jacarta-700  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors "
                       onClick={() => {
                         setsortActive(id);
 
@@ -232,7 +232,7 @@ const Recently_added_dropdown = ({
                   return (
                     <div
                       key={id}
-                      className="dropdown-item font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 block w-full rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white"
+                      className="dropdown-item font-display  hover:bg-jacarta-50 block w-full rounded-xl px-5 py-2 text-left text-sm transition-colors "
                     >
                       <span className="flex items-center justify-between">
                         <span>{text}</span>
@@ -257,7 +257,7 @@ const Recently_added_dropdown = ({
                 viewBox="0 0 24 24"
                 width="24"
                 height="24"
-                className="fill-jacarta-500 h-4 w-4 dark:fill-white"
+                className="fill-jacarta-500 h-4 w-4 "
               >
                 <path fill="none" d="M0 0h24v24H0z"></path>
                 <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"></path>
@@ -281,8 +281,8 @@ const Recently_added_dropdown = ({
         <div
           className={
             blockChaindropdownShow
-              ? "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
+              ? "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
           }
           onClick={(e) => e.stopPropagation()}
         >
@@ -296,7 +296,7 @@ const Recently_added_dropdown = ({
                     onClick={() => {
                       handleLanguageSort(text);
                     }}
-                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
+                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors `}
                   >
                     <span>{text}</span>
                     {isSelected && (
@@ -334,8 +334,8 @@ const Recently_added_dropdown = ({
         <div
           className={
             categoryDropdown
-              ? "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[300px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[300px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
+              ? "dropdown-menu  z-10 min-w-[300px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 min-w-[300px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
           }
           onClick={(e) => e.stopPropagation()} // Stop the click event from propagating
         >
@@ -349,7 +349,7 @@ const Recently_added_dropdown = ({
                     onClick={() => {
                       handleTypeSort(text);
                     }}
-                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
+                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors `}
                   >
                     <span>{text}</span>
                     {isSelected && (
@@ -376,7 +376,7 @@ const Recently_added_dropdown = ({
     return (
       <div className="my-1 mr-2.5 relative">
         <button
-          className="group dropdown-toggle rankingCategoriesDropdown dark:border-jacarta-600 dark:bg-jacarta-700 dark:hover:bg-accent hover:bg-accent border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white dark:text-white"
+          className="group dropdown-toggle rankingCategoriesDropdown    hover:bg-accent border-jacarta-100 font-display text-jacarta-700 flex h-9 items-center rounded-lg border bg-white px-4 text-sm font-semibold transition-colors hover:border-transparent hover:text-white "
           onClick={handleRenkingCategoriesDropdown}
         >
           <svg
@@ -395,8 +395,8 @@ const Recently_added_dropdown = ({
         <div
           className={
             renkingCategoriesdropdownShow
-              ? "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0 hidden"
+              ? "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0 hidden"
           }
         >
           <ul className="flex flex-col flex-wrap">
@@ -404,12 +404,10 @@ const Recently_added_dropdown = ({
               return (
                 <li key={id} onClick={() => setsortActive(id)}>
                   <button
-                    className="dropdown-item font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white"
+                    className="dropdown-item font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors "
                     onClick={() => dispatch(updateRenkingData(text))}
                   >
-                    <span className="text-jacarta-700 dark:text-white">
-                      {text}
-                    </span>
+                    <span className="text-jacarta-700 ">{text}</span>
                     {sortActive === id && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -446,8 +444,8 @@ const Recently_added_dropdown = ({
           onClick={(e) => e.stopPropagation()}
           className={
             dropdownSale
-              ? "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu dark:bg-jacarta-800 z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
+              ? "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
           }
         >
           <ul className="flex flex-col flex-wrap">
@@ -459,7 +457,7 @@ const Recently_added_dropdown = ({
                     onClick={() => {
                       handleRatingsSort(text);
                     }}
-                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
+                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors `}
                   >
                     <span>{text}</span>
                     {isSelected && (
@@ -480,7 +478,7 @@ const Recently_added_dropdown = ({
             })}
           </ul>
 
-          <div className="dark:border-jacarta-600 border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
+          <div className=" border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
             <button
               type="button"
               onClick={() => {
@@ -516,8 +514,8 @@ const Recently_added_dropdown = ({
           onClick={(e) => e.stopPropagation()}
           className={
             dropdownSale
-              ? "dropdown-menu dark:bg-jacarta-800 z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu dark:bg-jacarta-800 z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
+              ? "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
           }
         >
           <ul className="flex flex-col flex-wrap">
@@ -530,7 +528,7 @@ const Recently_added_dropdown = ({
                     onClick={() => {
                       handleLengthSort(text);
                     }}
-                    className={`dropdown-item font-bold font-display dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white`}
+                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors `}
                   >
                     <span>{text}</span>
                     {isSelected && (
@@ -551,7 +549,7 @@ const Recently_added_dropdown = ({
             })}
           </ul>
 
-          <div className="dark:border-jacarta-600 border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
+          <div className=" border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
             <button
               type="button"
               onClick={() => {
@@ -585,7 +583,7 @@ const Recently_added_dropdown = ({
           onClickOutside={handleClickOutside}
           content={
             <div
-              className={`dropdown-menu dark:bg-jacarta-800 z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl `}
+              className={`dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl `}
               aria-labelledby="priceRangeFilter"
             >
               {/* <!-- From / To --> */}
@@ -595,18 +593,18 @@ const Recently_added_dropdown = ({
                   placeholder="Nuo"
                   value={currencyValFrom}
                   onChange={handleCurrencyValFrom}
-                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4 dark:border-transparent dark:bg-white/[.15] dark:text-white dark:placeholder-white"
+                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4  dark:bg-white/[.15]  dark:placeholder-white"
                 />
                 <input
                   type="number"
                   placeholder="Iki"
                   value={currencyValTo}
                   onChange={handleCurrencyValTo}
-                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4 dark:border-transparent dark:bg-white/[.15] dark:text-white dark:placeholder-white"
+                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4  dark:bg-white/[.15]  dark:placeholder-white"
                 />
               </div>
 
-              <div className="dark:border-jacarta-600 border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
+              <div className=" border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
                 <button
                   type="button"
                   className="text-accent flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all "
@@ -646,7 +644,7 @@ const Recently_added_dropdown = ({
     return (
       <div className="dropdown relative my-1 cursor-pointer">
         <button
-          className="dark:bg-jacarta-700 itemDateDropdown dropdown-toggle border-jacarta-100 dark:border-jacarta-600 inline-flex w-48 items-center justify-between rounded-lg border bg-white py-2 px-3 text-sm dark:text-white"
+          className=" itemDateDropdown dropdown-toggle border-jacarta-100  inline-flex w-48 items-center justify-between rounded-lg border bg-white py-2 px-3 text-sm "
           onClick={handleItemDateDropdown}
         >
           <span className="font-display">Last 7 Days</span>
@@ -655,7 +653,7 @@ const Recently_added_dropdown = ({
             viewBox="0 0 24 24"
             width="24"
             height="24"
-            className="fill-jacarta-500 h-4 w-4 dark:fill-white"
+            className="fill-jacarta-500 h-4 w-4 "
           >
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
@@ -665,8 +663,8 @@ const Recently_added_dropdown = ({
         <div
           className={
             itemDateDropdown
-              ? "dropdown-menu dark:bg-jacarta-800 z-10 whitespace-nowrap rounded-xl max-w-xs w-[13rem] bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu dark:bg-jacarta-800 z-10 whitespace-nowrap rounded-xl max-w-xs w-[13rem] bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
+              ? "dropdown-menu  z-10 whitespace-nowrap rounded-xl max-w-xs w-[13rem] bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 whitespace-nowrap rounded-xl max-w-xs w-[13rem] bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
           }
         >
           {data.map(({ id, text }) => {
@@ -677,7 +675,7 @@ const Recently_added_dropdown = ({
                   setsortActive(id);
                   dispatch(updateRenkingDataByPostdate(text));
                 }}
-                className="dropdown-item font-display text-jacarta-700 dark:hover:bg-jacarta-600 hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors dark:text-white"
+                className="dropdown-item font-display text-jacarta-700  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors "
               >
                 {text}
                 {sortActive === id && (

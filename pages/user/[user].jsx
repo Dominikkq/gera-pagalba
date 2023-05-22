@@ -379,15 +379,15 @@ const User = () => {
         {ShowProfile && (
           <section className="relative pb-12 pt-28">
             <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-              <figure className="relative h-40 w-40 dark:border-jacarta-600 rounded-xl border-[5px] border-white">
+              <figure className="relative h-40 w-40  rounded-xl border-[5px] border-white">
                 <Image
                   src={User.profilePhoto || blank}
                   layout="fill"
                   objectFit="contain"
-                  className="dark:border-jacarta-600 rounded-xl border-[5px] border-white"
+                  className=" rounded-xl border-[5px] border-white"
                 />
                 <div
-                  className="dark:border-jacarta-600 bg-green absolute -right-3 bottom-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white"
+                  className=" bg-green absolute -right-3 bottom-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white"
                   data-tippy-content="Verified Collection"
                 >
                   {User.verified && (
@@ -407,15 +407,15 @@ const User = () => {
             </div>
 
             <div className="text-center">
-              <h2 className="font-display text-jacarta-700 mb-2 text-4xl font-medium dark:text-white">
+              <h2 className="font-display text-jacarta-700 mb-2 text-4xl font-medium">
                 {User.name} {User.lastname}
               </h2>
               {User.job && (
-                <div className="dark:bg-jacarta-700 dark:border-jacarta-600 border-jacarta-100 mb-8 inline-flex items-center justify-center rounded-full border bg-white py-1.5 px-4">
+                <div className=" border-jacarta-100 mb-8 inline-flex items-center justify-center rounded-full border bg-white py-1.5 px-4">
                   <span>{User.job}</span>
                 </div>
               )}
-              <p className="dark:text-jacarta-300 mx-auto mb-2 max-w-xl text-lg">
+              <p className=" mx-auto mb-2 max-w-xl text-lg">
                 {User.description}
               </p>
               {User.rates && (

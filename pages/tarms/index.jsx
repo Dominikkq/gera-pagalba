@@ -8,8 +8,8 @@ const Tarms = () => {
       <Meta title="GeraPagalba" />
       <div className="pt-[5.5rem] lg:pt-24">
         {/* <!-- TOS --> */}
-        <section className="dark:bg-jacarta-800 relative py-16 md:py-24">
-          <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+        <section className=" relative py-16 md:py-24">
+          <picture className="pointer-events-none absolute inset-0 -z-10 ">
             <Image
               src="/images/gradient_light.jpg"
               alt="gradient"
@@ -18,7 +18,7 @@ const Tarms = () => {
             />
           </picture>
           <div className="container">
-            <h1 className="font-display text-jacarta-700 text-center text-4xl font-medium dark:text-white">
+            <h1 className="font-display text-jacarta-700 text-center text-4xl font-medium ">
               Terms Of Service
             </h1>
             <div className="article-content mx-auto max-w-[48.125rem]">

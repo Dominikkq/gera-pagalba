@@ -8,7 +8,7 @@ const Feature_collections = ({ bgWhite = false }) => {
     <div>
       <section className="py-24 relative">
         {bgWhite && (
-          <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+          <picture className="pointer-events-none absolute inset-0 -z-10 ">
             <Image
               src="/images/gradient_light.jpg"
               alt="gradient"
@@ -20,7 +20,7 @@ const Feature_collections = ({ bgWhite = false }) => {
         <div className="container">
           <HeadLine
             text="Top Specialistai"
-            classes="font-display text-jacarta-700 mb-8 text-center text-3xl dark:text-white"
+            classes="font-display text-jacarta-700 mb-8 text-center text-3xl "
           />
           <div className="relative">
             <Feature_collections_carousel />

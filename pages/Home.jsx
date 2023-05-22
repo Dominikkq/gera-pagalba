@@ -20,7 +20,7 @@ const Index = () => {
           <div className="container">
             <HeadLine
               text="Specialistai"
-              classes="mb-8 text-center font-display text-3xl text-jacarta-700 dark:text-white"
+              classes="mb-8 text-center font-display text-3xl text-jacarta-700 "
             />
             <FilterCategoryItem />
           </div>

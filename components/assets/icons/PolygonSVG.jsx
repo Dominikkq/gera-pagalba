@@ -8,7 +8,7 @@ export default class Polygon extends Component {
         viewBox="0 0 38.4 33.5"
         width="14"
         height="14"
-        className="dark:fill-jacarta-300 fill-jacarta-700 h-4 w-4"
+        className=" fill-jacarta-700 h-4 w-4"
       >
         <path fill="none" d="M0 0h24v24H0z" />
         <path

@@ -163,7 +163,7 @@ const Create = () => {
         <div className="col-span-1 sm:col-span-2">
           {["15", "30", "45", "60"].map((time, index) => (
             <div key={time} className="col-span-1">
-              <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+              <span className="font-display text-jacarta-700 text-sm font-semibold ">
                 {index === 0
                   ? `${time} min kaina (eur) = 0 neaktyvus`
                   : `min kaina (eur)`}
@@ -252,7 +252,7 @@ const Create = () => {
           </div>
         )}
         <div className="mt-6">
-          <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+          <span className="font-display text-jacarta-700 text-sm font-semibold ">
             Kalbos
           </span>
           <div className="mb-2 flex flex-wrap">
@@ -276,7 +276,7 @@ const Create = () => {
         </div>
 
         <div>
-          <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+          <span className="font-display text-jacarta-700 text-sm font-semibold ">
             Galiu padėti su
           </span>
           <div className="mb-2 flex flex-wrap">
@@ -326,7 +326,7 @@ const Create = () => {
       <section className="relative py-24">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex flex-col items-center pb-8">
-            <h1 className="font-display text-jacarta-700 text-4xl font-medium dark:text-white">
+            <h1 className="font-display text-jacarta-700 text-4xl font-medium ">
               Nustatymai
             </h1>
           </div>

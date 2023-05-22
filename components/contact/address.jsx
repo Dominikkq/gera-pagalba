@@ -3,18 +3,18 @@ import React from "react";
 const Address = () => {
   return (
     <div className="lg:w-1/3 lg:pl-5">
-      <h2 className="font-display text-jacarta-700 mb-4 text-xl dark:text-white">
+      <h2 className="font-display text-jacarta-700 mb-4 text-xl ">
         Information
       </h2>
-      <p className="dark:text-jacarta-300 mb-6 text-lg leading-normal">
+      <p className=" mb-6 text-lg leading-normal">
         {
           "Don't hesitaste, drop us a line Collaboratively administrate channels whereas virtual. Objectively seize scalable metrics whereas proactive e-services."
         }
       </p>
 
-      <div className="dark:bg-jacarta-700 dark:border-jacarta-600 border-jacarta-100 rounded-2.5xl border bg-white p-10">
+      <div className="  border-jacarta-100 rounded-2.5xl border bg-white p-10">
         <div className="mb-6 flex items-center space-x-5">
-          <span className="dark:bg-jacarta-700 dark:border-jacarta-600 border-jacarta-100 bg-light-base flex h-11 w-11 shrink-0 items-center justify-center rounded-full border">
+          <span className="  border-jacarta-100 bg-light-base flex h-11 w-11 shrink-0 items-center justify-center rounded-full border">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -28,20 +28,17 @@ const Address = () => {
           </span>
 
           <div>
-            <span className="font-display text-jacarta-700 block text-base dark:text-white">
+            <span className="font-display text-jacarta-700 block text-base ">
               Phone
             </span>
-            <a
-              href="tel:123-123-456"
-              className="hover:text-accent dark:text-jacarta-300 text-sm"
-            >
+            <a href="tel:123-123-456" className="hover:text-accent  text-sm">
               (123) 123-456
             </a>
           </div>
         </div>
 
         <div className="mb-6 flex items-center space-x-5">
-          <span className="dark:bg-jacarta-700 dark:border-jacarta-600 border-jacarta-100 bg-light-base flex h-11 w-11 shrink-0 items-center justify-center rounded-full border">
+          <span className="  border-jacarta-100 bg-light-base flex h-11 w-11 shrink-0 items-center justify-center rounded-full border">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -55,17 +52,17 @@ const Address = () => {
           </span>
 
           <div>
-            <span className="font-display text-jacarta-700 block text-base dark:text-white">
+            <span className="font-display text-jacarta-700 block text-base ">
               Address
             </span>
-            <address className="dark:text-jacarta-300 text-sm not-italic">
+            <address className=" text-sm not-italic">
               08 W 36th St, New YorkNY 10001
             </address>
           </div>
         </div>
 
         <div className="flex items-center space-x-5">
-          <span className="dark:bg-jacarta-700 dark:border-jacarta-600 border-jacarta-100 bg-light-base flex h-11 w-11 shrink-0 items-center justify-center rounded-full border">
+          <span className="  border-jacarta-100 bg-light-base flex h-11 w-11 shrink-0 items-center justify-center rounded-full border">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -79,12 +76,12 @@ const Address = () => {
           </span>
 
           <div>
-            <span className="font-display text-jacarta-700 block text-base dark:text-white">
+            <span className="font-display text-jacarta-700 block text-base ">
               Email
             </span>
             <a
               href="mailto:office@xhibiter.com"
-              className="hover:text-accent dark:text-jacarta-300 text-sm not-italic"
+              className="hover:text-accent  text-sm not-italic"
             >
               office@xhibiter.com
             </a>

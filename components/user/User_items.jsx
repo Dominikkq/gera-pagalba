@@ -40,7 +40,7 @@ const User_items = () => {
   return (
     <>
       <section className="relative py-24">
-        <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+        <picture className="pointer-events-none absolute inset-0 -z-10 ">
           <Image
             src="/images/gradient_light.jpg"
             alt="gradient"
@@ -51,7 +51,7 @@ const User_items = () => {
         <div className="container">
           {/* <!-- Tabs Nav --> */}
           <Tabs className="tabs">
-            <TabList className="nav nav-tabs scrollbar-custom mb-12 flex items-center justify-start overflow-x-auto overflow-y-hidden border-b border-jacarta-100 pb-px dark:border-jacarta-600 md:justify-center">
+            <TabList className="nav nav-tabs scrollbar-custom mb-12 flex items-center justify-start overflow-x-auto overflow-y-hidden border-b border-jacarta-100 pb-px  md:justify-center">
               {tabItem.map(({ id, text, icon }) => {
                 return (
                   <Tab

@@ -141,8 +141,8 @@ const Navbar = () => {
                   <div
                     className={
                       profileShow
-                        ? "dropdown-menu dark:bg-jacarta-800 group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl show lg:visible lg:opacity-100"
-                        : "dropdown-menu dark:bg-jacarta-800 group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl hidden lg:invisible lg:opacity-0"
+                        ? "dropdown-menu  group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl show lg:visible lg:opacity-100"
+                        : "dropdown-menu  group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl hidden lg:invisible lg:opacity-0"
                     }
                     onMouseEnter={() => setProfileShow(true)}
                     onMouseLeave={() => setProfileShow(false)}
@@ -158,7 +158,7 @@ const Navbar = () => {
                           height={22}
                           src={login.src}
                         />
-                        <span className="font-display text-jacarta-700 mt-1 text-sm-md dark:text-white">
+                        <span className="font-display text-jacarta-700 mt-1 text-sm-md ">
                           Registracija
                         </span>
                       </a>
@@ -174,7 +174,7 @@ const Navbar = () => {
                           height={22}
                           src={register.src}
                         />
-                        <span className="font-display text-jacarta-700 mt-1 text-sm-md dark:text-white">
+                        <span className="font-display text-jacarta-700 mt-1 text-sm-md ">
                           Prisijungimas
                         </span>
                       </a>
@@ -204,15 +204,15 @@ const Navbar = () => {
                 <div
                   className={
                     profileShow
-                      ? "dropdown-menu dark:bg-jacarta-800 group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl show lg:visible lg:opacity-100"
-                      : "dropdown-menu dark:bg-jacarta-800 group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl hidden lg:invisible lg:opacity-0"
+                      ? "dropdown-menu  group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl show lg:visible lg:opacity-100"
+                      : "dropdown-menu  group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl hidden lg:invisible lg:opacity-0"
                   }
                   onMouseEnter={() => setProfileShow(true)}
                   onMouseLeave={() => setProfileShow(false)}
                 >
                   <Link href={`/user/${User.userId}`} passHref>
                     <a
-                      className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
+                      className=" hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
                       onClick={handleLinkClick}
                     >
                       <svg
@@ -220,19 +220,19 @@ const Navbar = () => {
                         viewBox="0 0 24 24"
                         width="24"
                         height="24"
-                        className="fill-jacarta-700 h-4 w-4 transition-colors dark:fill-white"
+                        className="fill-jacarta-700 h-4 w-4 transition-colors "
                       >
                         <path fill="none" d="M0 0h24v24H0z"></path>
                         <path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
                       </svg>
-                      <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
+                      <span className="font-display text-jacarta-700 mt-1 text-sm ">
                         Mano Profilis
                       </span>
                     </a>
                   </Link>
                   <Link href={`/nustatymai/`} passHref>
                     <a
-                      className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
+                      className=" hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
                       onClick={handleLinkClick}
                     >
                       <svg
@@ -240,31 +240,31 @@ const Navbar = () => {
                         viewBox="0 0 482.568 482.568"
                         width="24"
                         height="24"
-                        className="fill-jacarta-700 h-4 w-4 transition-colors dark:fill-white"
+                        className="fill-jacarta-700 h-4 w-4 transition-colors "
                       >
                         <path d="M116.993,203.218c13.4-1.8,26.8,2.8,36.3,12.3l24,24l22.7-22.6l-32.8-32.7c-5.1-5.1-5.1-13.4,0-18.5s13.4-5.1,18.5,0    l32.8,32.8l22.7-22.6l-24.1-24.1c-9.5-9.5-14.1-23-12.3-36.3c4-30.4-5.7-62.2-29-85.6c-23.8-23.8-56.4-33.4-87.3-28.8    c-4.9,0.7-6.9,6.8-3.4,10.3l30.9,30.9c14.7,14.7,14.7,38.5,0,53.1l-19,19c-14.7,14.7-38.5,14.7-53.1,0l-31-30.9    c-3.5-3.5-9.5-1.5-10.3,3.4c-4.6,30.9,5,63.5,28.8,87.3C54.793,197.518,86.593,207.218,116.993,203.218z" />
                         <path d="M309.193,243.918l-22.7,22.6l134.8,134.8c5.1,5.1,5.1,13.4,0,18.5s-13.4,5.1-18.5,0l-134.8-134.8l-22.7,22.6l138.9,138.9    c17.6,17.6,46.1,17.5,63.7-0.1s17.6-46.1,0.1-63.7L309.193,243.918z" />
                         <path d="M361.293,153.918h59.9l59.9-119.7l-29.9-29.9l-119.8,59.8v59.9l-162.8,162.3l-29.3-29.2l-118,118    c-24.6,24.6-24.6,64.4,0,89s64.4,24.6,89,0l118-118l-29.9-29.9L361.293,153.918z" />
                       </svg>
-                      <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
+                      <span className="font-display text-jacarta-700 mt-1 text-sm ">
                         Nustatymai
                       </span>
                     </a>
                   </Link>
 
                   <button onClick={Logout}>
-                    <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors">
+                    <a className=" hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         width="24"
                         height="24"
-                        className="fill-jacarta-700 h-4 w-4 transition-colors dark:fill-white"
+                        className="fill-jacarta-700 h-4 w-4 transition-colors "
                       >
                         <path fill="none" d="M0 0h24v24H0z"></path>
                         <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM7 11V8l-5 4 5 4v-3h8v-2H7z"></path>
                       </svg>
-                      <span className="font-display text-jacarta-700 mt-1 text-sm dark:text-white">
+                      <span className="font-display text-jacarta-700 mt-1 text-sm ">
                         Atsijungti
                       </span>
                     </a>

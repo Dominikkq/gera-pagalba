@@ -25,7 +25,7 @@ const Hero_5 = () => {
                   <span className="block font-display text-3xl text-[#8DD059]">
                     100+
                   </span>
-                  <span className="block font-display text-sm text-jacarta-500 dark:text-white">
+                  <span className="block font-display text-sm text-jacarta-500 ">
                     Patenkintų Klientų
                   </span>
                 </div>
@@ -33,7 +33,7 @@ const Hero_5 = () => {
                   <span className="block font-display text-3xl text-[#737EF2]">
                     50+
                   </span>
-                  <span className="block font-display text-sm text-jacarta-500 dark:text-white">
+                  <span className="block font-display text-sm text-jacarta-500 ">
                     Patenkintų Terapeutų
                   </span>
                 </div>
@@ -41,15 +41,15 @@ const Hero_5 = () => {
                   <span className="block font-display text-3xl text-[#F35BC7]">
                     4.5+
                   </span>
-                  <span className="block font-display text-sm text-jacarta-500 dark:text-white">
+                  <span className="block font-display text-sm text-jacarta-500 ">
                     Įvertinimas
                   </span>
                 </div>
               </div>
-              <h1 className="mb-6 text-center font-display text-5xl text-jacarta-700 dark:text-white md:text-left lg:text-5xl xl:text-6xl">
+              <h1 className="mb-6 text-center font-display text-5xl text-jacarta-700  md:text-left lg:text-5xl xl:text-6xl">
                 Gauk psichologo pagalbą neišejęs iš namų
               </h1>
-              <p className="mb-8 text-center text-lg dark:text-jacarta-200 md:text-left">
+              <p className="mb-8 text-center text-lg  md:text-left">
                 Konsultacijos internetu - patikima ir efektyvi psichologo
                 pagalba
               </p>

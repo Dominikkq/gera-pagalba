@@ -58,7 +58,7 @@ const CancelReasonModal = () => {
                   viewBox="0 0 24 24"
                   width="24"
                   height="24"
-                  className="fill-jacarta-700 h-6 w-6 dark:fill-white"
+                  className="fill-jacarta-700 h-6 w-6 "
                 >
                   <path fill="none" d="M0 0h24v24H0z" />
                   <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />

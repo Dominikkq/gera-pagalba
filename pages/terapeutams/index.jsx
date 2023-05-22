@@ -45,7 +45,7 @@ const Create = () => {
   return (
     <div>
       <section className="relative py-24" style={{ height: "100vh" }}>
-        <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+        <picture className="pointer-events-none absolute inset-0 -z-10 ">
           <Image
             src="/images/gradient_light.jpg"
             alt="gradient"
@@ -54,7 +54,7 @@ const Create = () => {
           />
         </picture>
         <div className="container">
-          <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium dark:text-white">
+          <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium ">
             Terapistų registracijos forma
             <p className="mt-4 text-sm text-center text-gray-600">
               Susisieksime su Jumis per 24 valandas, kad patvirtintume Jūsų
@@ -75,11 +75,11 @@ const Create = () => {
                   { name: "phoneNumber", label: "Tel. Numeris" },
                 ].map((input) => (
                   <div key={input.id} className="col-span-1 sm:col-span-2">
-                    <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                    <span className="font-display text-jacarta-700 text-sm font-semibold ">
                       {input.label} <span style={{ color: "red" }}>*</span>
                     </span>
                     <div
-                      className="bg-white rounded-md dark:bg-gray-800"
+                      className="bg-white rounded-md "
                       style={{
                         boxShadow:
                           "5px 5px 20px rgba(174, 174, 192, 0.4), -5px -5px 20px rgba(255, 255, 255, 0.9)",
@@ -94,11 +94,11 @@ const Create = () => {
                   </div>
                 ))}
                 <div className="col-span-1 sm:col-span-2">
-                  <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                  <span className="font-display text-jacarta-700 text-sm font-semibold ">
                     Papildoma informacija
                   </span>
                   <div
-                    className="bg-white rounded-md dark:bg-gray-800"
+                    className="bg-white rounded-md "
                     style={{
                       boxShadow:
                         "5px 5px 20px rgba(174, 174, 192, 0.4), -5px -5px 20px rgba(255, 255, 255, 0.9)",

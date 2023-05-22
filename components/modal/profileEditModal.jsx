@@ -121,7 +121,7 @@ const BidsModal = () => {
                   viewBox="0 0 24 24"
                   width="24"
                   height="24"
-                  className="fill-jacarta-700 h-6 w-6 dark:fill-white"
+                  className="fill-jacarta-700 h-6 w-6 "
                 >
                   <path fill="none" d="M0 0h24v24H0z"></path>
                   <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"></path>
@@ -158,7 +158,7 @@ const BidsModal = () => {
                         </div>
                       </div>
                       <div>
-                        <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                        <span className="font-display text-jacarta-700 text-sm font-semibold ">
                           15 min kaina (eur)
                         </span>
                         <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
@@ -173,7 +173,7 @@ const BidsModal = () => {
                     </div>
                     <div className="flex">
                       <div className="mr-4">
-                        <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                        <span className="font-display text-jacarta-700 text-sm font-semibold ">
                           Vardas
                         </span>
                         <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
@@ -185,7 +185,7 @@ const BidsModal = () => {
                         </div>
                       </div>
                       <div>
-                        <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                        <span className="font-display text-jacarta-700 text-sm font-semibold ">
                           30 min kaina (eur)
                         </span>
                         <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
@@ -200,7 +200,7 @@ const BidsModal = () => {
                     </div>
                     <div className="flex">
                       <div className="mr-4">
-                        <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                        <span className="font-display text-jacarta-700 text-sm font-semibold ">
                           Pavardė
                         </span>
                         <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
@@ -212,7 +212,7 @@ const BidsModal = () => {
                         </div>
                       </div>
                       <div>
-                        <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                        <span className="font-display text-jacarta-700 text-sm font-semibold ">
                           45 min kaina (eur)
                         </span>
                         <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
@@ -228,7 +228,7 @@ const BidsModal = () => {
                   </div>
                   <div className="flex">
                     <div className="mr-4">
-                      <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                      <span className="font-display text-jacarta-700 text-sm font-semibold ">
                         Aprašymas
                       </span>
                       <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
@@ -240,7 +240,7 @@ const BidsModal = () => {
                       </div>
                     </div>
                     <div>
-                      <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                      <span className="font-display text-jacarta-700 text-sm font-semibold ">
                         60 min kaina (eur)
                       </span>
                       <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
@@ -256,7 +256,7 @@ const BidsModal = () => {
                 </div>
 
                 <div>
-                  <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                  <span className="font-display text-jacarta-700 text-sm font-semibold ">
                     Kalbos
                   </span>
                   <div className="mb-2">
@@ -281,7 +281,7 @@ const BidsModal = () => {
                   </div>
                 </div>
                 <div>
-                  <span className="font-display text-jacarta-700 text-sm font-semibold dark:text-white">
+                  <span className="font-display text-jacarta-700 text-sm font-semibold ">
                     Galiu padėti su
                   </span>
                   <div className="mb-2">

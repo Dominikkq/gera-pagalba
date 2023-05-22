@@ -76,7 +76,7 @@ const Create = () => {
       <Meta title="Prisijungimas || GeraPagalba" />
       {/* <!-- Create --> */}
       <section className="relative py-24" style={{ height: "100vh" }}>
-        <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+        <picture className="pointer-events-none absolute inset-0 -z-10 ">
           <Image
             src="/images/gradient_light.jpg"
             alt="gradient"

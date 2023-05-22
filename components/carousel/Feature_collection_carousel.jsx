@@ -100,7 +100,7 @@ const Feature_collections_carousel = () => {
           return (
             <SwiperSlide key={userId} style={{ width: "300px" }}>
               <article>
-                <div className="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 rounded-2xl border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg">
+                <div className="  border-jacarta-100 rounded-2xl border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg">
                   <Link href={doctorLink}>
                     <Image
                       width={424}

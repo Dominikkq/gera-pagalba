@@ -79,7 +79,7 @@ const Create = () => {
       <Meta title="Registracija || GeraPagalba" />
       {/* <!-- Create --> */}
       <section className="relative py-24" style={{ height: "100vh" }}>
-        <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+        <picture className="pointer-events-none absolute inset-0 -z-10 ">
           <Image
             src="/images/gradient_light.jpg"
             alt="gradient"
@@ -88,7 +88,7 @@ const Create = () => {
           />
         </picture>
         <div className="container">
-          <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium dark:text-white">
+          <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium ">
             Registracija
           </h1>
           <div className="mx-auto max-w-[48.125rem]">
@@ -96,7 +96,7 @@ const Create = () => {
             <div className="mb-6">
               <label
                 htmlFor="vardas"
-                className="font-display text-jacarta-700 mb-2 block dark:text-white"
+                className="font-display text-jacarta-700 mb-2 block "
               >
                 Vardas <label className="text-red">*</label>
               </label>
@@ -113,7 +113,7 @@ const Create = () => {
             <div className="mb-6">
               <label
                 htmlFor="create_sideOne"
-                className="font-display text-jacarta-700 mb-2 block dark:text-white"
+                className="font-display text-jacarta-700 mb-2 block "
               >
                 Pavarde<label className="text-red">*</label>
               </label>
@@ -130,7 +130,7 @@ const Create = () => {
             <div className="mb-6">
               <label
                 htmlFor="create_sideTwo"
-                className="font-display text-jacarta-700 mb-2 block dark:text-white"
+                className="font-display text-jacarta-700 mb-2 block "
               >
                 El. Paštas<label className="text-red">*</label>
               </label>
@@ -147,7 +147,7 @@ const Create = () => {
             <div className="mb-6">
               <label
                 htmlFor="slaptazodis"
-                className="font-display text-jacarta-700 mb-2 block dark:text-white"
+                className="font-display text-jacarta-700 mb-2 block "
               >
                 Slaptažodis<label className="text-red">*</label>
               </label>
@@ -164,13 +164,10 @@ const Create = () => {
               <input
                 type="checkbox"
                 id="buyNowTerms"
-                className="checked:bg-accent dark:bg-jacarta-600 text-accent border-jacarta-200 focus:ring-accent/20 dark:border-jacarta-500 h-5 w-5 self-start rounded focus:ring-offset-0"
+                className="checked:bg-accent  text-accent border-jacarta-200 focus:ring-accent/20  h-5 w-5 self-start rounded focus:ring-offset-0"
                 required
               />
-              <label
-                htmlFor="buyNowTerms"
-                className="dark:text-jacarta-200 text-sm"
-              >
+              <label htmlFor="buyNowTerms" className=" text-sm">
                 Sutinku su duomenų
                 <Link href="/tarms">
                   <a className="text-accent"> valdymo politika</a>

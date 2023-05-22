@@ -9,10 +9,10 @@ const Error_page = () => {
       <div className="pt-[5.5rem] lg:pt-24">
         {/* <!-- 404 --> */}
         <section
-          className="dark:bg-jacarta-800 relative py-16 md:py-24"
+          className=" relative py-16 md:py-24"
           style={{ height: "100vh" }}
         >
-          <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+          <picture className="pointer-events-none absolute inset-0 -z-10 ">
             <Image
               src="/images/gradient_light.jpg"
               alt="gradient"
@@ -30,7 +30,7 @@ const Error_page = () => {
                 quality={100}
                 height={150}
               />
-              <h1 className="text-jacarta-700 font-display mb-6 text-4xl dark:text-white md:text-6xl">
+              <h1 className="text-jacarta-700 font-display mb-6 text-4xl  md:text-6xl">
                 Puslapis Nerastas!
               </h1>
 
