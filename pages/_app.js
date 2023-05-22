@@ -42,24 +42,27 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Meta title="GeraPagalba" />
+
       <Provider store={store}>
-        <UserContext.Provider value={{ scrollRef: scrollRef }}>
-          {pid === "/login" ? (
-            <Component {...pageProps} />
-          ) : (
-            <Layout>
+        <ThemeProvider enableSystem={true} attribute="class">
+          <UserContext.Provider value={{ scrollRef: scrollRef }}>
+            {pid === "/login" ? (
               <Component {...pageProps} />
-            </Layout>
-          )}
-          <div className="calendar" style={{ display: "none" }}>
-            <FullCalendar
-              contentHeight="auto"
-              eventLongPressDelay={1}
-              selectLongPressDelay={1}
-              plugins={[timeGridPlugin, interactionPlugin, dayGridPlugin]}
-            />
-          </div>
-        </UserContext.Provider>
+            ) : (
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            )}
+            <div className="calendar" style={{ display: "none" }}>
+              <FullCalendar
+                contentHeight="auto"
+                eventLongPressDelay={1}
+                selectLongPressDelay={1}
+                plugins={[timeGridPlugin, interactionPlugin, dayGridPlugin]}
+              />
+            </div>
+          </UserContext.Provider>
+        </ThemeProvider>
       </Provider>
     </>
   );
