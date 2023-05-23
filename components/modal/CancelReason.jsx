@@ -20,7 +20,7 @@ const CancelReasonModal = () => {
 
   const CancelAppointmentForDoctor = async () => {
     const response = await axios.delete(
-      `https://regreto.com:3000/appointmentsCancelforDoctor/${appointmentId}/
+      `https://www.regreto.com:3000/appointmentsCancelforDoctor/${appointmentId}/
         ${document.getElementById("doctor_cancel_reason").value}
       `,
       {
