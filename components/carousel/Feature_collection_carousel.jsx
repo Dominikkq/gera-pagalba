@@ -17,7 +17,7 @@ const Feature_collections_carousel = () => {
     try {
       const axios = require("axios");
 
-      const response = await axios.get(`https://www.regreto.com:3000/doctors/`);
+      const response = await axios.get(`${process.env.API_URL}/doctors/`);
       console.log(response.data.doctors);
       setDoctors(response.data.doctors);
     } catch (error) {
@@ -44,11 +44,11 @@ const Feature_collections_carousel = () => {
       Traumos: "bg-amber-500",
       "Miego problemos": "bg-rose-500",
       "Mokymosi sunkumai": "bg-fuchsia-500",
-      "Lytinių problemų sprendimas": "bg-violet-500",
+      "Lytinės problemos": "bg-violet-500",
       Priklausomybės: "bg-sky-500",
       "Emocinės problemos": "bg-emerald-500",
       "Gyvenimo pokyčiai": "bg-blue-gray-500",
-      "Laikymasis sveikos gyvensenos": "bg-cool-gray-500",
+      "Sveika gyvensena": "bg-cool-gray-500",
       "Tėvystės klausimai": "bg-warm-gray-500",
     };
 
@@ -89,7 +89,6 @@ const Feature_collections_carousel = () => {
           const {
             userId,
             name,
-            lastname,
             profilePhoto,
             helpOptions,
             rates,
@@ -170,7 +169,7 @@ const Feature_collections_carousel = () => {
                       className="hover:text-accent mt-1 block"
                       style={{ fontSize: "1.2rem" }}
                     >
-                      {`${name} ${lastname}`}
+                      {`${name}`}
                     </a>
                   </Link>
 

@@ -34,10 +34,6 @@ const Collection_category_filter = (props) => {
 
   const categoryText = [
     {
-      id: 8,
-      text: "All",
-    },
-    {
       id: 9,
       text: "Depresija",
     },
@@ -95,7 +91,7 @@ const Collection_category_filter = (props) => {
     },
     {
       id: 23,
-      text: "Lytinių problemų sprendimas",
+      text: "Lytinės problemos",
     },
     {
       id: 24,
@@ -111,7 +107,7 @@ const Collection_category_filter = (props) => {
     },
     {
       id: 27,
-      text: "Laikymasis sveikos gyvensenos",
+      text: "Sveika gyvensena",
     },
     {
       id: 28,
@@ -174,7 +170,12 @@ const Collection_category_filter = (props) => {
             dropdownFor="types"
             handleTypeSort={props.handleTypeSort}
           />
-
+          {/* <!-- Price Range --> */}
+          <Recently_added_dropdown
+            data={saleTypeText}
+            dropdownFor="price-range"
+            handlePriceSort={props.handlePriceSort}
+          />
           {/* <!-- Sale Type --> */}
           <Recently_added_dropdown
             data={saleTypeText}
@@ -185,13 +186,6 @@ const Collection_category_filter = (props) => {
             data={trukmeList}
             dropdownFor="trukme"
             handleLengthSort={props.handleLengthSort}
-          />
-
-          {/* <!-- Price Range --> */}
-          <Recently_added_dropdown
-            data={saleTypeText}
-            dropdownFor="price-range"
-            handlePriceSort={props.handlePriceSort}
           />
         </div>
 

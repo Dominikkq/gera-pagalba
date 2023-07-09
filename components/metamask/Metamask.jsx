@@ -7,31 +7,37 @@ const Confirm_checkout = (props) => {
   const dispatch = useDispatch();
 
   async function confirmChanges() {
+    var phone = null;
     const token = localStorage.getItem("token");
     const name = document.getElementById("new_name")?.value?.trim();
-    const lastname = document.getElementById("new_lastname")?.value?.trim();
-
+    const phoneNumber = document
+      .getElementById("new_phoneNumber")
+      ?.value?.trim();
+    if (phoneNumber && phoneNumber != "+370") {
+      phone = phoneNumber;
+    }
     if (name && name.length <= 2) {
       document.getElementById("edit_error").innerHTML = "Per trumpas vardas";
       return;
     }
 
-    if (lastname && lastname.length <= 2) {
-      document.getElementById("edit_error").innerHTML = "Per trumpa pavardė";
-      return;
-    }
+    let oldRates = props.rates; // your original object
+    let newRates = {};
 
+    Object.keys(oldRates).forEach((key) => {
+      newRates[parseInt(key)] = parseInt(oldRates[key]);
+    });
     try {
       const requestBody = {
         email: props.email,
         name: name,
-        lastname: lastname,
         description: document.getElementById("new_description")?.value,
         profilePhoto: props.newImage || "",
         helpOptions: props.selectedOptions,
         notes: document.getElementById("notes_enter")?.value,
         languageOptions: props.languages,
-        rates: props.rates,
+        rates: newRates,
+        phoneNumber: phone,
         workdayHours: {
           from: parseInt(document.getElementById("workdays_from")?.value || 0),
           to: parseInt(document.getElementById("workdays_to")?.value || 0),
@@ -43,10 +49,15 @@ const Confirm_checkout = (props) => {
           from: parseInt(document.getElementById("weekends_from").value),
           to: parseInt(document.getElementById("weekends_to").value),
         };
+      } else {
+        requestBody.weekendHours = {
+          from: 0,
+          to: 0,
+        };
       }
 
       const response = await axios.put(
-        "https://www.regreto.com:3000/edit",
+        `${process.env.API_URL}/edit`,
         requestBody,
         {
           headers: {

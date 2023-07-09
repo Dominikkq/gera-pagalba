@@ -24,8 +24,8 @@
 .checkbox-label.selected {
   background: linear-gradient(
       to right,
-      rgba(0, 200, 0, 0.2) 10%,
-      rgba(255, 255, 255, 0) 10%
+      rgba(0, 200, 0, 0.2) 1rem,
+      rgba(255, 255, 255, 0) 1rem
     ),
     #f0f4f8;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.7),

@@ -5,38 +5,37 @@ import star2 from "../../components/assets/icons/star2.png";
 const CategoryItem = (props) => {
   function getColorClass(option) {
     const optionColors = {
-      Depresija: "bg-red-500",
-      "LGBTQ+ klausimai": "bg-blue-500",
+      Traumos: "bg-amber-500",
       Nerimas: "bg-green-500",
-      "Santykių problemos": "bg-yellow-500",
+      Depresija: "bg-red-500",
       Stresas: "bg-purple-500",
       Savigarba: "bg-indigo-500",
+      Priklausomybės: "bg-sky-500",
+      "LGBTQ+ klausimai": "bg-blue-500",
       "Šeimos problemos": "bg-pink-500",
-      "Konfliktų sprendimas": "bg-orange-500",
-      "Karjeros klausimai": "bg-teal-500",
       "Asmeninis augimas": "bg-cyan-500",
-      "Socialinės fobijos": "bg-lime-500",
-      Traumos: "bg-amber-500",
+      "Santykių problemos": "bg-yellow-500",
+      "Karjeros klausimai": "bg-teal-500",
       "Miego problemos": "bg-rose-500",
       "Mokymosi sunkumai": "bg-fuchsia-500",
-      "Lytinių problemų sprendimas": "bg-violet-500",
-      Priklausomybės: "bg-sky-500",
+      "Tėvystės klausimai": "bg-warm-gray-500",
+      "Lytinės problemos": "bg-violet-500",
       "Emocinės problemos": "bg-emerald-500",
       "Gyvenimo pokyčiai": "bg-blue-gray-500",
-      "Laikymasis sveikos gyvensenos": "bg-cool-gray-500",
-      "Tėvystės klausimai": "bg-warm-gray-500",
+      "Sveika gyvensena": "bg-cool-gray-500",
+      "Socialinės fobijos": "bg-lime-500",
+      "Konfliktų sprendimas": "bg-orange-500",
     };
 
     return optionColors[option] || "bg-gray-500";
   }
 
   return (
-    <div className="grid grid-cols-1 gap-[1.875rem] md:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {props.doctors.map((doctor) => {
         const {
           userId,
           name,
-          lastname,
           profilePhoto,
           helpOptions,
           rates,
@@ -115,7 +114,7 @@ const CategoryItem = (props) => {
                   className="hover:text-accent mt-1 block"
                   style={{ fontSize: "1.2rem" }}
                 >
-                  {`${name} ${lastname}`}
+                  {`${name} `}
                 </a>
               </Link>
 

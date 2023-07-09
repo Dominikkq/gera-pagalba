@@ -3,6 +3,7 @@ import "tippy.js/dist/tippy.css"; // optional
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import Meta from "../../components/Meta";
+import { useRouter } from "next/router";
 
 import { createModalShow } from "../../redux/counterSlice";
 import { setCreateValues } from "../../redux/createVariables";
@@ -10,7 +11,14 @@ import { setCreateValues } from "../../redux/createVariables";
 import Link from "next/link";
 const Create = () => {
   const dispatch = useDispatch();
-
+  const extractValueFromURL = (url) => {
+    const regex = /#(.*)$/;
+    const match = url.match(regex);
+    if (match && match.length > 1) {
+      return match[1];
+    }
+    return null;
+  };
   async function CheckIfInputsEntered() {
     var Name = document.getElementById("vardas").value;
     var SideOne = document.getElementById("pavarde").value;
@@ -44,41 +52,47 @@ const Create = () => {
 
     return true;
   }
+  const router = useRouter();
+
+  const pid = router.asPath;
+  const [registerError, setRegisterError] = useState("");
   async function Create() {
     if (await CheckIfInputsEntered()) {
       try {
-        console.log("Registering");
+        console.log(pid);
         const axios = require("axios");
-        const response = await axios.post(
-          "https://www.regreto.com:3000/register",
-          {
-            name: document.getElementById("vardas").value,
-            lastname: document.getElementById("pavarde").value,
-            email: document.getElementById("emailas").value,
-            password: document.getElementById("slaptazodis").value,
-            doctor: true,
-          }
-        );
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-
-      dispatch(
-        setCreateValues({
+        const response = await axios.post(`${process.env.API_URL}/register`, {
           name: document.getElementById("vardas").value,
-          sideOne: document.getElementById("pavarde").value,
-          sideTwo: document.getElementById("emailas").value,
-        })
-      );
-      dispatch(createModalShow());
+
+          email: document.getElementById("emailas").value,
+          password: document.getElementById("slaptazodis").value,
+          doctor: extractValueFromURL(pid),
+        });
+        console.log(response);
+
+        dispatch(
+          setCreateValues({
+            name: document.getElementById("vardas").value,
+            sideOne: document.getElementById("pavarde").value,
+            sideTwo: document.getElementById("emailas").value,
+          })
+        );
+        dispatch(createModalShow());
+      } catch (error) {
+        if (error.response && error.response.data) {
+          setRegisterError(error.response.data.error);
+        } else {
+          setRegisterError(error.message);
+        }
+      }
     }
   }
+
   return (
     <div>
       <Meta title="Registracija || GeraPagalba" />
       {/* <!-- Create --> */}
-      <section className="relative py-24" style={{ height: "100vh" }}>
+      <section className="relative py-24">
         <picture className="pointer-events-none absolute inset-0 -z-10 ">
           <Image
             src="/images/gradient_light.jpg"
@@ -179,7 +193,10 @@ const Create = () => {
               </label>
             </div>
             <br></br>
-
+            {registerError && (
+              <p style={{ color: "#EF4444" }}>{registerError}</p>
+            )}
+            <br></br>
             {/* Submit */}
             <button
               onClick={Create}

@@ -20,7 +20,7 @@ const ConfirmBusyModal = ({}) => {
   async function Busy() {
     try {
       const response = await axios.post(
-        "https://www.regreto.com:3000/busy",
+        `${process.env.API_URL}/busy`,
         {
           start: busyModalData.start,
           end: busyModalData.end,

@@ -19,29 +19,138 @@ const Hero_5 = () => {
 
         <div className="h-full px-6 xl:px-20">
           <div className="grid h-full items-center gap-4 lg:grid-cols-12">
-            <div className="col-span-6 flex h-full flex-col items-center justify-center py-10 md:items-start md:py-20 xl:col-span-5 xl:pl-[20%] xl:pr-[10%]">
+            <div className="col-span-6 flex h-full flex-col items-center justify-center py-10 md:items-start md:py-20 xl:col-span-5 xl:pl-[15%] xl:pr-[20%]">
               <div className="mb-10 w-full sm:flex sm:space-x-4">
-                <div className="mb-4 flex-1 rounded-2lg bg-white p-4 text-center ">
-                  <span className="block font-display text-3xl text-[#8DD059]">
+                <div
+                  className="mb-4 flex-1 rounded-2lg p-4  "
+                  style={{
+                    position: "relative",
+                    borderRadius: "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "#99E35F",
+                      boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
+                      opacity: "0.4",
+                      position: "absolute",
+                      inset: "0",
+                      borderRadius: "20px",
+                      zIndex: "-1",
+                    }}
+                  />
+                  <span
+                    className="block font-display text-3xl"
+                    style={{
+                      fontFamily: "Montserrat",
+                      fontStyle: "normal",
+                      fontWeight: 600,
+                      fontSize: "36px",
+                      lineHeight: "44px",
+                      color: "#1E1E1E",
+                      textAlign: "center",
+                    }}
+                  >
                     100+
                   </span>
-                  <span className="block font-display text-sm text-jacarta-500 ">
+                  <span
+                    style={{
+                      fontFamily: "Montserrat",
+                      fontWeight: 600,
+                      fontSize: "20px",
+                      lineHeight: "10px",
+                      textAlign: "left",
+                    }}
+                  >
                     Patenkintų Klientų
                   </span>
                 </div>
-                <div className="mb-4 flex-1 rounded-2lg bg-white p-4 text-center ">
-                  <span className="block font-display text-3xl text-[#737EF2]">
+
+                <div
+                  className="mb-4 flex-1 rounded-2lg p-4"
+                  style={{
+                    position: "relative",
+                    borderRadius: "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "#99E35F",
+                      boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
+                      opacity: "0.75",
+                      position: "absolute",
+                      inset: "0",
+                      borderRadius: "20px",
+                      zIndex: "-1",
+                    }}
+                  />
+                  <span
+                    className="block font-display text-3xl"
+                    style={{
+                      fontFamily: "Montserrat",
+                      fontStyle: "normal",
+                      fontWeight: 600,
+                      fontSize: "36px",
+                      lineHeight: "44px",
+                      color: "#1E1E1E",
+                      textAlign: "center",
+                    }}
+                  >
                     50+
                   </span>
-                  <span className="block font-display text-sm text-jacarta-500 ">
+                  <span
+                    style={{
+                      fontFamily: "Montserrat",
+                      fontStyle: "normal",
+                      fontWeight: 600,
+                      fontSize: "20px",
+                      lineHeight: "10px",
+                      textAlign: "left",
+                    }}
+                  >
                     Patenkintų Terapeutų
                   </span>
                 </div>
-                <div className="mb-4 flex-1 rounded-2lg bg-white p-4 text-center ">
-                  <span className="block font-display text-3xl text-[#F35BC7]">
+                <div
+                  className="mb-4 flex-1 rounded-2lg p-4 text-center "
+                  style={{
+                    position: "relative",
+                    borderRadius: "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "#99E35F",
+                      boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
+                      opacity: "1",
+                      position: "absolute",
+                      inset: "0",
+                      borderRadius: "20px",
+                      zIndex: "-1",
+                    }}
+                  />
+                  <span
+                    className="block font-display text-3xl "
+                    style={{
+                      fontFamily: "Montserrat",
+                      fontStyle: "normal",
+                      fontWeight: 600,
+                      fontSize: "36px",
+                      lineHeight: "44px",
+                      color: "#1E1E1E",
+                    }}
+                  >
                     4.5+
                   </span>
-                  <span className="block font-display text-sm text-jacarta-500 ">
+                  <span
+                    style={{
+                      fontFamily: "Montserrat",
+                      fontStyle: "normal",
+                      fontWeight: 600,
+                      fontSize: "20px",
+                      lineHeight: "35px",
+                    }}
+                  >
                     Įvertinimas
                   </span>
                 </div>
@@ -55,7 +164,7 @@ const Hero_5 = () => {
               </p>
               <div className="flex space-x-5">
                 <Link href="/registracija">
-                  <a className="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white transition-all hover:bg-brand">
+                  <a className="w-36 rounded-full bg-brand2 py-3 px-8 text-center font-semibold text-white transition-all hover:bg-brand">
                     Prisijūnk
                   </a>
                 </Link>

@@ -49,7 +49,7 @@ const User = () => {
       dispatch(reasonModalShow(appointmentId));
     } else {
       const response = await axios.delete(
-        `https://www.regreto.com:3000/appointmentsCancel/${CurrentUser.userId}/${appointmentId}`,
+        `${process.env.API_URL}/appointmentsCancel/${CurrentUser.userId}/${appointmentId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -87,9 +87,8 @@ const User = () => {
           showConfirmAppointmentModal({
             date: `${start}-${end}`,
             user: CurrentUser.userId,
-            doctor: User.name + " " + User.lastname,
+            doctor: User.name,
             doctorId: User.userId,
-
             start: info.startStr,
             end: info.endStr,
           })
@@ -186,7 +185,7 @@ const User = () => {
   const [rating, setRating] = useState(0);
   const handleStarClick = async (index, doctorId, appointmentId) => {
     await axios.post(
-      `https://www.regreto.com:3000/rateDoctor`,
+      `${process.env.API_URL}/rateDoctor`,
       {
         doctorId: doctorId,
         userId: CurrentUser.userId,
@@ -260,7 +259,7 @@ const User = () => {
     const userId = window.location.href.split("/").pop();
     try {
       const response = await axios.get(
-        `https://www.regreto.com:3000/user/${userId}`,
+        `${process.env.API_URL}/user/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -295,7 +294,7 @@ const User = () => {
   }
   async function GetCurrentUserData() {
     if (localStorage.getItem("token")) {
-      const response = await axios.get("https://www.regreto.com:3000/user", {
+      const response = await axios.get(`${process.env.API_URL}/user`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
@@ -311,7 +310,7 @@ const User = () => {
   async function GetUserAppointments() {
     try {
       const response = await axios.get(
-        `https://www.regreto.com:3000/appointmentsMade`,
+        `${process.env.API_URL}/appointmentsMade`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -333,7 +332,7 @@ const User = () => {
   async function GetAppointments(userId) {
     try {
       const response = await axios.get(
-        `https://www.regreto.com:3000/appointments/${userId}`,
+        `${process.env.API_URL}/appointments/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -408,7 +407,7 @@ const User = () => {
 
             <div className="text-center">
               <h2 className="font-display text-jacarta-700 mb-2 text-4xl font-medium">
-                {User.name} {User.lastname}
+                {User.name}
               </h2>
               {User.job && (
                 <div className=" border-jacarta-100 mb-8 inline-flex items-center justify-center rounded-full border bg-white py-1.5 px-4">
@@ -457,7 +456,7 @@ const User = () => {
             <table>
               <thead>
                 {UserAppointments.length === 0 &&
-                DoctorAppointments.appointments?.length === 0 ? (
+                DoctorAppointments.length === 0 ? (
                   <tr>
                     <th colSpan="5" style={{ textAlign: "center" }}>
                       Nėra konsultacijų
@@ -586,6 +585,7 @@ const User = () => {
                 Sesijos Trukmė
               </h5>
               <div className="button-wrapper">
+                {console.log(User)}
                 {User?.rates &&
                   Object.keys(User?.rates)
                     .filter((time) => User.rates[time] > 0)
@@ -608,7 +608,7 @@ const User = () => {
                     })}
               </div>
             </div>
-            {User.doctor && AppointmentEvents.length > 0 && (
+            {User.doctor && (
               <div className="calendar">
                 {console.log(User.weekendHours)}
                 <FullCalendar

@@ -133,29 +133,6 @@ const Recently_added_dropdown = ({
     dispatch(updatetrendingCategorySorText(sortFilterText));
   }, [sortFilterText, dispatch]);
 
-  const inputData = [
-    {
-      id: 1,
-      text: "Verified Only",
-    },
-    {
-      id: 2,
-      text: "NFSW Only",
-    },
-    {
-      id: 3,
-      text: "Show Lazy Minted",
-    },
-  ];
-
-  const handleInput = (e, text) => {
-    if (e.target.checked) {
-      dispatch(updateTrendingCategoryItemByInput(text));
-    } else {
-      dispatch(updateTrendingCategoryItemByInput(""));
-    }
-  };
-
   const handleCurrencyValTo = (e) => {
     const value = e.target.value;
     if (value < 0) {
@@ -190,7 +167,7 @@ const Recently_added_dropdown = ({
             className="tooltip-container"
             content={
               <div
-                className="dropdown-menu  z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show text-jacarta-500"
+                className="dropdown-menu  z-10 hidden  whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show text-jacarta-500"
                 aria-labelledby="categoriesSort"
               >
                 <span className="font-display text-jacarta-300 block px-5 py-2 text-sm font-semibold">
@@ -224,29 +201,6 @@ const Recently_added_dropdown = ({
                     </button>
                   );
                 })}
-                {/*
-                <span className="font-display text-jacarta-300 block px-5 py-2 text-sm font-semibold">
-                  Options
-                </span>
-                {inputData.map(({ id, text }) => {
-                  return (
-                    <div
-                      key={id}
-                      className="dropdown-item font-display  hover:bg-jacarta-50 block w-full rounded-xl px-5 py-2 text-left text-sm transition-colors "
-                    >
-                      <span className="flex items-center justify-between">
-                        <span>{text}</span>
-                        <input
-                          type="checkbox"
-                          name="check"
-                          className="checked:bg-accent checked:focus:bg-accent checked:hover:bg-accent after:bg-jacarta-400 bg-jacarta-100 relative h-4 w-7 cursor-pointer appearance-none rounded-lg border-none shadow-none after:absolute after:top-0.5 after:left-0.5 after:h-3 after:w-3 after:rounded-full after:transition-all checked:bg-none checked:after:left-3.5 checked:after:bg-white focus:ring-transparent focus:ring-offset-0"
-                          onChange={(e) => handleInput(e, text)}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
-                 */}
               </div>
             }
           >
@@ -281,8 +235,8 @@ const Recently_added_dropdown = ({
         <div
           className={
             blockChaindropdownShow
-              ? "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
+              ? "dropdown-menu  z-10  whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10  whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
           }
           onClick={(e) => e.stopPropagation()}
         >
@@ -296,7 +250,7 @@ const Recently_added_dropdown = ({
                     onClick={() => {
                       handleLanguageSort(text);
                     }}
-                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors `}
+                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-2 py-2 text-left text-sm transition-colors `}
                   >
                     <span>{text}</span>
                     {isSelected && (
@@ -334,8 +288,8 @@ const Recently_added_dropdown = ({
         <div
           className={
             categoryDropdown
-              ? "dropdown-menu  z-10 min-w-[300px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu  z-10 min-w-[300px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
+              ? "dropdown-menu  z-10 min-w-[200px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 min-w-[200px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl hidden absolute top-full right-0"
           }
           onClick={(e) => e.stopPropagation()} // Stop the click event from propagating
         >
@@ -349,9 +303,9 @@ const Recently_added_dropdown = ({
                     onClick={() => {
                       handleTypeSort(text);
                     }}
-                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-full items-center justify-between rounded-xl px-5 py-2 text-left text-sm transition-colors `}
+                    className={`dropdown-item font-bold font-display  hover:bg-jacarta-50 flex w-[180px] items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors `}
                   >
-                    <span>{text}</span>
+                    <span style={{ fontSize: "0.8rem" }}>{text}</span>
                     {isSelected && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -372,7 +326,7 @@ const Recently_added_dropdown = ({
         </div>
       </div>
     );
-  } else if (dropdownFor === "rankingCategories") {
+
     return (
       <div className="my-1 mr-2.5 relative">
         <button
@@ -444,8 +398,8 @@ const Recently_added_dropdown = ({
           onClick={(e) => e.stopPropagation()}
           className={
             dropdownSale
-              ? "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu  z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
+              ? "dropdown-menu  z-10  whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 hidden  whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
           }
         >
           <ul className="flex flex-col flex-wrap">
@@ -477,24 +431,6 @@ const Recently_added_dropdown = ({
               );
             })}
           </ul>
-
-          <div className=" border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
-            <button
-              type="button"
-              onClick={() => {
-                setDropdownSale(false);
-              }}
-              className="text-accent flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all "
-            >
-              Atšaukti
-            </button>
-            <button
-              type="button"
-              className="bg-accent flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
-            >
-              Pritaikyti
-            </button>
-          </div>
         </div>
       </div>
     );
@@ -514,8 +450,8 @@ const Recently_added_dropdown = ({
           onClick={(e) => e.stopPropagation()}
           className={
             dropdownSale
-              ? "dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
-              : "dropdown-menu  z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
+              ? "dropdown-menu  z-10  whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl show absolute top-full right-0"
+              : "dropdown-menu  z-10 hidden whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl absolute top-full right-0"
           }
         >
           <ul className="flex flex-col flex-wrap">
@@ -548,24 +484,6 @@ const Recently_added_dropdown = ({
               );
             })}
           </ul>
-
-          <div className=" border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
-            <button
-              type="button"
-              onClick={() => {
-                setDropdownSale(false);
-              }}
-              className="text-accent flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all "
-            >
-              Atšaukti
-            </button>
-            <button
-              type="button"
-              className="bg-accent flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
-            >
-              Pritaikyti
-            </button>
-          </div>
         </div>
       </div>
     );
@@ -583,31 +501,34 @@ const Recently_added_dropdown = ({
           onClickOutside={handleClickOutside}
           content={
             <div
-              className={`dropdown-menu  z-10 min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl `}
+              className={`dropdown-menu z-10 min-w-[160px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl `}
               aria-labelledby="priceRangeFilter"
             >
-              {/* <!-- From / To --> */}
-              <div className="flex items-center space-x-3 px-5 pb-2">
+              {/* From / To */}
+              <div className="flex items-center space-x-3 px-5 pb-2 flex-col">
                 <input
+                  style={{ margin: "auto", marginBottom: "10px" }}
                   type="number"
                   placeholder="Nuo"
                   value={currencyValFrom}
                   onChange={handleCurrencyValFrom}
-                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4   "
+                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full rounded-lg border py-2 px-4 mb-3"
                 />
+
                 <input
+                  style={{ margin: "auto" }}
                   type="number"
                   placeholder="Iki"
                   value={currencyValTo}
                   onChange={handleCurrencyValTo}
-                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full max-w-[7.5rem] rounded-lg border py-[0.6875rem] px-4   "
+                  className="text-jacarta-700 placeholder-jacarta-500 focus:ring-accent border-jacarta-100 w-full rounded-lg border py-2 px-4 mb-3"
                 />
               </div>
 
-              <div className=" border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4">
+              <div className=" border-jacarta-100 -ml-2 -mr-2 mt-4 flex items-center justify-center space-x-3 border-t px-7 pt-4 flex-col">
                 <button
                   type="button"
-                  className="text-accent flex-1 rounded-full bg-white py-2 px-6 text-center text-sm font-semibold transition-all "
+                  className="text-accent w-full rounded-full bg-white py-2 px-3 text-center text-sm font-semibold transition-all mb-3"
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   Atšaukti
@@ -615,7 +536,7 @@ const Recently_added_dropdown = ({
                 <button
                   type="button"
                   onClick={handlePriceSort}
-                  className="bg-accent flex-1 rounded-full py-2 px-6 text-center text-sm font-semibold text-white transition-all"
+                  className="bg-accent w-full rounded-full py-2 px-3 text-center text-sm font-semibold text-white transition-all"
                 >
                   Pritaikyti
                 </button>

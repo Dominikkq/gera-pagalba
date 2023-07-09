@@ -5,7 +5,10 @@ import { useDispatch } from "react-redux";
 import Meta from "../../components/Meta";
 import Image from "next/image";
 import { setCurrentUser } from "../../redux/createVariables";
-import { forgotPasswordModalShow } from "../../redux/counterSlice";
+import {
+  forgotPasswordModalShow,
+  emailVerifiedModalShow,
+} from "../../redux/counterSlice";
 
 const Create = () => {
   const [loginError, setLoginError] = useState("");
@@ -32,18 +35,22 @@ const Create = () => {
 
     return true;
   }
-  useEffect(() => {}, [loginError]);
+  useEffect(() => {
+    const hash = window.location.hash;
+
+    if (hash === "#success") {
+      console.log(hash);
+      dispatch(emailVerifiedModalShow());
+    }
+  }, [loginError]);
   async function login() {
     if (await checkIfInputsEntered()) {
       const axios = require("axios");
       try {
-        const response = await axios.post(
-          "https://www.regreto.com:3000/login",
-          {
-            email: document.getElementById("emailas").value,
-            password: document.getElementById("password").value,
-          }
-        );
+        const response = await axios.post(`${process.env.API_URL}/login`, {
+          email: document.getElementById("emailas").value,
+          password: document.getElementById("password").value,
+        });
 
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
@@ -51,7 +58,6 @@ const Create = () => {
             setCurrentUser({
               UserEmail: document.getElementById("emailas").value,
               UserToken: response.data.token,
-              UserFullName: response.data.name + " " + response.data.lastname,
             })
           );
 
@@ -70,7 +76,11 @@ const Create = () => {
       }
     }
   }
-
+  const handleFormSubmit = async (event) => {
+    console.log("form submitted");
+    event.preventDefault(); // Prevents page refresh
+    login();
+  };
   return (
     <div>
       <Meta title="Prisijungimas || GeraPagalba" />
@@ -89,57 +99,59 @@ const Create = () => {
             Prisijungimas
           </h1>
           <div className="mx-auto max-w-[48.125rem]">
-            {/* <!-- Description --> */}
-            <div className="mb-6">
-              <label
-                htmlFor="item-description"
-                className="font-display text-jacarta-700 mb-2 block "
-                id="email_text"
-              >
-                El. Paštas<label className="text-red">*</label>
-              </label>
+            <form onSubmit={handleFormSubmit}>
+              <div className="mb-6">
+                <label
+                  htmlFor="item-description"
+                  className="font-display text-jacarta-700 mb-2 block "
+                  id="email_text"
+                >
+                  El. Paštas<label className="text-red">*</label>
+                </label>
 
-              <input
-                type="url"
-                id="emailas"
-                className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
-                placeholder="vardenis.pavardenis@gmail.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="item-description"
-                className="font-display text-jacarta-700 mb-2 block"
-                id="password_text"
-              >
-                Slaptažodis<label className="text-red">*</label>
-              </label>
+                <input
+                  type="email"
+                  id="emailas"
+                  className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
+                  placeholder="vardenis.pavardenis@gmail.com"
+                />
+              </div>
+              <div className="mb-6">
+                <label
+                  htmlFor="item-description"
+                  className="font-display text-jacarta-700 mb-2 block"
+                  id="password_text"
+                >
+                  Slaptažodis<label className="text-red">*</label>
+                </label>
 
-              <input
-                type="password"
-                id="password"
-                className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
-                placeholder="*********"
-                required
-              />
-            </div>
-            <div className="flex justify-end">
-              <a
-                onClick={() => dispatch(forgotPasswordModalShow())}
-                className="text-sm text-jacarta-700 hover:text-jacarta-900"
-              >
-                Pamiršote slaptažodį?
-              </a>
-            </div>
-            {loginError && <p style={{ color: "#EF4444" }}>{loginError}</p>}
-            <br></br>
-            {/* <!-- Submit --> */}
-            <button
-              onClick={login}
-              className="bg-brand hover:brand rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
-            >
-              Prisijungti
-            </button>
+                <input
+                  type="password"
+                  id="password"
+                  className="border border-jacarta-100 w-full rounded-lg py-3 px-3x "
+                  placeholder="*********"
+                  required
+                />
+                <br></br>
+                <br></br>
+                {loginError && <p style={{ color: "#EF4444" }}>{loginError}</p>}
+              </div>
+
+              <div className="flex justify-between items-center">
+                <button
+                  type="submit" // Make this a submit button
+                  className="bg-brand hover:brand rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+                >
+                  Prisijungti
+                </button>
+                <a
+                  onClick={() => dispatch(forgotPasswordModalShow())}
+                  className="text-sm text-jacarta-700 hover:text-jacarta-900"
+                >
+                  Pamiršote slaptažodį?
+                </a>
+              </div>
+            </form>
           </div>
         </div>
       </section>

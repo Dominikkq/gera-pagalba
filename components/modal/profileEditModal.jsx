@@ -59,11 +59,11 @@ const BidsModal = () => {
     "Traumos",
     "Miego problemos",
     "Mokymosi sunkumai",
-    "Lytinių problemų sprendimas",
+    "Lytinės problemos",
     "Priklausomybės",
     "Emocinės problemos",
     "Gyvenimo pokyčiai",
-    "Laikymasis sveikos gyvensenos",
+    "Sveika gyvensena",
     "Tėvystės klausimai",
   ];
 
@@ -194,33 +194,6 @@ const BidsModal = () => {
                             placeholder={prices && prices[30]}
                             id="price_30"
                             onChange={(event) => handlePriceChange(event, 30)}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="mr-4">
-                        <span className="font-display text-jacarta-700 text-sm font-semibold ">
-                          Pavardė
-                        </span>
-                        <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
-                          <input
-                            style={{ minWidth: "300px" }}
-                            placeholder={User.lastname}
-                            id="new_lastname"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <span className="font-display text-jacarta-700 text-sm font-semibold ">
-                          45 min kaina (eur)
-                        </span>
-                        <div className="relative mb-2 flex items-center overflow-hidden rounded-lg">
-                          <input
-                            style={{ minWidth: "20px" }}
-                            placeholder={prices && prices[45]}
-                            id="price_45"
-                            onChange={(event) => handlePriceChange(event, 45)}
                           />
                         </div>
                       </div>

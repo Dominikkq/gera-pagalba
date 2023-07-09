@@ -6,7 +6,7 @@ const Create = () => {
   const [image, setImage] = useState(null);
   const [therapistDetails, setTherapistDetails] = useState({
     firstName: "",
-    lastName: "",
+
     phoneNumber: "",
     extraDetails: "",
   });

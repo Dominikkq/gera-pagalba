@@ -16,6 +16,7 @@ const initialState = {
   statusFailed: false,
   profileEditModal: false,
   buyModal: false,
+  emailVerifiedModal: false,
   confirmAppointmentModalValue: false,
   confirmAppointmentModalData: {},
   trendingCategorySorText: "",
@@ -117,6 +118,12 @@ export const counterSlice = createSlice({
     },
     buyModalHide: (state) => {
       state.buyModal = false;
+    },
+    emailVerifiedModalHide: (state) => {
+      state.emailVerifiedModal = false;
+    },
+    emailVerifiedModalShow: (state) => {
+      state.emailVerifiedModal = true;
     },
     forgotPasswordModalShow: (state) => {
       console.log("wwdwdwwdwd");
@@ -271,6 +278,8 @@ export const {
   busyModalShow,
   forgotPasswordModalShow,
   forgotPasswordModalHide,
+  emailVerifiedModalShow,
+  emailVerifiedModalHide,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

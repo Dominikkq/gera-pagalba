@@ -27,7 +27,14 @@ figure.snip1157 {
   max-width: 310px;
   width: 100%;
 
-  color: #333;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #ffffff;
   text-align: left;
   box-shadow: none !important;
 }
@@ -55,8 +62,8 @@ figure.snip1157 blockquote {
   font-weight: 500;
   margin: 0;
   line-height: 1.6em;
-  font-style: italic;
-  max-height: 16.2rem;
+
+  height: 18.5rem !important;
 }
 figure.snip1157 blockquote:before,
 figure.snip1157 blockquote:after {
@@ -81,7 +88,7 @@ figure.snip1157 .arrow {
   height: 0;
   border-left: 0 solid transparent;
   border-right: 25px solid transparent;
-  border-top: 25px solid #fafafa;
+  border-top: 25px solid #e4e6e7;
   margin: 0;
   position: absolute;
 }

@@ -2,33 +2,31 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  buyModalHide,
+  emailVerifiedModalHide,
   returnAll,
   setCreateData,
 } from "../../redux/counterSlice";
 import { Confirm_checkout } from "../metamask/Metamask";
 const CreateModal = () => {
-  const { buyModal } = useSelector((state) => state.counter);
+  const { emailVerifiedModal } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
 
   return (
     <div>
       {/* <!-- Buy Now Modal --> */}
-      <div className={buyModal ? "modal fade show block" : "modal fade"}>
+      <div
+        className={emailVerifiedModal ? "modal fade show block" : "modal fade"}
+      >
         <div className="modal-dialog max-w-2xl">
           <div className="modal-content">
             <div className="modal-header">
-              <h5
-                className="modal-title"
-                id="buyNowModalLabel"
-                style={{ paddingRight: "50px" }}
-              >
-                Registracija Sekminga
+              <h5 className="modal-title" id="buyNowModalLabel">
+                El. Paštas patvirtintas sėkmingai
               </h5>
               <button
                 type="button"
                 className="btn-close"
-                onClick={() => dispatch(buyModalHide())}
+                onClick={() => dispatch(emailVerifiedModalHide())}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +42,7 @@ const CreateModal = () => {
             </div>
 
             {/* <!-- Body --> */}
-            <div className="modal-body p-6">
+            <div className="modal-body">
               <div className="success-checkmark">
                 <div className="check-icon">
                   <span className="icon-line line-tip"></span>
@@ -53,23 +51,18 @@ const CreateModal = () => {
                   <div className="icon-fix"></div>
                 </div>
               </div>
-              <p className="text-center ">
-                Patvirtinkite el. pašta prieš jungiantis
-              </p>
             </div>
             {/* <!-- end body --> */}
 
             <div className="modal-footer">
               <div className="flex items-center justify-center space-x-4">
-                <Link href="/prisijungimas">
-                  <button
-                    onClick={() => dispatch(buyModalHide())}
-                    type="button"
-                    className="bg-brand hover:brand rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
-                  >
-                    Prisijungti
-                  </button>
-                </Link>
+                <button
+                  onClick={() => dispatch(emailVerifiedModalHide())}
+                  type="button"
+                  className="bg-brand hover:brand rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+                >
+                  Prisijungti
+                </button>
               </div>
             </div>
           </div>

@@ -123,8 +123,7 @@ const Navbar = () => {
                 <div className="js-nav-dropdown group-dropdown relative">
                   <button
                     className="dropdown-toggle border-jacarta-100 focus:bg-accent group hover:bg-accent ml-2 flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-colors hover:border-transparent focus:border-transparent border-transparent "
-                    onMouseEnter={() => setProfileShow(true)}
-                    onMouseLeave={() => setProfileShow(false)}
+                    onClick={() => setProfileShow((prevState) => !prevState)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -139,6 +138,11 @@ const Navbar = () => {
                   </button>
 
                   <div
+                    style={{
+                      border: "solid 2px #6CB960",
+                      marginRight: "1rem",
+                      marginTop: "0.5rem",
+                    }}
                     className={
                       profileShow
                         ? "dropdown-menu  group-dropdown-hover:opacity-100 group-dropdown-hover:visible !-right-4 !top-[85%] !left-auto z-10 min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:shadow-2xl show lg:visible lg:opacity-100"
@@ -149,7 +153,7 @@ const Navbar = () => {
                   >
                     <Link href={`/registracija`} passHref>
                       <a
-                        className="hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-5 transition-colors"
+                        className="hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-3 transition-colors"
                         onClick={handleLinkClick}
                       >
                         <Image
@@ -165,7 +169,7 @@ const Navbar = () => {
                     </Link>
                     <Link href={`/prisijungimas/`} passHref>
                       <a
-                        className="hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors"
+                        className="hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-3 transition-colors"
                         onClick={handleLinkClick}
                       >
                         <Image

@@ -13,7 +13,7 @@ const FilterCategoryItem = () => {
   async function GetDoctors(sortBy) {
     try {
       const response = await axios.get(
-        `https://www.regreto.com:3000/sortedDoctors/`,
+        `${process.env.API_URL}/sortedDoctors/`,
         {
           params: {
             sortBy,
@@ -114,9 +114,9 @@ const FilterCategoryItem = () => {
       <Collection_category_filter
         handleLanguageSort={handleLanguageSort}
         handleTypeSort={handleTypeSort}
+        handlePriceSort={handlePriceSort}
         handleRatingsSort={handleRatingsSort}
         handleLengthSort={handleLengthSort}
-        handlePriceSort={handlePriceSort}
       />
       <CategoryItem doctors={doctors} />
     </div>
