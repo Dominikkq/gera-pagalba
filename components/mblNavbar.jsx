@@ -4,7 +4,7 @@ import { closeMblMenu } from "../redux/counterSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Image from "next/image";
-
+import LoginRegister from "./LoginRegister/LoginRegister.jsx"
 import { Logout } from "./functions/functions";
 const MblNavbar = ({ User, navItemValue, navText }) => {
   const { mblMenu } = useSelector((state) => state.counter);
@@ -225,58 +225,7 @@ const MblNavbar = ({ User, navItemValue, navText }) => {
             </Link>
           </li>
 
-          {User.name == undefined ? (
-            <>
-              <Link href="/prisijungimas">
-                <a
-                  onClick={() => {
-                    dispatch(closeMblMenu());
-                    localStorage.setItem("navItemValue", 60);
-                  }}
-                >
-                  <button
-                    className={
-                      "dropdown-toggle text-jacarta-700 font-display hover:text-brand focus:text-brand flex items-center justify-between py-3.5 text-base  lg:px-5 w-full"
-                    }
-                  >
-                    <span
-                      className={
-                        navText === "prisijungimas" ? "text-brand" : ""
-                      }
-                    >
-                      Prisijungti
-                    </span>
-                  </button>
-                </a>
-              </Link>
-              <Link href="/registracija">
-                <a
-                  onClick={() => {
-                    dispatch(closeMblMenu());
-                    localStorage.setItem("navItemValue", 61);
-                  }}
-                >
-                  <button
-                    style={{ backgroundColor: "#00E573", borderRadius: "20px" }}
-                    className={
-                      router.asPath === "/home/home_3"
-                        ? "font-display hover:text-accent focus:text-accent flex items-center justify-between py-3.5 text-base lg:text-white text-jacarta-700  lg:px-5"
-                        : "text-jacarta-700 font-display hover:text-accent focus:text-accent   flex items-center justify-between py-3.5 text-base  lg:px-5"
-                    }
-                  >
-                    <span
-                      style={{ color: "white" }}
-                      className={navText === "create" ? "text-white" : ""}
-                    >
-                      Registruotis
-                    </span>
-                  </button>
-                </a>
-              </Link>
-            </>
-          ) : (
-            ""
-          )}
+          <LoginRegister user={User} navText={navText} />
         </ul>
       </nav>
 

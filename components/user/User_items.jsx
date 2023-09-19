@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Activity_item from "../collectrions/Activity_item";
 import Image from "next/image";
-import Feature_collections_data from "../../data/Feature_collections_data";
+
 import Trending_categories_items from "../categories/trending_categories_items";
 
 import "react-tabs/style/react-tabs.css";

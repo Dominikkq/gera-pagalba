@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import CategoryItem from "./categoryItem";
+import React, { useState } from "react";
+
 import Recently_added_dropdown from "../dropdown/recently_added_dropdown";
-import { useSelector, useDispatch } from "react-redux";
-import { updateTrendingCategoryItemData } from "../../redux/counterSlice";
+import Specialistai from "./specialistai";
 
 const Trending_categories_items = () => {
   const [itemdata, setItemdata] = useState();
@@ -93,7 +92,7 @@ const Trending_categories_items = () => {
       </div>
 
       {/* <!-- Grid --> */}
-      <CategoryItem />
+      <Specialistai />
     </>
   );
 };

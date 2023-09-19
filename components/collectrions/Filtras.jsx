@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Recently_added_dropdown from "../dropdown/recently_added_dropdown";
 
-const Collection_category_filter = (props) => {
+const SpecialistuFiltras = (props) => {
   const sortText = [
     {
       id: 1,
@@ -196,4 +196,4 @@ const Collection_category_filter = (props) => {
   );
 };
 
-export default Collection_category_filter;
+export default SpecialistuFiltras;

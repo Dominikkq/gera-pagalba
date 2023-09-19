@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Collection_category_filter from "../collectrions/collection_category_filter";
-import CategoryItem from "./categoryItem";
 
-const FilterCategoryItem = () => {
+import Specialistai from "./specialistai";
+import SpecialistuFiltras from "../collectrions/Filtras";
+
+const SpecialistuSekcija = () => {
   const [doctors, setDoctors] = useState([]);
   const [languages, setLanguages] = useState([]);
   const [types, setTypes] = useState([]);
@@ -111,16 +112,16 @@ const FilterCategoryItem = () => {
   return (
     <div>
       {/* <!-- Filter --> */}
-      <Collection_category_filter
+      <SpecialistuFiltras
         handleLanguageSort={handleLanguageSort}
         handleTypeSort={handleTypeSort}
         handlePriceSort={handlePriceSort}
         handleRatingsSort={handleRatingsSort}
         handleLengthSort={handleLengthSort}
       />
-      <CategoryItem doctors={doctors} />
+      <Specialistai doctors={doctors} />
     </div>
   );
 };
 
-export default FilterCategoryItem;
+export default SpecialistuSekcija;

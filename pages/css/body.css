@@ -2,6 +2,16 @@ body {
   /*font-family: "Montserrat" !important;
   font-weight: 500 !important;*/
 }
+.image-container {
+  position: relative;
+}
+
+.review {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+}
 
 .modal-wrapper {
   position: fixed;

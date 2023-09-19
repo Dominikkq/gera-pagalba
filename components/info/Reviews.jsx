@@ -1,0 +1,3 @@
+export const review1 = "Dėkoju GeraPagalba už galimybę gauti pagalbą iš namų, be jokio reikalo važiuoti į terapeuto kabinetą. Ši paslauga sutaupo daug laiko ir yra labai patogi. Be to, nereikia nerimauti dėl eismo ar parkavimo vietos! Esu labai patenkintas ir rekomenduoju tai kitiems."
+export const review2 = "GeraPagalba man padeda susisiekti su terapeutu, kai prasideda panikos priepuoliai. Tai yra neįkainojama paslauga, kuri tapo mano kasdienybe. Dėkoju, kad suteikiate galimybę greitai gauti pagalbą, kai to labiausiai reikia."
+export const review3 = "Anksčiau man buvo sudėtinga suderinti terapijos sesijų laiką su savo darbu. Dabar, dėka GeraPagalba, galiu susisiekti su terapeutu bet kur ir bet kada. Dėkoju jums!"

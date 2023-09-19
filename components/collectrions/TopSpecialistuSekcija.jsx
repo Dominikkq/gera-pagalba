@@ -1,9 +1,9 @@
 import React from "react";
 import HeadLine from "../headLine";
-import Feature_collections_carousel from "../carousel/Feature_collection_carousel";
 import Image from "next/image";
+import TopSpecialistai from "../carousel/TopSpecialistai";
 
-const Feature_collections = ({ bgWhite = false }) => {
+const TopSpecialistuSekcija = ({ bgWhite = false }) => {
   return (
     <div>
       <section className="py-24 relative">
@@ -23,7 +23,7 @@ const Feature_collections = ({ bgWhite = false }) => {
             classes="font-display text-jacarta-700 mb-8 text-center text-3xl "
           />
           <div className="relative">
-            <Feature_collections_carousel />
+            <TopSpecialistai />
           </div>
         </div>
       </section>
@@ -31,4 +31,4 @@ const Feature_collections = ({ bgWhite = false }) => {
   );
 };
 
-export default Feature_collections;
+export default TopSpecialistuSekcija;

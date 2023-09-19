@@ -22,6 +22,7 @@ import "./css/testimonials.css";
 import "./css/body.css";
 import "./css/Loading.css";
 import "./css/settings.css";
+
 const FullCalendar = require("@fullcalendar/react").default;
 const timeGridPlugin = require("@fullcalendar/timegrid").default;
 const interactionPlugin = require("@fullcalendar/interaction").default;

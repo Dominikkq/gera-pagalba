@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Activity_item from "./Activity_item";
 import Image from "next/image";
-import FilterCategoryItem from "../categories/filterCategoryItem";
 
 import "react-tabs/style/react-tabs.css";
-import { collection_activity_item_data } from "../../data/collection_data";
+
+import SpecialistuSekcija from "../categories/SpecialistuSekcija";
 
 const Collection_items = () => {
   const [itemsTabs, setItemsTabs] = useState(1);
@@ -65,7 +65,7 @@ const Collection_items = () => {
 
             <TabPanel>
               <div>
-                <FilterCategoryItem />
+                <SpecialistuSekcija />
               </div>
             </TabPanel>
             <TabPanel>

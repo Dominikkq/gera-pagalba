@@ -1,10 +1,9 @@
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   buyModalHide,
-  returnAll,
-  setCreateData,
+
 } from "../../redux/counterSlice";
 import { Confirm_checkout } from "../metamask/Metamask";
 const CreateModal = () => {
@@ -45,20 +44,20 @@ const CreateModal = () => {
 
             {/* <!-- Body --> */}
             <div className="modal-body p-6">
-              <div className="success-checkmark">
-                <div className="check-icon">
+              <div className="success-checkmark" >
+                <div className="check-icon" style={{margin: "auto"}}>
                   <span className="icon-line line-tip"></span>
                   <span className="icon-line line-long"></span>
                   <div className="icon-circle"></div>
                   <div className="icon-fix"></div>
                 </div>
               </div>
-              <p className="text-center ">
-                Patvirtinkite el. pašta prieš jungiantis
-              </p>
+
             </div>
             {/* <!-- end body --> */}
-
+            <p className="text-center ">
+                Patvirtinkite el. pašta prieš jungiantis
+              </p>
             <div className="modal-footer">
               <div className="flex items-center justify-center space-x-4">
                 <Link href="/prisijungimas">

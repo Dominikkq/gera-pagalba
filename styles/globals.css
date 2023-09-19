@@ -2603,6 +2603,10 @@ html {
     --tw-bg-opacity: 1;
     background-color: #99e35f;
   }
+  .bg-brand3 {
+    --tw-bg-opacity: 1;
+    background-color: #E2E8F0;
+  }
   .styledBlockquote {
     position: relative;
     z-index: 1;

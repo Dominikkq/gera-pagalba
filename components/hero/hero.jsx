@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 import heroImage from "../assets/icons/main.png";
 import Image from "next/image";
-const Hero_5 = () => {
+const Hero = () => {
   return (
     <>
       {/* <!-- Hero --> */}
@@ -190,4 +190,4 @@ const Hero_5 = () => {
   );
 };
 
-export default Hero_5;
+export default Hero;
