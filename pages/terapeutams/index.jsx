@@ -55,7 +55,7 @@ const Create = () => {
         </picture>
         <div className="container">
           <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium ">
-            Terapistų registracijos forma
+            Specialistų registracijos forma
             <p className="mt-4 text-sm text-center text-gray-600">
               Susisieksime su Jumis per 24 valandas, kad patvirtintume Jūsų
               registraciją.

@@ -20,21 +20,6 @@ const initialState = {
   confirmAppointmentModalValue: false,
   confirmAppointmentModalData: {},
   trendingCategorySorText: "",
-  MoralisAthenticated: false,
-  Selected_Bid_id: 0,
-  Selected_Bid_title: "",
-  Selected_Bid_sideOnePayout: 0,
-  Selected_Bid_sideTwoPayout: 0,
-  Selected_Bid_sideOne: "",
-  Selected_Bid_sideTwo: "",
-  Selected_Bid_selectedSide: 0,
-  Selected_Validation_id: 0,
-  Selected_Validation_title: "",
-  Selected_Validation_sideOnePayout: 0,
-  Selected_Validation_sideTwoPayout: 0,
-  Selected_Validation_sideOne: "",
-  Selected_Validation_sideTwo: "",
-  Selected_Validation_selectedSide: 0,
   reasonModal: false,
   busyModal: false,
   busyModalData: {},
@@ -45,9 +30,6 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    MoralisAthenticate: (state) => {
-      state.MoralisAthenticated = true;
-    },
     openMblMenu: (state) => {
       state.mblMenu = true;
     },
@@ -72,19 +54,7 @@ export const counterSlice = createSlice({
       state.statusFailed = true;
       state.statusDone = false;
     },
-    validationModalShow: (state, action) => {
-      state.validationModal = true;
-      state.Selected_Validation_id = action.payload.id;
-      state.Selected_Validation_title = action.payload.title;
-      state.Selected_Validation_sideOne = action.payload.sideOne;
-      state.Selected_Validation_sideTwo = action.payload.sideTwo;
-      state.Selected_Validation_selectedSide = action.payload.selectedSide;
-    },
-    validationModalHide: (state) => {
-      state.validationModal = false;
-      state.statusDone = false;
-      state.statusFailed = false;
-    },
+
     statusModalShow: (state) => {
       state.statusModal = true;
     },
@@ -269,9 +239,6 @@ export const {
   updateRenkingData,
   updateRenkingDataByBlockchain,
   updateRenkingDataByPostdate,
-  MoralisAthenticate,
-  validationModalShow,
-  validationModalHide,
   reasonModalShow,
   reasonModalHide,
   busyModalHide,

@@ -59,17 +59,14 @@ const Create = () => {
   async function Create() {
     if (await CheckIfInputsEntered()) {
       try {
-        console.log(pid);
         const axios = require("axios");
-        const response = await axios.post(`${process.env.API_URL}/register`, {
+        await axios.post(`${process.env.API_URL}/register`, {
           name: document.getElementById("vardas").value,
 
           email: document.getElementById("emailas").value,
           password: document.getElementById("slaptazodis").value,
           doctor: extractValueFromURL(pid),
         });
-        console.log(response);
-
         dispatch(
           setCreateValues({
             name: document.getElementById("vardas").value,
@@ -92,7 +89,7 @@ const Create = () => {
     <div>
       <Meta title="Registracija || GeraPagalba" />
       {/* <!-- Create --> */}
-      <section className="relative py-24">
+      <section className="relative py-40">
         <picture className="pointer-events-none absolute inset-0 -z-10 ">
           <Image
             src="/images/gradient_light.jpg"
@@ -187,7 +184,7 @@ const Create = () => {
               />
               <label htmlFor="buyNowTerms" className=" text-sm">
                 Sutinku su duomenų
-                <Link href="/tarms">
+                <Link href="/terms">
                   <a className="text-accent"> valdymo politika</a>
                 </Link>
               </label>

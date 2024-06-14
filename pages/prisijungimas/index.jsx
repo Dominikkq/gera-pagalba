@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "tippy.js/dist/tippy.css"; // optional
+
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import Meta from "../../components/Meta";
@@ -146,7 +146,7 @@ const Create = () => {
                 </button>
                 <a
                   onClick={() => dispatch(forgotPasswordModalShow())}
-                  className="text-sm text-jacarta-700 hover:text-jacarta-900"
+                  className="text-sm text-jacarta-700 cursor-pointer"
                 >
                   Pamiršote slaptažodį?
                 </a>

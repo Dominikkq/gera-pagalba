@@ -82,6 +82,8 @@ body {
 
 .modal-body {
   padding: 24px 0;
+  text-align: center;
+  margin: auto;
 }
 
 .modal-label {

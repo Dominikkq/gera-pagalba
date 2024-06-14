@@ -7,10 +7,16 @@ import BusyModal from "./modal/ConfirmBusy";
 import { loadStripe } from "@stripe/stripe-js";
 import ForgotPasswordModal from "./modal/ForgotPassword";
 import EmailVerifiedModal from "./modal/EmailVerifiedModal";
+import { useEffect, useState } from "react";
 export default function Layout({ children }) {
-  const stripePromise = loadStripe(
-    "pk_test_51N3IVhHZicVIiEMtNZRW1WVtxy1gz2KGUynbZ5EiGLp0IqfyxFgkEw2QcK2rD09qpStjC2fklLk0vLKQ1l5tOAYv009KFPUEL1"
-  );
+  const [stripe, setStripe] = useState();
+  useEffect(() => {
+    setStripe(
+      loadStripe(
+        "pk_test_51PMC2t2MBAXhTOiLtiGjUSC86yATR1cFUVLgJ5eBrmAM45cIRUiWF9ZB3BnRXaZadnI10CHTq3vcVWLLGzSZEYI300La1z4DcF"
+      )
+    );
+  }, []);
 
   return (
     <>
@@ -18,7 +24,7 @@ export default function Layout({ children }) {
       <Status_modal />
       <CancelReasonModal />
       <EmailVerifiedModal />
-      <ConfirmAppointmentModal stripePromise={stripePromise} />
+      <ConfirmAppointmentModal stripePromise={stripe} />
       <BusyModal />
       <CreateModal />
       <main>{children}</main>

@@ -20,61 +20,51 @@ const Confirm_checkout = (props) => {
       document.getElementById("edit_error").innerHTML = "Per trumpas vardas";
       return;
     }
-
-    let oldRates = props.rates; // your original object
+    let oldRates = props.rates;
     let newRates = {};
-
-    Object.keys(oldRates).forEach((key) => {
-      newRates[parseInt(key)] = parseInt(oldRates[key]);
-    });
-    try {
-      const requestBody = {
-        email: props.email,
-        name: name,
-        description: document.getElementById("new_description")?.value,
-        profilePhoto: props.newImage || "",
-        helpOptions: props.selectedOptions,
-        notes: document.getElementById("notes_enter")?.value,
-        languageOptions: props.languages,
-        rates: newRates,
-        phoneNumber: phone,
-        workdayHours: {
-          from: parseInt(document.getElementById("workdays_from")?.value || 0),
-          to: parseInt(document.getElementById("workdays_to")?.value || 0),
-        },
-      };
-
-      if (props.weekendsHour) {
-        requestBody.weekendHours = {
-          from: parseInt(document.getElementById("weekends_from").value),
-          to: parseInt(document.getElementById("weekends_to").value),
-        };
-      } else {
-        requestBody.weekendHours = {
-          from: 0,
-          to: 0,
-        };
-      }
-
-      const response = await axios.put(
-        `${process.env.API_URL}/edit`,
-        requestBody,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      document.getElementById("edit_error").style.color = "#00E573";
-      document.getElementById("edit_error").innerHTML = response.data.message;
-      console.log(response);
-    } catch (error) {
-      document.getElementById("edit_error").innerHTML =
-        error.response.data.message;
-      console.log(error);
+    if (oldRates) {
+      Object.keys(oldRates).forEach((key) => {
+        newRates[parseInt(key)] = parseInt(oldRates[key]);
+      });
     }
+    const requestBody = {
+      email: props.email,
+      name: name,
+      description: document.getElementById("new_description")?.value,
+      profilePhoto: props.newImage || "",
+      helpOptions: props.selectedOptions,
+      notes: document.getElementById("notes_enter")?.value,
+      languageOptions: props.languages,
+      rates: newRates,
+      phoneNumber: phone,
+      workdayHours: {
+        from: parseInt(document.getElementById("workdays_from")?.value || 0),
+        to: parseInt(document.getElementById("workdays_to")?.value || 0),
+      },
+    };
+    if (props.weekendsHour) {
+      requestBody.weekendHours = {
+        from: parseInt(document.getElementById("weekends_from")?.value),
+        to: parseInt(document.getElementById("weekends_to")?.value),
+      };
+    } else {
+      requestBody.weekendHours = {
+        from: 0,
+        to: 0,
+      };
+    }
+    const response = await axios.put(
+      `${process.env.API_URL}/edit`,
+      requestBody,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    document.getElementById("edit_error").style.color = "#00E573";
+    document.getElementById("edit_error").innerHTML = response.data.message;
   }
 
   if (props.purpose === "edit") {

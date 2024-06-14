@@ -85,10 +85,10 @@ const ForgotPasswordModal = () => {
             {!success ? (
               <button
                 type="button"
-                className="px-6 py-2 bg-red2 hover:bg-red-600 text-white rounded-lg shadow-md transition-colors duration-300 ease-in-out focus:outline-none"
+                className="px-6 py-2 bg-brand2 hover:bg-red-600 text-white rounded-lg shadow-md transition-colors duration-300 ease-in-out focus:outline-none"
                 onClick={handleForgotPassword}
               >
-                Siųsti slaptažodžio atkūrimo laišką
+                Siūsti atkurimo instrukcijas
               </button>
             ) : (
               <p className="text-jacarta-500 mx-auto mb-5 max-w-md text-center text-lg">

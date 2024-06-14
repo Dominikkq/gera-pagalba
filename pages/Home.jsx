@@ -36,12 +36,7 @@ const Index = () => {
       <Info />
 
       <Faq />
-      <img
-        style={{ opacity: 0.5, position: "absolute" }}
-        src="/images/gradient.jpg"
-        alt="gradient"
-        layout="fill"
-      />
+
       <Footer />
     </>
   );

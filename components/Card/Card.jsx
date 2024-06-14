@@ -7,7 +7,6 @@ const Card = ({ doctor, getColorClass }) => {
   const { userId, name, profilePhoto, helpOptions, rates, averageRating } =
     doctor;
   const doctorLink = `/user/${userId}`;
-
   return (
     <article>
       <div className="  border-jacarta-100 rounded-2xl border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg">

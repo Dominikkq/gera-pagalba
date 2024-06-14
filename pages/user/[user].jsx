@@ -339,15 +339,12 @@ const User = () => {
           },
         }
       );
-
       const array = [...response.data.appointments, ...response.data.busy];
-
       const arrayWithColors = array.map((event) => ({
         ...event,
         backgroundColor: "#F08080",
         borderColor: "#F08080",
       }));
-
       setAppointmentEvents(arrayWithColors);
       setDoctorAppointments(response.data);
     } catch (error) {

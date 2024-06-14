@@ -14,6 +14,7 @@ const Create = () => {
   const [image, setImage] = useState(null);
   const [workdayHours, setWorkdayHours] = useState([0, 0]);
   const [weekendHours, setWeekendHours] = useState([0, 0]);
+  const [balance, setBalance] = useState(0);
 
   const [prices, setPrices] = useState({
     15: 0,
@@ -32,9 +33,17 @@ const Create = () => {
       setLanguageOptions(response.languageOptions);
       setUser(response);
       setPrices(response.rates);
-      setWorkdayHours([response.workdayHours.from, response.workdayHours.to]);
-      setWeekendHours([response.weekendHours.from, response.weekendHours.to]);
-      if (response.weekendHours.from != 0 && response.weekendHours.to != 0) {
+      console.log(response);
+      setWorkdayHours([
+        response?.workdayHours?.from,
+        response.workdayHours?.to,
+      ]);
+      setWeekendHours([response.weekendHours?.from, response.weekendHours?.to]);
+      setBalance(response.balance);
+      if (
+        response?.weekendHours?.from != 0 &&
+        response?.weekendHours?.to != 0
+      ) {
         setWeekendHoursVisible(true);
       }
     } else {
@@ -62,6 +71,7 @@ const Create = () => {
     if (selectedOptions?.includes(option)) {
       setSelectedOptions(selectedOptions.filter((o) => o !== option));
     } else {
+      console.log(selectedOptions);
       if (selectedOptions.length < 5) {
         addItemOptions(option);
       } else {
@@ -264,7 +274,7 @@ const Create = () => {
               max="23"
               className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               defaultValue={
-                workdayHours[0] !== 0 ? workdayHours[0].toString() : "9"
+                workdayHours[0] !== 0 ? workdayHours[0]?.toString() : "9"
               }
               id="workdays_from"
             />
@@ -279,9 +289,9 @@ const Create = () => {
               <path
                 d="M1 1H19M1 7H15M1 13H19"
                 stroke="#D9D9D9"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
             <input
@@ -290,7 +300,7 @@ const Create = () => {
               max="23"
               className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               defaultValue={
-                workdayHours[1] !== 0 ? workdayHours[1].toString() : "17"
+                workdayHours[1] !== 0 ? workdayHours[1]?.toString() : "17"
               }
               id="workdays_to"
             />
@@ -349,7 +359,7 @@ const Create = () => {
                 max="23"
                 className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                 defaultValue={
-                  weekendHours[0] !== 0 ? weekendHours[0].toString() : "9"
+                  weekendHours[0] !== 0 ? weekendHours[0]?.toString() : "9"
                 }
                 id="weekends_from"
               />
@@ -364,9 +374,9 @@ const Create = () => {
                 <path
                   d="M1 1H19M1 7H15M1 13H19"
                   stroke="#D9D9D9"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
               <input
@@ -375,7 +385,7 @@ const Create = () => {
                 max="23"
                 className="w-16 py-2 px-3 bg-white  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                 defaultValue={
-                  weekendHours[1] !== 0 ? weekendHours[1].toString() : "17"
+                  weekendHours[1] !== 0 ? weekendHours[1]?.toString() : "17"
                 }
                 id="weekends_to"
               />
@@ -436,6 +446,12 @@ const Create = () => {
   const PaymentInformation = () => {
     return (
       <>
+        <div className="col-span-1 sm:col-span-2" style={{ width: "20rem" }}>
+          <span className="font-medium text-gray-700 text-sm mb-1 block">
+            Balansas: {balance}
+          </span>
+        </div>
+        <br></br>
         <div className="col-span-1 sm:col-span-2" style={{ width: "20rem" }}>
           <span className="font-medium text-gray-700 text-sm mb-1 block">
             Banko sąskaita
